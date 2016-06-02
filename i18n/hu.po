@@ -1,0 +1,2074 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * maint
+# 
+# Translators:
+# Kris Krnacs, 2015
+# Oregional <geza.nagy@oregional.hu>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo 9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-29 10:27+0000\n"
+"PO-Revision-Date: 2016-01-30 22:35+0000\n"
+"Last-Translator: Oregional <geza.nagy@oregional.hu>\n"
+"Language-Team: Hungarian (http://www.transifex.com/odoo/odoo-9/language/hu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: maint
+#: code:addons/maint/maint.py:373
+#, python-format
+msgid "%s %s has been added to the maint!"
+msgstr "%s %s flottához hozzáadva!"
+
+#. module: maint
+#: code:addons/maint/maint.py:649
+#, python-format
+msgid "%s contract(s) need(s) to be renewed and/or closed!"
+msgstr "%s szerződés(eket) szükséges megújítani és/vagy lezárni!"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "<span>g/km</span>"
+msgstr "<span>g/km</span>"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "<span>kW</span>"
+msgstr "<span>kW</span>"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_1
+msgid "A/C Compressor Replacement"
+msgstr "A/C kompresszor csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_2
+msgid "A/C Condenser Replacement"
+msgstr "A/C kondenzátor csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_3
+msgid "A/C Diagnosis"
+msgstr "A/C diagnosztika"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_4
+msgid "A/C Evaporator Replacement"
+msgstr "A/C párologtató csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_5
+msgid "A/C Recharge"
+msgstr "A/C újratöltés"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_acquisition_date
+msgid "Acquisition Date"
+msgstr "Beszerzés dátuma"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_needaction
+msgid "Action Needed"
+msgstr "Művelet szükséges"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_tree
+msgid "Activation Cost"
+msgstr "Költség aktiválás"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Additional Details"
+msgstr "További részletek"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Additional Properties"
+msgstr "Egyéb jellemzők"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_6
+msgid "Air Filter Replacement"
+msgstr "Levegő szűrő csere"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "All vehicles"
+msgstr "Minden jármű"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_7
+msgid "Alternator Replacement"
+msgstr "Váltóáram generátor csere"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_amount
+msgid "Amount"
+msgstr "Összeg"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_9
+msgid "Assistance"
+msgstr "Assistance szolgáltatás"
+
+#. module: maint
+#: selection:maint.vehicle,transmission:0
+msgid "Automatic"
+msgstr "Automatikus"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_auto_generated
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_auto_generated
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_auto_generated
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_auto_generated
+msgid "Automatically Generated"
+msgstr "Automatikusan létrehozott"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_8
+msgid "Ball Joint Replacement"
+msgstr "Gömbcsukló csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_9
+msgid "Battery Inspection"
+msgstr "Akkumulátor ellenörzés"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_10
+msgid "Battery Replacement"
+msgstr "Akkumulátor csere"
+
+#. module: maint
+#: selection:maint.service.type,category:0
+msgid "Both"
+msgstr "Mindkettő"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_11
+msgid "Brake Caliper Replacement"
+msgstr "Fék beállító csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_12
+msgid "Brake Inspection"
+msgstr "Fék ellenőrzés"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_13
+msgid "Brake Pad(s) Replacement"
+msgstr "Fékbetét csere"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_model_brand
+msgid "Brand model of the vehicle"
+msgstr "Gépjármű modell neve"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_co2
+msgid "CO2 Emissions"
+msgstr "CO2 kibocsátás"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_co2
+msgid "CO2 emissions of the vehicle"
+msgstr "Gépjármű CO2 kibocsátása"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_1
+msgid "Calculation Benefit In Kind"
+msgstr "Természetben számított haszon"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_car_value
+msgid "Car Value"
+msgstr "Gépjármű értéke"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_14
+msgid "Car Wash"
+msgstr "Gépjármű mosás"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_15
+msgid "Catalytic Converter Replacement"
+msgstr "Katalizátor csere"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_category
+msgid "Category"
+msgstr "Kategória"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_cost_type
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_type
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_type
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_type
+msgid "Category of the cost"
+msgstr "Költség kategóriája"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_16
+msgid "Charging System Diagnosis"
+msgstr "Rendszer diagnosztika kiszámlázása"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_vin_sn
+msgid "Chassis Number"
+msgstr "Alváz szám"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_state
+msgid "Choose wheter the contract is still valid or not"
+msgstr "Válasszon, hogy a szerződés még érvényben van vagy sem"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_service_type_category
+msgid "Choose wheter the service refer to contracts, vehicle services or both"
+msgstr "Válasszon, hogy a szolgáltatás hivatkozik szerződésekre, gépjármű szervizelésekre vagy mindkettőre"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_contract_act
+msgid "Click to create a new contract."
+msgstr "Kattintson egy új szerződés létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_costs_act
+msgid "Click to create a new cost."
+msgstr "Kattintson egy új költség létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_fuel_act
+msgid "Click to create a new fuel log."
+msgstr "Kattintson egy új üzemanyag fogyasztási  napló létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_model_brand_act
+msgid "Click to create a new make."
+msgstr "Kattintson egy új gyártó létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_model_act
+msgid "Click to create a new model."
+msgstr "Kattintson egy új modell létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_odometer_act
+msgid "Click to create a new odometer log."
+msgstr "Kattintson egy új távolság napló létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_services_act
+msgid "Click to create a new service entry."
+msgstr "Kattintson egy új szerviz bevitel létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_service_types_act
+msgid "Click to create a new type of service."
+msgstr "Kattintson egy új szerviz típus létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_act
+msgid "Click to create a new vehicle."
+msgstr "Kattintson egy új jármű létrehozásához."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_state_act
+msgid "Click to create a vehicle status."
+msgstr "Kattintson egy új jármű állapot létrehozásához."
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_color
+msgid "Color"
+msgstr "Szín"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_color
+msgid "Color Index"
+msgstr "Szín meghatározó"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_color
+msgid "Color of the vehicle"
+msgstr "Gépjármű színe"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_company_id
+msgid "Company"
+msgstr "Vállalat"
+
+#. module: maint
+#: model:ir.ui.menu,name:maint.maint_configuration
+msgid "Configuration"
+msgstr "Beállítások"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_contract_state
+msgid "Contains the different possible status of a leasing contract"
+msgstr "Egy lizing szersződés különböző lehetséges állapotát trtalmazza"
+
+#. module: maint
+#: selection:maint.service.type,category:0
+#: selection:maint.vehicle.cost,cost_type:0
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_contract_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_contract_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_contract_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_contract_id
+msgid "Contract"
+msgstr "Szerződés"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_graph
+msgid "Contract Costs Per Month"
+msgstr "Szerződés havi költségei"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_expiration_date
+msgid "Contract Expiration Date"
+msgstr "Szerződés lejárati dátuma"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_ins_ref
+msgid "Contract Reference"
+msgstr "Szerződés hivatkozás"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_start_date
+msgid "Contract Start Date"
+msgstr "Szerződés indulási dátuma"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_name
+msgid "Contract Status"
+msgstr "Szerződés állapota"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_contract_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_contract_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_contract_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_contract_id
+msgid "Contract attached to this cost"
+msgstr "Ehhez a költséghez tartozó szerződés"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Contract details"
+msgstr "Szerződés részletei"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_log_contract
+msgid "Contract information on a vehicle"
+msgstr "Egy gépjárműhöz tatrozó szerződés információi"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_tree
+msgid "Contract logs"
+msgstr "Szerződés naplók"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_purchaser_id
+msgid "Contractor"
+msgstr "Szerződő"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_count
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contracts
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Contracts"
+msgstr "Szerződések"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_id
+msgid "Cost"
+msgstr "Költség"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_form
+msgid "Cost Details"
+msgstr "Költség részletei"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Cost Subtype"
+msgstr "Költség altípusai"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Cost Type"
+msgstr "Költség típusa"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_cost
+msgid "Cost related to a vehicle"
+msgstr "Gépjárműhöz kapcsolódó költség"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Cost that is paid only once at the creation of the contract"
+msgstr "A szerződés aláírásakor létrejövő, csak egyszer fizetendő költség"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_cost_subtype_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_cost_subtype_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_cost_subtype_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_cost_subtype_id
+msgid "Cost type purchased with this cost"
+msgstr "A vásárlással létrehozott költség típus"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_count
+#: model:ir.ui.menu,name:maint.menu_maint_reporting_costs
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Costs"
+msgstr "Költségek"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.action_maint_reporting_costs
+msgid "Costs Analysis"
+msgstr "Költség analízis"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_graph
+msgid "Costs Per Month"
+msgstr "Havi költségek"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_cost_generated
+msgid ""
+"Costs paid at regular intervals, depending on the cost frequency. If the "
+"cost frequency is set to unique, the cost will be logged at the start date"
+msgstr "Megadott időközönként fizetett költségek, a költség gyakoriságától függ. Ha a költség gyakoriságát egyedire állította, akkor a költséget az indulási dátumra naplózza"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid ""
+"Create a new contract automatically with all the same informations except "
+"for the date that will start at the end of current contract"
+msgstr "Ugyanazokkal az információkkal automatikusan egy új szerződést hoz létre, kivéve a dátumot amivel indulni fog, mivel az az előző szerződés befejező dátuma lesz"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_create_uid
+msgid "Created by"
+msgstr "Készítette"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_create_date
+msgid "Created on"
+msgstr "Létrehozás dátuma"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_state_id_2863
+msgid "Current state of the vehicle"
+msgstr "Ennek a gépjárműnek a jelenlegi állapota"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "Daily"
+msgstr "Naponta"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_date
+msgid "Date"
+msgstr "Dátum"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "A feljegyzésen történt utolsó levelezés dátuma."
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_date
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_date
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_date
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_date
+msgid "Date when the cost has been executed"
+msgstr "A költség kifizetés végrehajtásának dátuma"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_start_date
+msgid "Date when the coverage of the contract begins"
+msgstr "A szerződés fedezeti érvényességének kezdeti dátuma"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_expiration_date
+msgid ""
+"Date when the coverage of the contract expirates (by default, one year after"
+" begin date)"
+msgstr "A szerződés fedezeti érvényesség megszűnésének a dátuma (alapértelmezetten, egy év a kezdeti dátumtól)"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_acquisition_date
+msgid "Date when the vehicle has been bought"
+msgstr "A gépjármű vásárlásának dátuma"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_2
+msgid "Depreciation and Interests"
+msgstr "Értékcsökkenés és kamatok"
+
+#. module: maint
+#: selection:maint.vehicle,fuel_type:0
+msgid "Diesel"
+msgstr "Dízel"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_display_name
+msgid "Display Name"
+msgstr "Név megjelenítése"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_17
+msgid "Door Window Motor/Regulator Replacement"
+msgstr "Ajtó blak emelő motor/határoló csere"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_doors
+msgid "Doors Number"
+msgstr "Ajtók száma"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_driver_id
+msgid "Driver"
+msgstr "Autóvezető"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_driver_id
+msgid "Driver of the vehicle"
+msgstr "A gépjármú vezetője"
+
+#. module: maint
+#: code:addons/maint/maint.py:390
+#, python-format
+msgid "Driver: from '%s' to '%s'"
+msgstr "Autóvezető: ettől '%s' eddig '%s'"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_contract_act
+msgid ""
+"Each contract (e.g.: leasing) may include several services\n"
+"                (reparation, insurances, periodic maintenance)."
+msgstr "Mindegyik szerződés (pl.: lízing) magában foglal egy pár szolgáltatást (javítások, biztosítások, periodikus felülvizsgálatok)."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_service_types_act
+msgid "Each service can used in contracts, as a standalone service or both."
+msgstr "Mindegyik szolgáltatás felhasználható a szerződésekben, egyesével vagy az mindkettőben."
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Effective Costs"
+msgstr "Tényleges költségek"
+
+#. module: maint
+#: selection:maint.vehicle,fuel_type:0
+msgid "Electric"
+msgstr "Elektromos"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_17
+msgid "Emissions"
+msgstr "Kibocsátás"
+
+#. module: maint
+#: code:addons/maint/maint.py:31
+#, python-format
+msgid "Emptying the odometer value of a vehicle is not allowed."
+msgstr "Gépjármű kilométer óraállást nem szabad törölni."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_18
+msgid "Engine Belt Inspection"
+msgstr "Motor hajtószíj ellenőrzés"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_19
+msgid "Engine Coolant Replacement"
+msgstr "Motor hűtőfolyadék csere"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Engine Options"
+msgstr "Motor választékok"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_20
+msgid "Engine/Drive Belt(s) Replacement"
+msgstr "Motor/meghajtó szíj csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_13
+msgid "Entry into service tax"
+msgstr "Belépés a szervíz adó bevitelhez"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_21
+msgid "Exhaust Manifold Replacement"
+msgstr "Kipufogó cső csere"
+
+#. module: maint
+#: model:ir.module.category,name:maint.module_maint_category
+#: model:ir.ui.menu,name:maint.menu_root
+msgid "Maint"
+msgstr "Flotta"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_follower_ids
+msgid "Followers"
+msgstr "Követők"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Követők (Csatornák)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Követők (Partnerek)"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_cost_type
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_cost_type
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_cost_type
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_cost_type
+msgid "For internal purpose only"
+msgstr "Csak belső használatra"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_cost_frequency
+msgid "Frequency of the recuring cost"
+msgstr "Visszatérő költségek gyakorisága"
+
+#. module: maint
+#: selection:maint.vehicle.cost,cost_type:0
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Fuel"
+msgstr "Üzemanyag"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_graph
+msgid "Fuel Costs Per Month"
+msgstr "Havi üzemanyag költségek"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_22
+msgid "Fuel Injector Replacement"
+msgstr "Üzemanyag befecskendező csere"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_fuel_logs_count
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_tree
+msgid "Fuel Logs"
+msgstr "Üzemanyag napló"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_23
+msgid "Fuel Pump Replacement"
+msgstr "Üzemanyag szivattyú csere"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_fuel_type
+msgid "Fuel Type"
+msgstr "Üzemanyag típus"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_fuel_type
+msgid "Fuel Used by the vehicle"
+msgstr "Gépjármű által felhasznált üzemenyag"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_log_fuel
+msgid "Fuel log for vehicles"
+msgstr "Gépjárművek üzemanyag naplói"
+
+#. module: maint
+#: selection:maint.vehicle,fuel_type:0
+msgid "Gasoline"
+msgstr "Gázolaj"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "General Properties"
+msgstr "Általános tulajdonságok"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_generated_cost_ids
+msgid "Generated Costs"
+msgstr "Generált költségek"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Generated Recurring Costs"
+msgstr "Generált visszatérő költségek"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "Group By"
+msgstr "Csoportosítás"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "Has Alert(s)"
+msgstr "Figyelmeztetése(i) van(ak)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_renewal_overdue
+msgid "Has Contracts Overdue"
+msgstr "Lejárt szerződése van"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_renewal_due_soon
+msgid "Has Contracts to renew"
+msgstr "Megújítandó szerződése van"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_24
+msgid "Head Gasket(s) Replacement"
+msgstr "Head Gasket(s) Replacement"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_25
+msgid "Heater Blower Motor Replacement"
+msgstr "Fej tömítés(ek) csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_26
+msgid "Heater Control Valve Replacement"
+msgstr "Fűtó vezérlő szelep csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_27
+msgid "Heater Core Replacement"
+msgstr "Fűtő ház csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_28
+msgid "Heater Hose Replacement"
+msgstr "Fűtő vezetékcsere"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_fuel_act
+msgid ""
+"Here you can add refuelling entries for all vehicles.  You can\n"
+"                also filter logs of a particular vehicle using the search\n"
+"                field."
+msgstr "Itt tud az összes járműre üzemanyag feltöltési bevitelt végezni.  Szűrni\n                tud naplókat egy gépjárműre vonatkozóan a keresés mezőben."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_odometer_act
+msgid ""
+"Here you can add various odometer entries for all vehicles.\n"
+"                You can also show odometer value for a particular vehicle using\n"
+"                the search field."
+msgstr "It meg tud adni különböző távolsági adatokat az összes járműre.\n                Meg tudja mutatni a távolsági érték adatokat a keresés mezőben kiválasztott járműre vonatkozólag."
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_horsepower
+msgid "Horsepower"
+msgstr "Lóerő"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_horsepower_tax
+msgid "Horsepower Taxation"
+msgstr "Lóerő teljesítmény adó"
+
+#. module: maint
+#: selection:maint.vehicle,fuel_type:0
+msgid "Hybrid"
+msgstr "Hibrid"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_id
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_id_2812
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_id
+msgid "ID"
+msgstr "ID"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_unread
+msgid "If checked new messages require your attention."
+msgstr "Ha be van jelölve, akkor figyelje az új üzeneteket."
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Ha be van jelölve, akkor figyelje az új üzeneteket."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_29
+msgid "Ignition Coil Replacement"
+msgstr "Indító tekercs csere"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,state:0
+msgid "In Progress"
+msgstr "Folyamatban"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_cost_ids
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_ids
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_ids
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_ids
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Included Services"
+msgstr "Következő szervízek beleszámítva"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Indicative Cost"
+msgstr "Előrelátható költség"
+
+#. module: maint
+#: model:ir.ui.menu,name:maint.menu_maint_reporting_indicative_costs
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Indicative Costs"
+msgstr "Előrelátható költségek"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.action_maint_reporting_costs_non_effective
+msgid "Indicative Costs Analysis"
+msgstr "Előrelátható költség analízis"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_sum_cost
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Indicative Costs Total"
+msgstr "Előrelátható összes költség"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle
+msgid "Information on a vehicle"
+msgstr "Gépjármű információ"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_30
+msgid "Intake Manifold Gasket Replacement"
+msgstr "Beszívó cső tömítés csere"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Invoice Date"
+msgstr "Számla kelte"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_inv_ref
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_inv_ref
+msgid "Invoice Reference"
+msgstr "Számlahivatkozás"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_is_follower
+msgid "Is Follower"
+msgstr "Követő"
+
+#. module: maint
+#: selection:maint.vehicle,odometer_unit:0
+msgid "Kilometers"
+msgstr "Kilométer"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_last_post
+msgid "Last Message Date"
+msgstr "Utolsó üzenet dátuma"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_service_type___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag___last_update
+msgid "Last Modified on"
+msgstr "Utoljára módosítva"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer
+msgid "Last Odometer"
+msgstr "Utolsó kilométeróra állás"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_write_uid
+msgid "Last Updated by"
+msgstr "Utoljára frissítve, által"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_write_date
+msgid "Last Updated on"
+msgstr "Utoljára frissítve"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_contract_leasing
+msgid "Leasing"
+msgstr "Lízing"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_license_plate
+msgid "License Plate"
+msgstr "Rendszám tábla"
+
+#. module: maint
+#: code:addons/maint/maint.py:397
+#, python-format
+msgid "License Plate: from '%s' to '%s'"
+msgstr "Rendszám tábla: ettől '%s' eddig '%s'"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_license_plate
+msgid "License plate number of the vehicle (ie: plate number for a car)"
+msgstr "Gépjármű rendszám táblája (pl.: egy autó rendszám táblája)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_liter
+msgid "Liter"
+msgstr "Liter"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_location
+msgid "Location"
+msgstr "Helyszín"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_location
+msgid "Location of the vehicle (garage, ...)"
+msgstr "A gépjármű tartózkodási helye (garázs, ...)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_image
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_image
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_image
+msgid "Logo"
+msgstr "Logó"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_image_medium
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_image_medium
+msgid "Logo (medium)"
+msgstr "Logó (közepes)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_image_small
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_image_small
+msgid "Logo (small)"
+msgstr "Logó (kicsi)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_name
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_search
+msgid "Make"
+msgstr "Gyártmány"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_brand_id
+msgid "Make of the vehicle"
+msgstr "Gépjármű gyártmánya"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_contract_act
+msgid ""
+"Manage all your contracts (leasing, insurances, etc.) with\n"
+"                their related services, costs. Odoo will automatically warn\n"
+"                you when some contracts have to be renewed."
+msgstr "Összes szerződés kezelése (lízing, biztosítások, stb.) a vonatkozó szolgáltatásokkal, költségekkel. Odoo rendszer automatikusan figyelmeztet a szerződés lejártára, meghosszabbítási idejére."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_11
+msgid "Management Fee"
+msgstr "Kezelési díj"
+
+#. module: maint
+#: model:res.groups,name:maint.group_maint_manager
+msgid "Manager"
+msgstr "Igazgató"
+
+#. module: maint
+#: selection:maint.vehicle,transmission:0
+msgid "Manual"
+msgstr "Kézi"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_image_medium
+msgid "Medium-sized image"
+msgstr "Közepes méretű kép"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_brand_image_medium
+msgid ""
+"Medium-sized logo of the brand. It is automatically resized as a 128x128px "
+"image, with aspect ratio preserved. Use this field in form views or some "
+"kanban views."
+msgstr "Közepes-méretű logó a gyártmányról. Automatikusan átméretezett 128x128px képre, a méretarány megtartásával. A forma nézetekben használja ezt a mezőt és egyes kanban nézetben."
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_ids
+msgid "Messages"
+msgstr "Üzenetek"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_ids
+msgid "Messages and communication history"
+msgstr "Üzenetek és kommunikáció történet"
+
+#. module: maint
+#: selection:maint.vehicle,odometer_unit:0
+msgid "Miles"
+msgstr "Mérföld"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_id_2845
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "Model"
+msgstr "Model"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_brand_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_brand_tree
+msgid "Model Make"
+msgstr "Gyártmány modell"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_model_brand_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_model_brand_menu
+msgid "Model make of Vehicle"
+msgstr "Gépjármű gyártmány modellje"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_name
+msgid "Model name"
+msgstr "Modell"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_model
+msgid "Model of a vehicle"
+msgstr "Egy gépjármű modellje"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_id_2845
+msgid "Model of the vehicle"
+msgstr "Egy gépjármű modellje"
+
+#. module: maint
+#: code:addons/maint/maint.py:386
+#, python-format
+msgid "Model: from '%s' to '%s'"
+msgstr "Modell: ettől '%s' eddig '%s'"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_tree
+msgid "Models"
+msgstr "Modellek"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Month"
+msgstr "Hónap"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "Monthly"
+msgstr "Havi"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_name
+msgid "Name"
+msgstr "Név"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_renewal_name
+msgid "Name of contract to renew soon"
+msgstr "Nemsokára megújítandó szerződés neve"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "No"
+msgstr "Nem"
+
+#. module: maint
+#: code:addons/maint/maint.py:385 code:addons/maint/maint.py:389
+#: code:addons/maint/maint.py:393 code:addons/maint/maint.py:396
+#, python-format
+msgid "None"
+msgstr "Nem"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_notes
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_notes
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Notes"
+msgstr "Jegyzetek"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_needaction_counter
+msgid "Number of Actions"
+msgstr "Műveletek száma"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_doors
+msgid "Number of doors of the vehicle"
+msgstr "Gépjármú ajtóinak száma"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Üzenetek száma, melyek közbenjárást igényelnek"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_seats
+msgid "Number of seats of the vehicle"
+msgstr "Gépjármű üléseinek száma"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_unread_counter
+msgid "Number of unread messages"
+msgstr "Olvasatlan üzenetek száma"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_count
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Odometer"
+msgstr "Kilométeróra"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Odometer Details"
+msgstr "Kilométeróra részletei"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_tree
+msgid "Odometer Logs"
+msgstr "Kilométeróra naplói"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_unit
+msgid "Odometer Unit"
+msgstr "Kilométeróra mértékegysége"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_odometer
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_odometer
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_odometer
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_odometer
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_value
+msgid "Odometer Value"
+msgstr "Kilométeróra állása"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_graph
+msgid "Odometer Values Per Vehicle"
+msgstr "Gépjárművenkénti kilóméter óra értékek"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Odometer details"
+msgstr "Kilométeróra részletei"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_odometer
+msgid "Odometer log for a vehicle"
+msgstr "Egy gépjárműre vonatkozó kilométeróra napló"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_odometer
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_odometer_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_odometer
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_odometer_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_odometer
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_odometer_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_odometer
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_odometer_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_odometer
+msgid "Odometer measure of the vehicle at the moment of this log"
+msgstr "A gépjármű kilométeróra állása a napló jelenlegi állapotában"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_services_act
+msgid ""
+"Odoo helps you keeping track of all the services done\n"
+"                on your vehicle. Services can be of many type: occasional\n"
+"                repair, fixed maintenance, etc."
+msgstr "Odoo rendszer segít a járművön elvégzett szolgáltatások nyomon követésében.\n                Szolgáltatás sokféle típus lehet: véletlenszerű \n                javítás, fix karbantartás, stb."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_costs_act
+msgid ""
+"Odoo helps you managing the costs for your different\n"
+"                vehicles. Costs are created automatically from services,\n"
+"                contracts (fixed or recurring) and fuel logs."
+msgstr "Odoo rendszer segít a járművei költségeinek nyomon követésében.\n                Költségeket automatikusan a szolgáltatásokból, \n                szerződésekből hozz létre (fix vagy visszatérő) és üzemanyag naplók."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.action_maint_reporting_costs
+#: model:ir.actions.act_window,help:maint.action_maint_reporting_costs_non_effective
+msgid ""
+"Odoo helps you managing the costs for your different vehicles\n"
+"          Costs are generally created from services and contract and appears here."
+msgstr "Odoo rendszer segít a járművei költségeinek nyomon követésében.\n                Költségeket általában a szolgáltatásokból és                 szerződésekből hozz létre és itt tűnnek fel."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_act
+msgid ""
+"Odoo will warn you when services or contract have to be\n"
+"                renewed."
+msgstr "Odoo rendszer értesíti, ha szolgáltatást vagy szerződést meg kell újítani."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_31
+msgid "Oil Change"
+msgstr "Olaj csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_32
+msgid "Oil Pump Replacement"
+msgstr "Olaj szivattyú csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_contract_omnium
+msgid "Omnium"
+msgstr "Mindenféle"
+
+#. module: maint
+#: model:ir.actions.client,name:maint.action_maint_menu
+msgid "Open Maint Menu"
+msgstr "Flotta menü megnyitása"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_16
+msgid "Options"
+msgstr "Lehetőségek"
+
+#. module: maint
+#: selection:maint.vehicle.cost,cost_type:0
+msgid "Other"
+msgstr "Egyéb"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_33
+msgid "Other Maintenance"
+msgstr "Egyéb karbantartás"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_34
+msgid "Oxygen Sensor Replacement"
+msgstr "Oxigén érzékelő csere"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_parent_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_parent_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_parent_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_parent_id
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Parent"
+msgstr "Szülő"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_parent_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_parent_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_parent_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_parent_id
+msgid "Parent cost to this current cost"
+msgstr "Ennek a költségnek a fölérendelt/szülő költsége"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_purchaser_id
+msgid "Person to which the contract is signed for"
+msgstr "Személy aki ezt a szerződést aláírta"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_power
+msgid "Power"
+msgstr "Max. tételszám"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_35
+msgid "Power Steering Hose Replacement"
+msgstr "Kormány rásegítő cső csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_36
+msgid "Power Steering Pump Replacement"
+msgstr "Kormány rásegítő szivattyú csere"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_power
+msgid "Power in kW of the vehicle"
+msgstr "Gépjármű teljesítménye kW-ban"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_tree
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Price"
+msgstr "Érték"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_price_per_liter
+msgid "Price Per Liter"
+msgstr "Literenkénti ár"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_purchaser_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_purchaser_id
+msgid "Purchaser"
+msgstr "Beszerző"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_37
+msgid "Radiator Repair"
+msgstr "Hűtőrács javítás"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_generated
+msgid "Recurring Cost Amount"
+msgstr "Ismétlődő költség összege"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_frequency
+msgid "Recurring Cost Frequency"
+msgstr "Ismétlődő költség gyakorisága"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_refueling
+msgid "Refueling"
+msgstr "Tankolás"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+msgid "Refueling Details"
+msgstr "Tankolás részletei"
+
+#. module: maint
+#: code:addons/maint/maint.py:720
+#: model:ir.actions.act_window,name:maint.act_renew_contract
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#, python-format
+msgid "Renew Contract"
+msgstr "Szerződés újrakötése"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_12
+msgid "Rent (Excluding VAT)"
+msgstr "Bérleti díj (ÁFA nélkül)"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_8
+msgid "Repair and maintenance"
+msgstr "Javítás és karbantartás"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_contract_repairing
+msgid "Repairing"
+msgstr "Javítás"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_10
+msgid "Replacement Vehicle"
+msgstr "Csere gépjármű"
+
+#. module: maint
+#: model:ir.ui.menu,name:maint.menu_maint_reporting
+msgid "Reports"
+msgstr "Kimutatások"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_15
+msgid "Residual value (Excluding VAT)"
+msgstr "Maradvány érték (ÁFA nélkül)"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_19
+msgid "Residual value in %"
+msgstr "Maradvány érték %"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_38
+msgid "Resurface Rotors"
+msgstr "Forgórészek felületfelújítása"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_39
+msgid "Rotate Tires"
+msgstr "Kerekek áthelyezése"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_40
+msgid "Rotor Replacement"
+msgstr "Forgórész csere"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_seats
+msgid "Seats Number"
+msgstr "Ülések száma"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_sequence
+msgid "Sequence"
+msgstr "Sorszám"
+
+#. module: maint
+#: selection:maint.service.type,category:0
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Service"
+msgstr "Szolgáltatás"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Service Type"
+msgstr "Szolgáltatás típus"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_service_types_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_service_types_menu
+msgid "Service Types"
+msgstr "Szolgáltatás típusok"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_service_types_tree
+msgid "Service types"
+msgstr "Szolgáltatás típusok"
+
+#. module: maint
+#: selection:maint.vehicle.cost,cost_type:0
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_service_count
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Services"
+msgstr "Szolgáltatások"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_graph
+msgid "Services Costs Per Month"
+msgstr "Szolgáltatások havi költségei"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Services Details"
+msgstr "Szolgáltatások részletei"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_tree
+msgid "Services Logs"
+msgstr "Szolgáltatások naplói"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_log_services
+msgid "Services for vehicles"
+msgstr "Szolgáltatások gépárművekhez"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Set Contract In Progress"
+msgstr "Szerződés beállítása folyamatban"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_image_small
+msgid "Small-sized image"
+msgstr "Kis méretű kép"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_brand_image_small
+msgid ""
+"Small-sized logo of the brand. It is automatically resized as a 64x64px "
+"image, with aspect ratio preserved. Use this field anywhere a small image is"
+" required."
+msgstr "Kis-méretű logó a márkáról. Automatikusan átméretezve 64x64px képpé, az arány megtartása mellett. Ezt a mezőt ott használja ahol a kis képre van szüksége."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_6
+msgid "Snow tires"
+msgstr "Téli gumi"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_41
+msgid "Spark Plug Replacement"
+msgstr "Gyújtógyertya csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_42
+msgid "Starter Replacement"
+msgstr "Önindító csere"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_id_2863
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_state_tree
+msgid "State"
+msgstr "Állapot"
+
+#. module: maint
+#: sql_constraint:maint.vehicle.state:0
+msgid "State name already exists"
+msgstr "Állapot név már létezik"
+
+#. module: maint
+#: code:addons/maint/maint.py:394
+#, python-format
+msgid "State: from '%s' to '%s'"
+msgstr "Állapot: ettől '%s' eddig '%s'"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_state
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "Status"
+msgstr "Állapot"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_5
+#: model:maint.service.type,name:maint.type_service_service_7
+msgid "Summer tires"
+msgstr "Nyári gumi"
+
+#. module: maint
+#: sql_constraint:maint.vehicle.tag:0
+msgid "Tag name already exists !"
+msgstr "Címke név már létezik!"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_ids
+msgid "Tags"
+msgstr "Címkék"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_3
+msgid "Tax roll"
+msgstr "Adó göngyöleg"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Terminate Contract"
+msgstr "Szerződés megszüntetés"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,state:0
+msgid "Terminated"
+msgstr "Megszüntetett"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_notes
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Terms and Conditions"
+msgstr "Kikötések és feltételek"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.action_maint_reporting_costs
+#: model:ir.actions.act_window,help:maint.action_maint_reporting_costs_non_effective
+msgid ""
+"Thanks to the different filters, Odoo can only print the effective\n"
+"          costs, sort them by type and by vehicle."
+msgstr "Köszönöm a különböző szűrőket, Odoo rendszer csak a tényleges költséget tudja  \n          nyomtatni, típus és jármű szerinti csoportosításban."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_43
+msgid "Thermostat Replacement"
+msgstr "Termosztát csere"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_brand_image
+msgid ""
+"This field holds the image used as logo for the brand, limited to "
+"1024x1024px."
+msgstr "Ez a mező tartalmazza a márka logó képet, limitálva a 1024x1024px méretre."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_44
+msgid "Tie Rod End Replacement"
+msgstr "Összekötő rúd vég csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_45
+msgid "Tire Replacement"
+msgstr "Gumi csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_46
+msgid "Tire Service"
+msgstr "Gumi javítás"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,state:0
+msgid "To Close"
+msgstr "Lezárandó"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_tree
+msgid "Total"
+msgstr "Összesen"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_amount
+msgid "Total Price"
+msgstr "Összérték"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_14
+msgid "Total expenses (Excluding VAT)"
+msgstr "Összes költség (ÁFA nélkül)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_renewal_total
+msgid "Total of contracts due or overdue minus one"
+msgstr "Lejárt és le nem járt szerződések összértéke mínusz egy"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_18
+msgid "Touring Assistance"
+msgstr "Assistance szolgáltatás"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_transmission
+msgid "Transmission"
+msgstr "Sebességváltó"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_47
+msgid "Transmission Filter Replacement"
+msgstr "Sebességváltó oljaszűrő csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_48
+msgid "Transmission Fluid Replacement"
+msgstr "Sebességváltó folyadék csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_49
+msgid "Transmission Replacement"
+msgstr "Sebességváltó csere"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_transmission
+msgid "Transmission Used by the vehicle"
+msgstr "Gépjármű által használt sebességváltó"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_cost_subtype_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_subtype_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_subtype_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_subtype_id
+msgid "Type"
+msgstr "Típus"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_service_type
+msgid "Type of services available on a vehicle"
+msgstr "Gépjárműhöz tartozó szolgáltatások típusai"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_vin_sn
+msgid "Unique number written on the vehicle motor (VIN/SN number)"
+msgstr "Gépjármű motorjára írt egyedi motorszám (VIN/SN szám)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_odometer_unit
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_odometer_unit
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_odometer_unit
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_odometer_unit
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_unit_2878
+msgid "Unit"
+msgstr "Egység"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_odometer_unit
+msgid "Unit of the odometer "
+msgstr "Kolóméteróra mértékegysége "
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_unread
+msgid "Unread Messages"
+msgstr "Olvasatlan üzenetek"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Olvasatlan üzenetek számlálója"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_state_sequence
+msgid "Used to order the note stages"
+msgstr "A jegyzet szakaszok rendszerezéséhez használt"
+
+#. module: maint
+#: model:res.groups,name:maint.group_maint_user
+msgid "User"
+msgstr "Felhasználó"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_car_value
+msgid "Value of the bought vehicle"
+msgstr "Vásárolt gépjármű értéke"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_vehicle_id
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_tree
+msgid "Vehicle"
+msgstr "Jármű"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_costs_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_costs_menu
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_cost_tree
+msgid "Vehicle Costs"
+msgstr "Gépjármű költésgek"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Vehicle Costs by Month"
+msgstr "Gépjármű költségek havi lebontásban"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+msgid "Vehicle Details"
+msgstr "Gépjármű adatok"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_model_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_model_menu
+msgid "Vehicle Model"
+msgstr "Gépjármű modell"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_state_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_state_menu
+msgid "Vehicle Status"
+msgstr "Gépjármű állapot"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_vehicle_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_vehicle_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_vehicle_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_vehicle_id
+msgid "Vehicle concerned by this log"
+msgstr "Erre a naplóra hivatkozó gépjármű"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_form
+msgid "Vehicle costs"
+msgstr "Gépjármű költségek"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_menu
+#: model:ir.ui.menu,name:maint.maint_vehicles
+msgid "Vehicles"
+msgstr "Járművek"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_log_contract_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_log_contract_menu
+msgid "Vehicles Contracts"
+msgstr "Gépjármű szerződések"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_log_fuel_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_log_fuel_menu
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_search
+msgid "Vehicles Fuel Logs"
+msgstr "Gépjárművek fogyasztási naplói"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_odometer_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_odometer_menu
+msgid "Vehicles Odometer"
+msgstr "Gépjárművek kilométer órái"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_log_services_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_log_services_menu
+msgid "Vehicles Services Logs"
+msgstr "Gépjárművek szervíz naplói"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_effective_costs_report
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_effective_costs_report_pivot
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_indicative_costs_report
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_indicative_costs_report_pivot
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_search
+msgid "Vehicles costs"
+msgstr "Gépjárművek költségei"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_search
+msgid "Vehicles odometers"
+msgstr "Gépjárművek kilóméter órái"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_insurer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_vendor_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_vendor_id
+msgid "Vendor"
+msgstr "Kereskedő"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_vendors
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_form
+msgid "Vendors"
+msgstr "Kereskedők"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_days_left
+msgid "Warning Date"
+msgstr "Figyelmeztetés dátuma"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_50
+msgid "Water Pump Replacement"
+msgstr "Víz szivattyú csere"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "Weekly"
+msgstr "Heti"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_51
+msgid "Wheel Alignment"
+msgstr "Kerék összetartás beállítása"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_52
+msgid "Wheel Bearing Replacement"
+msgstr "Kerék csapágy csere"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_53
+msgid "Windshield Wiper(s) Replacement"
+msgstr "Ablaktörlő(k) csere"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Write here all other information relative to this contract"
+msgstr "Ide írja a szerződéssel kapcsolatos összes egyéb információt"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_notes
+msgid "Write here all supplementary informations relative to this contract"
+msgstr "Ide írja a szerződéssel kapcsolatos összes egyéb kiegészítő információt"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+msgid "Write here any other information"
+msgstr "Ide írjon egyéb más információt"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Write here any other information related to the service completed."
+msgstr "Ide írja a szerviz vagy egyéb elvégzett szolgáltatással kapcsolatos összes információt"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Year"
+msgstr "Év"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "Yearly"
+msgstr "Évente"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_state_act
+msgid ""
+"You can customize available status to track the evolution of\n"
+"                each vehicle. Example: Active, Being Repaired, Sold."
+msgstr "Elérhető állapotot személyre szabhatja az összes jármű történetének \n                nyomon követéséhez. Pl.: Aktív, Szervizben, Eladva."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_model_act
+msgid "You can define several models (e.g. A3, A4) for each make (Audi)."
+msgstr "Különböző modellt határozhat meg (pl.. A3, A4) mindegyik gyártmányhoz (Audi)."
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_act
+msgid ""
+"You will be able to manage your maint by keeping track of the\n"
+"                contracts, services, fixed and recurring costs, odometers and\n"
+"                fuel logs associated to each vehicle."
+msgstr "Kezelheti a flottáját a szerződések  \n                szolgáltatások, fix és visszatérő költségek, egyes \n                járművekhez tartozó óraállás és\n                üzemanyag napló  nyomon követésével."
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "amount"
+msgstr "Összeg"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_kanban
+msgid "and"
+msgstr "és"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_form
+msgid "e.g. Model S"
+msgstr "pl. Model S"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "e.g. PAE 326"
+msgstr "pl. PAE 326"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_form
+msgid "e.g. Tesla"
+msgstr "pl. Tesla"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_state
+msgid "maint.vehicle.state"
+msgstr "Állapot"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_tag
+msgid "maint.vehicle.tag"
+msgstr "Címkék"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_kanban
+msgid "other(s)"
+msgstr "egyéb"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show all the costs for this vehicle"
+msgstr "mutassa a gépjárműre vonatkozó összes költséget"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show the contract for this vehicle"
+msgstr "mutassa a gépjárműre vonatkozó szerződést"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show the fuel logs for this vehicle"
+msgstr "mutassa a gépjárműre vonatkozó fogyasztási naplót"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show the odometer logs for this vehicle"
+msgstr "mutassa a gépjárműre vonatkozó kilóméter óra naplót"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show the services logs for this vehicle"
+msgstr "mutassa a gépjárműre vonatkozó szolgáltatások naplóit"

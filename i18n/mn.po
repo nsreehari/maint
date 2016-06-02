@@ -1,0 +1,2072 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * maint
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo 9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-29 10:27+0000\n"
+"PO-Revision-Date: 2015-12-23 08:09+0000\n"
+"Last-Translator: Otgonbayar Agvaan <gobi.mn@gmail.com>\n"
+"Language-Team: Mongolian (http://www.transifex.com/odoo/odoo-9/language/mn/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: mn\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: maint
+#: code:addons/maint/maint.py:373
+#, python-format
+msgid "%s %s has been added to the maint!"
+msgstr "%s %s автобаазад нэмэгдлээ!"
+
+#. module: maint
+#: code:addons/maint/maint.py:649
+#, python-format
+msgid "%s contract(s) need(s) to be renewed and/or closed!"
+msgstr "%s гэрээг шинэчлэх юм уу хаах шаардлагатай!"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "<span>g/km</span>"
+msgstr ""
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "<span>kW</span>"
+msgstr ""
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_1
+msgid "A/C Compressor Replacement"
+msgstr "Агаар Шүүгч Компрессор Солилт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_2
+msgid "A/C Condenser Replacement"
+msgstr "А/Ш-ийн Конденсатор Солилт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_3
+msgid "A/C Diagnosis"
+msgstr "A/C Оншлогоо"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_4
+msgid "A/C Evaporator Replacement"
+msgstr "A/C Evaporator солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_5
+msgid "A/C Recharge"
+msgstr "Аir Condition Цэнэглэх"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_acquisition_date
+msgid "Acquisition Date"
+msgstr "Худалдан Авсан Огноо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_needaction
+msgid "Action Needed"
+msgstr "Үйлдэл Шаардлагатай"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_tree
+msgid "Activation Cost"
+msgstr "Идэвхжүүлэлтийн зардал"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Additional Details"
+msgstr "Нэмэлт хэсгүүд"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Additional Properties"
+msgstr "Нэмэлт Үзүүлэлтүүд"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_6
+msgid "Air Filter Replacement"
+msgstr "Агаар Шүүгч Солилт"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "All vehicles"
+msgstr "Бүх тээврийн хэрэгсэл"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_7
+msgid "Alternator Replacement"
+msgstr "Астаачер сольсон"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_amount
+msgid "Amount"
+msgstr "Дүн"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_9
+msgid "Assistance"
+msgstr "Тусламж"
+
+#. module: maint
+#: selection:maint.vehicle,transmission:0
+msgid "Automatic"
+msgstr "Автомат"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_auto_generated
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_auto_generated
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_auto_generated
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_auto_generated
+msgid "Automatically Generated"
+msgstr "Автомат үүсгэгдсэн"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_8
+msgid "Ball Joint Replacement"
+msgstr "Өндгөн тулгуур солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_9
+msgid "Battery Inspection"
+msgstr "Баттерей Үзлэг"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_10
+msgid "Battery Replacement"
+msgstr "Баттерей Солилт"
+
+#. module: maint
+#: selection:maint.service.type,category:0
+msgid "Both"
+msgstr "Хоёул"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_11
+msgid "Brake Caliper Replacement"
+msgstr "Эвдэрсэн калипер солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_12
+msgid "Brake Inspection"
+msgstr "Тормоз Үзлэг"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_13
+msgid "Brake Pad(s) Replacement"
+msgstr "Тормосны Наклад Солих"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_model_brand
+msgid "Brand model of the vehicle"
+msgstr "Тээврийн хэрэгслийн брэнд модель"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_co2
+msgid "CO2 Emissions"
+msgstr "\"CO2\" утаа хаялт"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_co2
+msgid "CO2 emissions of the vehicle"
+msgstr "Тээврийн хэрэгслийн \"CO2\" утаа хаялт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_1
+msgid "Calculation Benefit In Kind"
+msgstr "Бодит Ашиг Тооцоолох"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_car_value
+msgid "Car Value"
+msgstr "Машины утга"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_14
+msgid "Car Wash"
+msgstr "Машин угаалга"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_15
+msgid "Catalytic Converter Replacement"
+msgstr "Каталтиз хөрвүүлэгч солих"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_category
+msgid "Category"
+msgstr "Ангилал"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_cost_type
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_type
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_type
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_type
+msgid "Category of the cost"
+msgstr "Өртөгийн ангилал"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_16
+msgid "Charging System Diagnosis"
+msgstr "Цэнэглэх системийн оншлогоо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_vin_sn
+msgid "Chassis Number"
+msgstr "Явах эд ангийн дугаар"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_state
+msgid "Choose wheter the contract is still valid or not"
+msgstr "Аль нэгийг нь сонгоно уу! Гэрээ хүчинтэй эсвэл үгүй"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_service_type_category
+msgid "Choose wheter the service refer to contracts, vehicle services or both"
+msgstr "Гэрээний үйлчилгээ болон тээврийн хэрэгслийн үйлчилгээг сонгоно уу"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_contract_act
+msgid "Click to create a new contract."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_costs_act
+msgid "Click to create a new cost."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_fuel_act
+msgid "Click to create a new fuel log."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_model_brand_act
+msgid "Click to create a new make."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_model_act
+msgid "Click to create a new model."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_odometer_act
+msgid "Click to create a new odometer log."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_services_act
+msgid "Click to create a new service entry."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_service_types_act
+msgid "Click to create a new type of service."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_act
+msgid "Click to create a new vehicle."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_state_act
+msgid "Click to create a vehicle status."
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_color
+msgid "Color"
+msgstr "Өнгө"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_color
+msgid "Color Index"
+msgstr "Өнгөний Индекс"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_color
+msgid "Color of the vehicle"
+msgstr "Тээврийн хэрэгслийн өнгө"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_company_id
+msgid "Company"
+msgstr "Компани"
+
+#. module: maint
+#: model:ir.ui.menu,name:maint.maint_configuration
+msgid "Configuration"
+msgstr "Тохиргоо"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_contract_state
+msgid "Contains the different possible status of a leasing contract"
+msgstr "Лизингийн гэрээний ялгаатай төлөвүүдийг агуулна"
+
+#. module: maint
+#: selection:maint.service.type,category:0
+#: selection:maint.vehicle.cost,cost_type:0
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_contract_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_contract_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_contract_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_contract_id
+msgid "Contract"
+msgstr "Гэрээ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_graph
+msgid "Contract Costs Per Month"
+msgstr "Сар Тутмын Гэрээний Өртөг"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_expiration_date
+msgid "Contract Expiration Date"
+msgstr "Гэрээний дуусах огноо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_ins_ref
+msgid "Contract Reference"
+msgstr "Гэрээний код"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_start_date
+msgid "Contract Start Date"
+msgstr "Гэрээ эхлэх огноо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_name
+msgid "Contract Status"
+msgstr "Гэрээний Төлөв"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_contract_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_contract_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_contract_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_contract_id
+msgid "Contract attached to this cost"
+msgstr "Энэ зардалд холбогдсон гэрээ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Contract details"
+msgstr "Гэрээний дэлгэрэнгүй"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_log_contract
+msgid "Contract information on a vehicle"
+msgstr "Тээврийн хэрэгсэл дээрх гэрээний мэдээлэл"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_tree
+msgid "Contract logs"
+msgstr "Гэрээний хавсралтууд"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_purchaser_id
+msgid "Contractor"
+msgstr "Гэрээ Хийгч"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_count
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contracts
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Contracts"
+msgstr "Гэрээнүүд"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_id
+msgid "Cost"
+msgstr "Өртөг"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_form
+msgid "Cost Details"
+msgstr "Зардлын дэлгэрэнгүй"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Cost Subtype"
+msgstr "Зардлын дэд төрөл"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Cost Type"
+msgstr "Өртөгийн төрөл"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_cost
+msgid "Cost related to a vehicle"
+msgstr "Тээврийн хэрэгсэлд холбогдох зардал"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Cost that is paid only once at the creation of the contract"
+msgstr "Гэрээг байгуулахад ганцхан удаа төлөгдсөн зардал"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_cost_subtype_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_cost_subtype_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_cost_subtype_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_cost_subtype_id
+msgid "Cost type purchased with this cost"
+msgstr "Энэ зардлаар худалдан авсан зардлын төрөл"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_count
+#: model:ir.ui.menu,name:maint.menu_maint_reporting_costs
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Costs"
+msgstr "Өртөгүүд"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.action_maint_reporting_costs
+msgid "Costs Analysis"
+msgstr "Өртөгийн шинжилгээ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_graph
+msgid "Costs Per Month"
+msgstr "Сар Тутмын Зардал"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_cost_generated
+msgid ""
+"Costs paid at regular intervals, depending on the cost frequency. If the "
+"cost frequency is set to unique, the cost will be logged at the start date"
+msgstr "Зардлын давтамж дээр суурилан төлсөн хугацааны мужууд. Хэрэв зардлын давтамж нь нэг бол эхлэх өдөр дээр нэг удаа зардал нь хөтлөгдөнө"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid ""
+"Create a new contract automatically with all the same informations except "
+"for the date that will start at the end of current contract"
+msgstr "Бүх мэдээлэл нь адилхан үүсгэнэ. Гэхдээ одоогийн гэрээний дуусах өдрөөс шинэ гэрээ нь эхлэнэ."
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_create_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_create_uid
+msgid "Created by"
+msgstr "Үүсгэгч"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_create_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_create_date
+msgid "Created on"
+msgstr "Үүсгэсэн"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_state_id_2863
+msgid "Current state of the vehicle"
+msgstr "Тээврийн хэрэгслийн одоогийн төлөв"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "Daily"
+msgstr "Өдөр тутмын"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_date
+msgid "Date"
+msgstr "Огноо"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "Бичлэгт хамгийн сүүлд илгээгдсэн зурвасын огноо."
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_date
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_date
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_date
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_date
+msgid "Date when the cost has been executed"
+msgstr "Зардал гарсан огноо"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_start_date
+msgid "Date when the coverage of the contract begins"
+msgstr "Гэрээний хамрах хугацаа эхлэсэн огноо"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_expiration_date
+msgid ""
+"Date when the coverage of the contract expirates (by default, one year after"
+" begin date)"
+msgstr "Гэрээний хамрах хугацаа дуусах огноо (анхныхаараа эхлэх огнооноос жилийн дараа)"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_acquisition_date
+msgid "Date when the vehicle has been bought"
+msgstr "Тээврийн хэрэгслийг худалдан авсан огноо"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_2
+msgid "Depreciation and Interests"
+msgstr "Элэгдэл болон Хүү"
+
+#. module: maint
+#: selection:maint.vehicle,fuel_type:0
+msgid "Diesel"
+msgstr "Дизель"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_display_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_display_name
+msgid "Display Name"
+msgstr "Дэлгэцийн Нэр"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_17
+msgid "Door Window Motor/Regulator Replacement"
+msgstr "Хаалганы Цонхны Мотор/Удирдлага Солилт"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_doors
+msgid "Doors Number"
+msgstr "Хаалганы Тоо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_driver_id
+msgid "Driver"
+msgstr "Жолооч"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_driver_id
+msgid "Driver of the vehicle"
+msgstr "Жолооч"
+
+#. module: maint
+#: code:addons/maint/maint.py:390
+#, python-format
+msgid "Driver: from '%s' to '%s'"
+msgstr "Жолооч: '%s'-с '%s'-руу"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_contract_act
+msgid ""
+"Each contract (e.g.: leasing) may include several services\n"
+"                (reparation, insurances, periodic maintenance)."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_service_types_act
+msgid "Each service can used in contracts, as a standalone service or both."
+msgstr ""
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Effective Costs"
+msgstr "Зохистой Өртөг"
+
+#. module: maint
+#: selection:maint.vehicle,fuel_type:0
+msgid "Electric"
+msgstr "Цахилгаан"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_17
+msgid "Emissions"
+msgstr "Утаа Хаялт"
+
+#. module: maint
+#: code:addons/maint/maint.py:31
+#, python-format
+msgid "Emptying the odometer value of a vehicle is not allowed."
+msgstr "Туулсан замын утгыг хоослох боломжгүй."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_18
+msgid "Engine Belt Inspection"
+msgstr "Духны Ремень Үзлэг"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_19
+msgid "Engine Coolant Replacement"
+msgstr "Тосол Солих"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Engine Options"
+msgstr "Хөдөлгүүрийн Сонголтууд"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_20
+msgid "Engine/Drive Belt(s) Replacement"
+msgstr "Хөдөлгүүр/Духны Ремень солилт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_13
+msgid "Entry into service tax"
+msgstr "Үйлчилгээний татварын бичилт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_21
+msgid "Exhaust Manifold Replacement"
+msgstr "Хөдөлгүүрийн Яндан Солилт"
+
+#. module: maint
+#: model:ir.module.category,name:maint.module_maint_category
+#: model:ir.ui.menu,name:maint.menu_root
+msgid "Maint"
+msgstr "Автобааз"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_follower_ids
+msgid "Followers"
+msgstr "Дагагчид"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Дагагчид (Сувагууд)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Дагагчид (Харилцагчид)"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_cost_type
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_cost_type
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_cost_type
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_cost_type
+msgid "For internal purpose only"
+msgstr "Зөвхөн дотоод зориулалттай"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_cost_frequency
+msgid "Frequency of the recuring cost"
+msgstr "Давтагдах зардлын давтамж"
+
+#. module: maint
+#: selection:maint.vehicle.cost,cost_type:0
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Fuel"
+msgstr "Түлш"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_graph
+msgid "Fuel Costs Per Month"
+msgstr "Түлшны Сарын Хэрэглээний Өртөг"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_22
+msgid "Fuel Injector Replacement"
+msgstr "Просунк Солилт"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_fuel_logs_count
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_tree
+msgid "Fuel Logs"
+msgstr "Түлш Зарцуулалтын Түүх"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_23
+msgid "Fuel Pump Replacement"
+msgstr "Түлшний помп солих"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_fuel_type
+msgid "Fuel Type"
+msgstr "Түлшны Төрөл"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_fuel_type
+msgid "Fuel Used by the vehicle"
+msgstr "Энэ тээврийн хэрэгслийн хэрэглэсэн шатахуун"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_log_fuel
+msgid "Fuel log for vehicles"
+msgstr "Тээврийн хэрэгслийн түлш зарцуулалтын түүх"
+
+#. module: maint
+#: selection:maint.vehicle,fuel_type:0
+msgid "Gasoline"
+msgstr "Газ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "General Properties"
+msgstr "Ерөнхий шинж чанар"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_generated_cost_ids
+msgid "Generated Costs"
+msgstr "Үүсгэгдсэн зардлууд"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Generated Recurring Costs"
+msgstr "Үүсгэгдсэн давтагдах зардлууд"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "Group By"
+msgstr "Бүлэглэх"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "Has Alert(s)"
+msgstr "Дохиололтой эсэх"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_renewal_overdue
+msgid "Has Contracts Overdue"
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_renewal_due_soon
+msgid "Has Contracts to renew"
+msgstr "Шинэчлэх гэрээ байна уу"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_24
+msgid "Head Gasket(s) Replacement"
+msgstr "Крышкны жийргэвч солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_25
+msgid "Heater Blower Motor Replacement"
+msgstr "Парны сэнсний мотор солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_26
+msgid "Heater Control Valve Replacement"
+msgstr "Халаагуур Хянагчийн Хавхлага Солилт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_27
+msgid "Heater Core Replacement"
+msgstr "Халаалтын Төвийг Солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_28
+msgid "Heater Hose Replacement"
+msgstr "Халаагуурийн Хоолой Солилт"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_fuel_act
+msgid ""
+"Here you can add refuelling entries for all vehicles.  You can\n"
+"                also filter logs of a particular vehicle using the search\n"
+"                field."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_odometer_act
+msgid ""
+"Here you can add various odometer entries for all vehicles.\n"
+"                You can also show odometer value for a particular vehicle using\n"
+"                the search field."
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_horsepower
+msgid "Horsepower"
+msgstr "Морьны хүч"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_horsepower_tax
+msgid "Horsepower Taxation"
+msgstr "Цилиндрийн багтаамжинд оногдох татвар"
+
+#. module: maint
+#: selection:maint.vehicle,fuel_type:0
+msgid "Hybrid"
+msgstr "Хайбрид"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_id
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_id_2812
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_id
+msgid "ID"
+msgstr "ID"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_unread
+msgid "If checked new messages require your attention."
+msgstr "Хэрэв тэмдэглэгдсэн бол таныг шинэ зурвасуудад анхаарал хандуулахыг шаардана."
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Хэрэв сонгосон бол, шинэ зурвасуудад анхаарал хандуулахыг шаардана."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_29
+msgid "Ignition Coil Replacement"
+msgstr "Татах релей солих"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,state:0
+msgid "In Progress"
+msgstr "Боловсруулагдаж буй"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_cost_ids
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_ids
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_ids
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_ids
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Included Services"
+msgstr "Агуулагдсан үйлчилгээ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Indicative Cost"
+msgstr "Бодит Үнэ"
+
+#. module: maint
+#: model:ir.ui.menu,name:maint.menu_maint_reporting_indicative_costs
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Indicative Costs"
+msgstr "Өртгийн үзүүлэлт"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.action_maint_reporting_costs_non_effective
+msgid "Indicative Costs Analysis"
+msgstr "Чухал Үзүүлэлт Төлбөрийн Шинжилгээ"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_sum_cost
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Indicative Costs Total"
+msgstr "Бодит Төлбөрийн Дүн"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle
+msgid "Information on a vehicle"
+msgstr "Тээврийн хэрэгслийн мэдээлэл"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_30
+msgid "Intake Manifold Gasket Replacement"
+msgstr ""
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Invoice Date"
+msgstr "Нэхэмжлэх огноо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_inv_ref
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_inv_ref
+msgid "Invoice Reference"
+msgstr "Нэхэмжлэлийн Код"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_is_follower
+msgid "Is Follower"
+msgstr "Дагагч эсэх"
+
+#. module: maint
+#: selection:maint.vehicle,odometer_unit:0
+msgid "Kilometers"
+msgstr "Километр"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_last_post
+msgid "Last Message Date"
+msgstr "Сүүлийн зурвасын огноо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_service_type___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state___last_update
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag___last_update
+msgid "Last Modified on"
+msgstr "Сүүлийн засвар хийсэн огноо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer
+msgid "Last Odometer"
+msgstr "Гүйлт хэмжигчийн сүүлийн заалт"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_write_uid
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_write_uid
+msgid "Last Updated by"
+msgstr "Сүүлийн засвар хийсэн"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_contract_state_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_write_date
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_write_date
+msgid "Last Updated on"
+msgstr "Сүүлийн засвар хийсэн огноо"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_contract_leasing
+msgid "Leasing"
+msgstr "Лизинг"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_license_plate
+msgid "License Plate"
+msgstr "Улсын Дугаар"
+
+#. module: maint
+#: code:addons/maint/maint.py:397
+#, python-format
+msgid "License Plate: from '%s' to '%s'"
+msgstr "Улсын Дугаар:  '%s'-с '%s'-руу"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_license_plate
+msgid "License plate number of the vehicle (ie: plate number for a car)"
+msgstr "Тээврийн хэрэгслийн улсын бүртгэлийн дугаар"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_liter
+msgid "Liter"
+msgstr "Литр"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_location
+msgid "Location"
+msgstr "Байрлал"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_location
+msgid "Location of the vehicle (garage, ...)"
+msgstr "Тээврийн хэрэгслийн байршил (гараж,...)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_image
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_image
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_image
+msgid "Logo"
+msgstr "Лого"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_image_medium
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_image_medium
+msgid "Logo (medium)"
+msgstr "Лого"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_image_small
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_image_small
+msgid "Logo (small)"
+msgstr "Лого (жижиг)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_name
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_search
+msgid "Make"
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_brand_id
+msgid "Make of the vehicle"
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_contract_act
+msgid ""
+"Manage all your contracts (leasing, insurances, etc.) with\n"
+"                their related services, costs. Odoo will automatically warn\n"
+"                you when some contracts have to be renewed."
+msgstr ""
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_11
+msgid "Management Fee"
+msgstr "Менежментийн хураамж"
+
+#. module: maint
+#: model:res.groups,name:maint.group_maint_manager
+msgid "Manager"
+msgstr "Менежер"
+
+#. module: maint
+#: selection:maint.vehicle,transmission:0
+msgid "Manual"
+msgstr "Гарын авлага"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_image_medium
+msgid "Medium-sized image"
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_brand_image_medium
+msgid ""
+"Medium-sized logo of the brand. It is automatically resized as a 128x128px "
+"image, with aspect ratio preserved. Use this field in form views or some "
+"kanban views."
+msgstr "Брэндийн дунд хэмжээт лого. Энэ нь автоматаар 128x128 цэгийн хэмжээтэй болох бөгөөд харьцаа нь хадгалагдана. Энэ талбарыг маягт харагдац юмуу канбан харагдацад хэрэглэ."
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_ids
+msgid "Messages"
+msgstr "Зурвасууд"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_ids
+msgid "Messages and communication history"
+msgstr "Зурвас болон харилцсан түүх"
+
+#. module: maint
+#: selection:maint.vehicle,odometer_unit:0
+msgid "Miles"
+msgstr "Милл"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_id_2845
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "Model"
+msgstr "Модел"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_brand_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_brand_tree
+msgid "Model Make"
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_model_brand_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_model_brand_menu
+msgid "Model make of Vehicle"
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_name
+msgid "Model name"
+msgstr "Модел"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_model
+msgid "Model of a vehicle"
+msgstr "Тээврийн хэрэгслийн модель"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_id_2845
+msgid "Model of the vehicle"
+msgstr "Тээврийн хэрэгслийн Модель"
+
+#. module: maint
+#: code:addons/maint/maint.py:386
+#, python-format
+msgid "Model: from '%s' to '%s'"
+msgstr "Модель: '%s'-с '%s'-рүү"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_tree
+msgid "Models"
+msgstr "Модел"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Month"
+msgstr "Сар"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "Monthly"
+msgstr "Сар бүр"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_service_type_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_name
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_name
+msgid "Name"
+msgstr "Нэр"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_renewal_name
+msgid "Name of contract to renew soon"
+msgstr "Шинэчлэх Гэрээний Нэр"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "No"
+msgstr "Үгүй"
+
+#. module: maint
+#: code:addons/maint/maint.py:385 code:addons/maint/maint.py:389
+#: code:addons/maint/maint.py:393 code:addons/maint/maint.py:396
+#, python-format
+msgid "None"
+msgstr "Алга"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_notes
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_notes
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Notes"
+msgstr "Тэмдэглэл"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_needaction_counter
+msgid "Number of Actions"
+msgstr "Үйлдлийн тоо"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_doors
+msgid "Number of doors of the vehicle"
+msgstr "Тээврийн хэрэгслийн хаалганы тоо"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Үйлдэл шаардлагатай зурвасын тоо"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_seats
+msgid "Number of seats of the vehicle"
+msgstr "Тээврийн хэрэгслийн суудлын тоо"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_message_unread_counter
+msgid "Number of unread messages"
+msgstr "Уншаагүй зурвасын тоо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_odometer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_count
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Odometer"
+msgstr "Гүйлт Хэмжигч"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Odometer Details"
+msgstr "Гүйлт Хэмжигчийн Дэлгэрэнгүй"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_tree
+msgid "Odometer Logs"
+msgstr "Гүйлт Хэмжигчий Түүх"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_unit
+msgid "Odometer Unit"
+msgstr "Гүйлт хэмжигчийн нэгж"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_odometer
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_odometer
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_odometer
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_odometer
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_value
+msgid "Odometer Value"
+msgstr "Гүйлт Хэмжигчийн Утга"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_graph
+msgid "Odometer Values Per Vehicle"
+msgstr "Тээврийн хэрэгслүүдийн туулсан замын заалт"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Odometer details"
+msgstr "Гүйлт хэмжигчийн дэлгэрэнгүй"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_odometer
+msgid "Odometer log for a vehicle"
+msgstr "Тээврийн хэрэгслийн туулсан замын хөтлөлт"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_odometer
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_odometer_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_odometer
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_odometer_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_odometer
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_odometer_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_odometer
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_odometer_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_odometer
+msgid "Odometer measure of the vehicle at the moment of this log"
+msgstr "Энэ хөтлөлтийг хийх үеийн туулсан замын заалт"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_log_services_act
+msgid ""
+"Odoo helps you keeping track of all the services done\n"
+"                on your vehicle. Services can be of many type: occasional\n"
+"                repair, fixed maintenance, etc."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_costs_act
+msgid ""
+"Odoo helps you managing the costs for your different\n"
+"                vehicles. Costs are created automatically from services,\n"
+"                contracts (fixed or recurring) and fuel logs."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.action_maint_reporting_costs
+#: model:ir.actions.act_window,help:maint.action_maint_reporting_costs_non_effective
+msgid ""
+"Odoo helps you managing the costs for your different vehicles\n"
+"          Costs are generally created from services and contract and appears here."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_act
+msgid ""
+"Odoo will warn you when services or contract have to be\n"
+"                renewed."
+msgstr ""
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_31
+msgid "Oil Change"
+msgstr "Тос Солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_32
+msgid "Oil Pump Replacement"
+msgstr "Тосны Насос Солилт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_contract_omnium
+msgid "Omnium"
+msgstr "Нийт дүн"
+
+#. module: maint
+#: model:ir.actions.client,name:maint.action_maint_menu
+msgid "Open Maint Menu"
+msgstr "Автобааз Цэс Нээх"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_16
+msgid "Options"
+msgstr "Сонголт"
+
+#. module: maint
+#: selection:maint.vehicle.cost,cost_type:0
+msgid "Other"
+msgstr "Бусад"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_33
+msgid "Other Maintenance"
+msgstr "Бусад Арчилгаа"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_34
+msgid "Oxygen Sensor Replacement"
+msgstr "Агаарын Урсгал Мэдрэгч Солилт"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_parent_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_parent_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_parent_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_parent_id
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Parent"
+msgstr "Эцэг"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_parent_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_parent_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_parent_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_parent_id
+msgid "Parent cost to this current cost"
+msgstr "Одоогийн зардлын эцэг зардал"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_purchaser_id
+msgid "Person to which the contract is signed for"
+msgstr "Гэрээг хэнд зориулж үсэг зурсан болох"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_power
+msgid "Power"
+msgstr "Хүч"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_35
+msgid "Power Steering Hose Replacement"
+msgstr "Жолооны хоолой солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_36
+msgid "Power Steering Pump Replacement"
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_power
+msgid "Power in kW of the vehicle"
+msgstr "Тээврийн хэрэгслийн хүч кВт-р"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_tree
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Price"
+msgstr "Үнэ"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_price_per_liter
+msgid "Price Per Liter"
+msgstr "Литрийн Үнэ"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_purchaser_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_purchaser_id
+msgid "Purchaser"
+msgstr "Худалдан Авагч"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_37
+msgid "Radiator Repair"
+msgstr "Радиатор Засвар"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_generated
+msgid "Recurring Cost Amount"
+msgstr "Одоогийн өртгийн дүн"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_frequency
+msgid "Recurring Cost Frequency"
+msgstr "Давтагдах Төлбөрийн Давтамж"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_refueling
+msgid "Refueling"
+msgstr "Түлш Цэнэглэлт"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+msgid "Refueling Details"
+msgstr "Түлш Цэнэглэлтийн Дэлгэррэнгүй"
+
+#. module: maint
+#: code:addons/maint/maint.py:720
+#: model:ir.actions.act_window,name:maint.act_renew_contract
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#, python-format
+msgid "Renew Contract"
+msgstr "Гэрээ Шинэчлэх"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_12
+msgid "Rent (Excluding VAT)"
+msgstr "Түрээс (НӨАТ үнэд шингээгүй)"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_8
+msgid "Repair and maintenance"
+msgstr "Засвар үйлчилгээ"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_contract_repairing
+msgid "Repairing"
+msgstr "Засварлаж буй"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_10
+msgid "Replacement Vehicle"
+msgstr "Тээврийн хэрэгсэл солих"
+
+#. module: maint
+#: model:ir.ui.menu,name:maint.menu_maint_reporting
+msgid "Reports"
+msgstr "Тайлан"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_15
+msgid "Residual value (Excluding VAT)"
+msgstr "Үлдэх өртөг (НӨАТ-гүй)"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_19
+msgid "Residual value in %"
+msgstr "Үлдэх өртөг %"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_38
+msgid "Resurface Rotors"
+msgstr "Ротор Өнгөлгөө"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_39
+msgid "Rotate Tires"
+msgstr "Дугуйны эргэлт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_40
+msgid "Rotor Replacement"
+msgstr "Ротор Солилт"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_seats
+msgid "Seats Number"
+msgstr "Суудлын Тоо"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_sequence
+msgid "Sequence"
+msgstr "Дараалал"
+
+#. module: maint
+#: selection:maint.service.type,category:0
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Service"
+msgstr "Үйлчилгээ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Service Type"
+msgstr "Үйлчилгээний Төрөл"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_service_types_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_service_types_menu
+msgid "Service Types"
+msgstr "Үйлчилгээний Төрлүүд"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_service_types_tree
+msgid "Service types"
+msgstr "Үйлчилгээний Төрлүүд"
+
+#. module: maint
+#: selection:maint.vehicle.cost,cost_type:0
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_service_count
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "Services"
+msgstr "Үйлчилгээ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_graph
+msgid "Services Costs Per Month"
+msgstr "Сарын Тутмын Үйлчилгээний Өртөг"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Services Details"
+msgstr "Үйлчилгээний дэлгэрэнгүй"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_tree
+msgid "Services Logs"
+msgstr "Үйлчилгээний Түүх"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_log_services
+msgid "Services for vehicles"
+msgstr "Тээврийн хэрэгслийн үйлчилгээ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Set Contract In Progress"
+msgstr "Гэрээг хэрэгжиж буй болгох"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_brand_image_small
+msgid "Small-sized image"
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_brand_image_small
+msgid ""
+"Small-sized logo of the brand. It is automatically resized as a 64x64px "
+"image, with aspect ratio preserved. Use this field anywhere a small image is"
+" required."
+msgstr ""
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_6
+msgid "Snow tires"
+msgstr "Цасны Дугуй"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_41
+msgid "Spark Plug Replacement"
+msgstr "Свечэй солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_42
+msgid "Starter Replacement"
+msgstr "Асаагуур солих"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_state_id_2863
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_state_tree
+msgid "State"
+msgstr "Төлөв"
+
+#. module: maint
+#: sql_constraint:maint.vehicle.state:0
+msgid "State name already exists"
+msgstr "Төлвийн нэр бүртгэгдсэн байна"
+
+#. module: maint
+#: code:addons/maint/maint.py:394
+#, python-format
+msgid "State: from '%s' to '%s'"
+msgstr "Төлөв: '%s'-c '%s'-руу"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_state
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+msgid "Status"
+msgstr "Төлөв"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_5
+#: model:maint.service.type,name:maint.type_service_service_7
+msgid "Summer tires"
+msgstr "Зуны Дугуй"
+
+#. module: maint
+#: sql_constraint:maint.vehicle.tag:0
+msgid "Tag name already exists !"
+msgstr ""
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_tag_ids
+msgid "Tags"
+msgstr "Пайзууд"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_3
+msgid "Tax roll"
+msgstr "Татварын хуудас"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Terminate Contract"
+msgstr "Гэрээ Дуусгавар Болгох"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,state:0
+msgid "Terminated"
+msgstr "Дуусгавар болгосон"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_notes
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Terms and Conditions"
+msgstr "Гэрээний заалт/нөхцөл"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.action_maint_reporting_costs
+#: model:ir.actions.act_window,help:maint.action_maint_reporting_costs_non_effective
+msgid ""
+"Thanks to the different filters, Odoo can only print the effective\n"
+"          costs, sort them by type and by vehicle."
+msgstr ""
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_43
+msgid "Thermostat Replacement"
+msgstr "Термостат Солилт"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_model_brand_image
+msgid ""
+"This field holds the image used as logo for the brand, limited to "
+"1024x1024px."
+msgstr "Энэ талбар нь брэндийн логоны зурагийг хадгална. Хэмжээ нь 1024x1024-р хязгаарлагдана."
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_44
+msgid "Tie Rod End Replacement"
+msgstr ""
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_45
+msgid "Tire Replacement"
+msgstr "Дугуй Солилт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_46
+msgid "Tire Service"
+msgstr "Дугуй Засвар"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,state:0
+msgid "To Close"
+msgstr "Хаах"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_tree
+msgid "Total"
+msgstr "Дүн"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_amount
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_amount
+msgid "Total Price"
+msgstr "Нийт Үнэ"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_14
+msgid "Total expenses (Excluding VAT)"
+msgstr "Нийт зардал (НӨАТ шингээгүй)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_contract_renewal_total
+msgid "Total of contracts due or overdue minus one"
+msgstr "Хугацаа хэтэрсэн гэрээний дүн хасах нь нэг"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_service_18
+msgid "Touring Assistance"
+msgstr "Аялалын туслагч"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_transmission
+msgid "Transmission"
+msgstr "Хурдны Хайрцаг"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_47
+msgid "Transmission Filter Replacement"
+msgstr "Хурдны хайрцагны тосны шүүр солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_48
+msgid "Transmission Fluid Replacement"
+msgstr "Хурдны хайрцагны шингэн солих"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_49
+msgid "Transmission Replacement"
+msgstr "Хурдны хайрцаг солих"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_transmission
+msgid "Transmission Used by the vehicle"
+msgstr "Тээврийн хэрэгслийн хурдны хайрцаг"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_cost_subtype_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_cost_subtype_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_cost_subtype_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_cost_subtype_id
+msgid "Type"
+msgstr "Төрөл"
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_service_type
+msgid "Type of services available on a vehicle"
+msgstr "Тээврийн хэрэгслийн боломжит үйлчилгээний төрөл"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_vin_sn
+msgid "Unique number written on the vehicle motor (VIN/SN number)"
+msgstr "Хөдөлгүүр дээрх үл давтагдах дураар (VIN/SN number)"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_odometer_unit
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_odometer_unit
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_odometer_unit
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_odometer_unit
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_unit_2878
+msgid "Unit"
+msgstr "Ширхэг"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_odometer_unit
+msgid "Unit of the odometer "
+msgstr "Гүйлт хэмжигчийн нэгж "
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_unread
+msgid "Unread Messages"
+msgstr "Уншаагүй Зурвасууд"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Уншаагүй зурвасын тоолуур"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_state_sequence
+msgid "Used to order the note stages"
+msgstr "Тэмдэглэлийн үеийг эрэмбэлэхэд хэрэглэгддэг"
+
+#. module: maint
+#: model:res.groups,name:maint.group_maint_user
+msgid "User"
+msgstr "Хэрэглэгч"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_car_value
+msgid "Value of the bought vehicle"
+msgstr "Тээврийн хэрэгсэл худалдаж авсан өртөг"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_cost_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_vehicle_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_odometer_vehicle_id
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_tree
+msgid "Vehicle"
+msgstr "Тээврийн хэрэгсэл"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_costs_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_costs_menu
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_cost_tree
+msgid "Vehicle Costs"
+msgstr "Тээврийн хэрэгслийн өртөг"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Vehicle Costs by Month"
+msgstr "Тээврийн хэрэгслийн сарын зардал"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+msgid "Vehicle Details"
+msgstr "Тээврийн хэрэгслийн дэлгэрэнгүй"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_model_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_model_menu
+msgid "Vehicle Model"
+msgstr "Тээврийн Хэрэгслийн Модель"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_state_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_state_menu
+msgid "Vehicle Status"
+msgstr "Тээврийн Хэрэгслийн Төлөв"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_cost_vehicle_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_vehicle_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_fuel_vehicle_id
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_services_vehicle_id
+msgid "Vehicle concerned by this log"
+msgstr "Энэ хөтлөлтөнд хамаарах тээврйин хэрэгсэл"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_form
+msgid "Vehicle costs"
+msgstr "Тээврийн хэрэгслийн өртөг"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_menu
+#: model:ir.ui.menu,name:maint.maint_vehicles
+msgid "Vehicles"
+msgstr "Тээврийн хэрэгсэл"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_log_contract_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_log_contract_menu
+msgid "Vehicles Contracts"
+msgstr "Тээврийн Хэрэгслийн Гэрээ"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_log_fuel_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_log_fuel_menu
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_search
+msgid "Vehicles Fuel Logs"
+msgstr "Тээврийн Хэрэгслийн Түлш Зарцуулалтын Түүх"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_odometer_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_odometer_menu
+msgid "Vehicles Odometer"
+msgstr "Тээврийн хэрэгслийн одометр"
+
+#. module: maint
+#: model:ir.actions.act_window,name:maint.maint_vehicle_log_services_act
+#: model:ir.ui.menu,name:maint.maint_vehicle_log_services_menu
+msgid "Vehicles Services Logs"
+msgstr "Тээврийн Хэрэгслийн Үйлчилгээний Түүх"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_effective_costs_report
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_effective_costs_report_pivot
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_indicative_costs_report
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_indicative_costs_report_pivot
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_search
+msgid "Vehicles costs"
+msgstr "Тээврийн хэрэгслийн үнэ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_odometer_search
+msgid "Vehicles odometers"
+msgstr "Тээврийн хэрэгслийн туулсан зам"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_insurer_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_fuel_vendor_id
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_services_vendor_id
+msgid "Vendor"
+msgstr "Нийлүүлэгч"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_model_vendors
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_form
+msgid "Vendors"
+msgstr "Нийлүүлэгч"
+
+#. module: maint
+#: model:ir.model.fields,field_description:maint.field_maint_vehicle_log_contract_days_left
+msgid "Warning Date"
+msgstr "Анхааруулах огноо"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_50
+msgid "Water Pump Replacement"
+msgstr "Усны Насос Солилт"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "Weekly"
+msgstr "Долоо хоног бүр"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_51
+msgid "Wheel Alignment"
+msgstr "Тэнхлэг Тохиргоо"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_52
+msgid "Wheel Bearing Replacement"
+msgstr "Домбон Холхивч Солилт"
+
+#. module: maint
+#: model:maint.service.type,name:maint.type_service_53
+msgid "Windshield Wiper(s) Replacement"
+msgstr "Цонх арчигч солих"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "Write here all other information relative to this contract"
+msgstr "Энэ гэрээнд холбогдох бүх мэдээллийг энд бичих"
+
+#. module: maint
+#: model:ir.model.fields,help:maint.field_maint_vehicle_log_contract_notes
+msgid "Write here all supplementary informations relative to this contract"
+msgstr "Энэ гэрээнд холбогдох бүх нэмэлт мэдээллийг бүгдийг энд бичих"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_fuel_form
+msgid "Write here any other information"
+msgstr "Бусад мэдээллүүдийг энд бичнэ"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_services_form
+msgid "Write here any other information related to the service completed."
+msgstr "Гүйцэтгэгдсэн үйлчилгээнд холбогдох бусад мэдээллийг энд бичих"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_costs_search
+msgid "Year"
+msgstr "Жил"
+
+#. module: maint
+#: selection:maint.vehicle.log.contract,cost_frequency:0
+msgid "Yearly"
+msgstr "Жил бүр"
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_state_act
+msgid ""
+"You can customize available status to track the evolution of\n"
+"                each vehicle. Example: Active, Being Repaired, Sold."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_model_act
+msgid "You can define several models (e.g. A3, A4) for each make (Audi)."
+msgstr ""
+
+#. module: maint
+#: model:ir.actions.act_window,help:maint.maint_vehicle_act
+msgid ""
+"You will be able to manage your maint by keeping track of the\n"
+"                contracts, services, fixed and recurring costs, odometers and\n"
+"                fuel logs associated to each vehicle."
+msgstr ""
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_log_contract_form
+msgid "amount"
+msgstr "дүн"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_kanban
+msgid "and"
+msgstr "мөн"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_form
+msgid "e.g. Model S"
+msgstr ""
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "e.g. PAE 326"
+msgstr ""
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_model_form
+msgid "e.g. Tesla"
+msgstr ""
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_state
+msgid "maint.vehicle.state"
+msgstr ""
+
+#. module: maint
+#: model:ir.model,name:maint.model_maint_vehicle_tag
+msgid "maint.vehicle.tag"
+msgstr "авто-парк.авто-хэрэгсэл.тойг"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_kanban
+msgid "other(s)"
+msgstr "бусад"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show all the costs for this vehicle"
+msgstr "Тээврийн хэрэгслийн бүх өртгийг харах"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show the contract for this vehicle"
+msgstr "Тээврийн хэрэгслийн гэрээ харах"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show the fuel logs for this vehicle"
+msgstr "энэ тээврийн хэрэгслийн түлш зарцуулалтын түүхийг харуул"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show the odometer logs for this vehicle"
+msgstr "Энэ тээврийн хэрэгслийн гүйлт хэмжигчийн түүхийг харуулах"
+
+#. module: maint
+#: model:ir.ui.view,arch_db:maint.maint_vehicle_form
+msgid "show the services logs for this vehicle"
+msgstr "Энэ тээврийн хэрэгслийн үйлчилгээний түүхийг харуулах"

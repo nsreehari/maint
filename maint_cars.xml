@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      <record id="brand_audi" model="maint.vehicle.model.brand">
+      	<field name="name">India East</field>
+      	<field name="image" type="base64" file="maint/static/img/brand_audi-image.png"/>
+      </record>
+      <record id="brand_bmw" model="maint.vehicle.model.brand">
+      	<field name="name">India North</field>
+      	<field name="image" type="base64" file="maint/static/img/brand_bmw-image.png"/>
+      </record>
+      <record id="brand_mercedes" model="maint.vehicle.model.brand">
+      	<field name="name">India West</field>
+      	<field name="image" type="base64" file="maint/static/img/brand_mercedes-image.png"/>
+      </record>
+      <record id="brand_opel" model="maint.vehicle.model.brand">
+      	<field name="name">India South</field>
+      	<field name="image" type="base64" file="maint/static/img/brand_opel-image.png"/>
+      </record>
+    </data>
+</openerp>

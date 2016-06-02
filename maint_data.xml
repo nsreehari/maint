@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+      <!--
+      <record forcecreate="True" id="ir_cron_service_services_reminders" model="ir.cron">
+        <field name="name">Creation of Vehicle services and Services renewals reminders</field>
+        <field eval="True" name="active" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall" />
+        <field eval="'maint.vehicle'" name="model" />
+        <field eval="'run_scheduler'" name="function" />
+        <field eval="'()'" name="args" />
+      </record>
+    -->
+
+      <!-- After installation of the module, open the related menu -->
+      <record id="action_maint_menu" model="ir.actions.client">
+          <field name="name">Open Maint Menu</field>
+          <field name="tag">reload</field>
+          <field name="params" eval="{'menu_id': ref('maint.menu_root')}"/>
+      </record>
+      <record id="base.open_menu" model="ir.actions.todo">
+          <field name="action_id" ref="action_maint_menu"/>
+          <field name="state">open</field>
+      </record>
+
+      <record forcecreate="True" id="ir_cron_contract_costs_generator" model="ir.cron">
+        <field name="name">Generation of contracts costs based on the costs frequency</field>
+        <field eval="True" name="active" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall" />
+        <field eval="'maint.vehicle.log.contract'" name="model" />
+        <field eval="'run_scheduler'" name="function" />
+        <field eval="'()'" name="args" />
+      </record>
+
+      <record id="type_service_service_1" model="maint.service.type">
+          <field name="name">Calculation Benefit In Kind</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_2" model="maint.service.type">
+          <field name="name">Depreciation and Interests</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_3" model="maint.service.type">
+          <field name="name">Tax roll</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_5" model="maint.service.type">
+          <field name="name">Summer tires</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_6" model="maint.service.type">
+          <field name="name">Snow tires</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_7" model="maint.service.type">
+          <field name="name">Summer tires</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_8" model="maint.service.type">
+          <field name="name">Repair and maintenance</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_9" model="maint.service.type">
+          <field name="name">Assistance</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_10" model="maint.service.type">
+          <field name="name">Replacement Vehicle</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_11" model="maint.service.type">
+          <field name="name">Management Fee</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_12" model="maint.service.type">
+          <field name="name">Rent (Excluding VAT)</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_13" model="maint.service.type">
+          <field name="name">Entry into service tax</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_14" model="maint.service.type">
+          <field name="name">Total expenses (Excluding VAT)</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_15" model="maint.service.type">
+          <field name="name">Residual value (Excluding VAT)</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_16" model="maint.service.type">
+          <field name="name">Options</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_17" model="maint.service.type">
+          <field name="name">Emissions</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_18" model="maint.service.type">
+          <field name="name">Touring Assistance</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_service_19" model="maint.service.type">
+          <field name="name">Residual value in %</field>
+          <field name="category">service</field>
+      </record>
+
+    	<record id="type_service_1" model="maint.service.type">
+          <field name="name">A/C Compressor Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_2" model="maint.service.type">
+          <field name="name">A/C Condenser Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_3" model="maint.service.type">
+          <field name="name">A/C Diagnosis</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_4" model="maint.service.type">
+          <field name="name">A/C Evaporator Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_5" model="maint.service.type">
+          <field name="name">A/C Recharge</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_6" model="maint.service.type">
+          <field name="name">Air Filter Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_7" model="maint.service.type">
+          <field name="name">Alternator Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_8" model="maint.service.type">
+          <field name="name">Ball Joint Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_9" model="maint.service.type">
+          <field name="name">Battery Inspection</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_10" model="maint.service.type">
+          <field name="name">Battery Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_11" model="maint.service.type">
+          <field name="name">Brake Caliper Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_12" model="maint.service.type">
+          <field name="name">Brake Inspection</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_13" model="maint.service.type">
+          <field name="name">Brake Pad(s) Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_14" model="maint.service.type">
+          <field name="name">Car Wash</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_15" model="maint.service.type">
+          <field name="name">Catalytic Converter Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_16" model="maint.service.type">
+          <field name="name">Charging System Diagnosis</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_17" model="maint.service.type">
+          <field name="name">Door Window Motor/Regulator Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_18" model="maint.service.type">
+          <field name="name">Engine Belt Inspection</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_19" model="maint.service.type">
+          <field name="name">Engine Coolant Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_20" model="maint.service.type">
+          <field name="name">Engine/Drive Belt(s) Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_21" model="maint.service.type">
+          <field name="name">Exhaust Manifold Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_22" model="maint.service.type">
+          <field name="name">Fuel Injector Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_23" model="maint.service.type">
+          <field name="name">Fuel Pump Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_24" model="maint.service.type">
+          <field name="name">Head Gasket(s) Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_25" model="maint.service.type">
+          <field name="name">Heater Blower Motor Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_26" model="maint.service.type">
+          <field name="name">Heater Control Valve Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_27" model="maint.service.type">
+          <field name="name">Heater Core Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_28" model="maint.service.type">
+          <field name="name">Heater Hose Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_29" model="maint.service.type">
+          <field name="name">Ignition Coil Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_30" model="maint.service.type">
+          <field name="name">Intake Manifold Gasket Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_31" model="maint.service.type">
+          <field name="name">Oil Change</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_32" model="maint.service.type">
+          <field name="name">Oil Pump Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_33" model="maint.service.type">
+          <field name="name">Other Maintenance</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_34" model="maint.service.type">
+          <field name="name">Oxygen Sensor Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_35" model="maint.service.type">
+          <field name="name">Power Steering Hose Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_36" model="maint.service.type">
+          <field name="name">Power Steering Pump Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_37" model="maint.service.type">
+          <field name="name">Radiator Repair</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_38" model="maint.service.type">
+          <field name="name">Resurface Rotors</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_39" model="maint.service.type">
+          <field name="name">Rotate Tires</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_40" model="maint.service.type">
+          <field name="name">Rotor Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_41" model="maint.service.type">
+          <field name="name">Spark Plug Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_42" model="maint.service.type">
+          <field name="name">Starter Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_43" model="maint.service.type">
+          <field name="name">Thermostat Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_44" model="maint.service.type">
+          <field name="name">Tie Rod End Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_45" model="maint.service.type">
+          <field name="name">Tire Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_46" model="maint.service.type">
+          <field name="name">Tire Service</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_47" model="maint.service.type">
+          <field name="name">Transmission Filter Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_48" model="maint.service.type">
+          <field name="name">Transmission Fluid Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_49" model="maint.service.type">
+          <field name="name">Transmission Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_50" model="maint.service.type">
+          <field name="name">Water Pump Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_51" model="maint.service.type">
+          <field name="name">Wheel Alignment</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_52" model="maint.service.type">
+          <field name="name">Wheel Bearing Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+      <record id="type_service_53" model="maint.service.type">
+          <field name="name">Windshield Wiper(s) Replacement</field>
+          <field name="category">service</field>
+      </record>
+
+
+      <record id="type_contract_omnium" model="maint.service.type">
+          <field name="name">Omnium</field>
+          <field name="category">contract</field>
+      </record>
+
+      <record id="type_contract_leasing" model="maint.service.type">
+          <field name="name">Leasing</field>
+          <field name="category">contract</field>
+      </record>
+
+       <record id="type_contract_repairing" model="maint.service.type">
+          <field name="name">Repairing</field>
+          <field name="category">both</field>
+      </record>  
+
+      <record id="type_service_refueling" model="maint.service.type">
+          <field name="name">Refueling</field>
+          <field name="category">service</field>
+      </record> 
+
+      <record id="vehicle_tag_junior" model="maint.vehicle.tag" >
+        <field name="name">Junior</field>
+        <field name="color" eval="1"/>
+      </record>
+
+      <record id="vehicle_tag_senior" model="maint.vehicle.tag" >
+        <field name="name">Senior</field>
+        <field name="color" eval="2"/>
+      </record>
+
+      <record id="vehicle_tag_leasing" model="maint.vehicle.tag" >
+        <field name="name">Employee Car</field>
+        <field name="color" eval="3"/>
+      </record>
+
+      <record id="vehicle_tag_purchased" model="maint.vehicle.tag" >
+        <field name="name">Purchased</field>
+        <field name="color" eval="4"/>
+      </record>
+
+      <record id="vehicle_tag_compact" model="maint.vehicle.tag" >
+        <field name="name">Compact</field>
+        <field name="color" eval="5"/>
+      </record>
+
+      <record id="vehicle_tag_sedan" model="maint.vehicle.tag" >
+        <field name="name">Sedan</field>
+        <field name="color" eval="6"/>
+      </record>
+
+      <record id="vehicle_tag_convertible" model="maint.vehicle.tag" >
+        <field name="name">Convertible</field>
+        <field name="color" eval="7"/>
+      </record>
+
+      <record id="vehicle_tag_break" model="maint.vehicle.tag" >
+        <field name="name">Break</field>
+        <field name="color" eval="8"/>
+      </record>
+
+      <record id="model_corsa" model="maint.vehicle.model">
+          <field name="name">Hyderabad Zone</field>
+          <field name="brand_id" ref="brand_opel" />
+      </record>
+
+      <record id="model_astra" model="maint.vehicle.model">
+          <field name="name">Telangana Zone</field>
+          <field name="brand_id" ref="brand_opel" />
+      </record>
+
+      <record id="model_a1" model="maint.vehicle.model">
+          <field name="name">West Bengal Zone</field>
+          <field name="brand_id" ref="brand_audi" />
+      </record>
+
+      <record id="model_serie1" model="maint.vehicle.model">
+          <field name="name">Delhi Zone</field>
+          <field name="brand_id" ref="brand_bmw" />
+      </record>
+
+      <record id="model_classa" model="maint.vehicle.model">
+          <field name="name">Gujarat Zone</field>
+          <field name="brand_id" ref="brand_mercedes" />
+      </record>
+
+     </data>
+</openerp>
