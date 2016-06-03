@@ -295,6 +295,7 @@ class maint_vehicle(osv.Model):
         Odometer = self.pool['maint.vehicle.odometer']
         LogFuel = self.pool['maint.vehicle.log.fuel']
         LogService = self.pool['maint.vehicle.log.services']
+        LandRecords = self.pool['maint.lands']
         LogContract = self.pool['maint.vehicle.log.contract']
         Cost = self.pool['maint.vehicle.cost']
         return {
@@ -302,6 +303,7 @@ class maint_vehicle(osv.Model):
                 'odometer_count': Odometer.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'fuel_logs_count': LogFuel.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'service_count': LogService.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
+                'lands_count': LandRecords.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'contract_count': LogContract.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'cost_count': Cost.search_count(cr, uid, [('vehicle_id', '=', vehicle_id), ('parent_id', '=', False)], context=context)
             }
@@ -330,13 +332,14 @@ class maint_vehicle(osv.Model):
         'cost_count': fields.function(_count_all, type='integer', string="Costs" , multi=True),
         'contract_count': fields.function(_count_all, type='integer', string='Contracts', multi=True),
         'service_count': fields.function(_count_all, type='integer', string='Services', multi=True),
+        'lands_count': fields.function(_count_all, type='integer', string='Land Records', multi=True),
         'fuel_logs_count': fields.function(_count_all, type='integer', string='Fuel Logs', multi=True),
         'odometer_count': fields.function(_count_all, type='integer', string='Odometer', multi=True),
         'acquisition_date': fields.date('Established Date', required=False, help='Date when the ashram has started'),
         'color': fields.char('Color', help='Color of the vehicle'),
         'state_id': fields.many2one('maint.vehicle.state', 'State', help='Current state of the vehicle', ondelete="set null"),
         'location': fields.char('City', required=True, help='Enter City or Town or Village'),
-        'fulladdress': fields.char('Full Address', help='Enter Full Address of the ashram (complete postal address inclusing town/city name and pincode)'),
+        'fulladdress': fields.text('Full Address', required=True, help='Enter Full Address of the ashram (complete postal address inclusing town/city name and pincode)'),
         'seats': fields.integer('Seats Number', help='Number of seats of the vehicle'),
         'doors': fields.integer('Doors Number', help='Number of doors of the vehicle'),
         'tag_ids' :fields.many2many('maint.vehicle.tag', 'maint_vehicle_vehicle_tag_rel', 'vehicle_tag_id','tag_id', 'Tags', copy=False),
@@ -864,3 +867,48 @@ class facility_types(osv.Model):
     ]
 
 
+
+class lands_detail(osv.Model):
+    _name = "maint.lands"
+
+    def _name_get_fnc(self, cr, uid, ids, prop, unknow_none, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            name = record.vehicle_id.name
+            if not name:
+                name = record.slno
+            elif record.slno:
+                name += ' / '+ str(record.slno)
+            res[record.id] = name
+        return res
+
+
+    _columns = {
+
+        'name': fields.function(_name_get_fnc, type="char", string='Name', store=True),
+        'vehicle_id': fields.many2one('maint.vehicle', 'Ashram', required=True),
+        #'value': fields.float('Odometer Value', group_operator="max"),
+        #'unit': fields.related('vehicle_id', 'odometer_unit', type="char", string="Unit", readonly=True),
+        'entrydate': fields.date('Entry Date', readonly=True, required=True),
+        'slno': fields.integer('Serial Number', required=True, help="Used to order the land records"),
+        'registrationdate': fields.date('Registration Date', required=True),
+        'landnature': fields.selection([('agriculture', 'Agricultural Land'), ('nonagriculture', 'Non-Agriculture Land')], 'Nature of Land', required=True),
+        'conversion': fields.selection([('yes', 'Conversion Done'), ('no', 'Conversion Not Done')], 'Conversion Done', required=True),
+        'landaddress': fields.text('Land Address', required=True),
+        'ptaxauthority': fields.char('Property Tax Authority', required=True),
+        'ptaxid': fields.char('Property Tax Identification No', required=True),
+        'ptaxsrcm': fields.boolean('Property Tax in SRCM Name', required=True),
+        'ptaxpaidupto': fields.date('Property Tax paid upto', required=True),
+        'ptaxlastdate': fields.date('Property Tax last paid date', required=True),
+        'notes': fields.text('Notes'),
+
+    }
+
+    
+    _defaults = {
+        'entrydate': fields.date.context_today,
+        'ptaxsrcm': False,
+    }
+    _sql_constraints = [
+            ('name_uniq', 'unique (name)', "Facility Type already exists !"),
+    ]

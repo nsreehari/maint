@@ -280,6 +280,14 @@
                                 help="show the services logs for this vehicle" >
                                 <field name="service_count" widget="statinfo" string="Services"/>
                             </button>
+                            <button name="return_action_to_open"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-flask"
+                                context="{'xml_id':'maint_lands_act'}"
+                                help="show the land records for this ashram" >
+                                <field name="lands_count" widget="statinfo" string="Land Records"/>
+                            </button>
 
 <!--
                             <button name="return_action_to_open"
@@ -926,6 +934,100 @@
         </record>
 
         <menuitem action="maint_vehicle_log_services_act" parent="maint_vehicles" id="maint_vehicle_log_services_menu" groups="group_maint_user"/>
+
+
+
+
+        <record model='ir.ui.view' id='maint_lands_form'>
+            <field name="name">maint.lands.form</field>
+            <field name="model">maint.lands</field>
+            <field name="arch" type="xml">
+                <form string="Land Records">
+                    <sheet>
+                        <group col="2">
+                            <group string="Land Details">
+                                <field name="vehicle_id" />
+                                <field name="slno"/>
+                                <field name="registrationdate"/>
+                                <field name="landnature"/>
+                                <field name="conversion"/>
+                                <field name="landaddress"/>
+                            </group>
+                            <group string="Property Tax Details">
+                                <field name="ptaxauthority"/>
+                                <field name="ptaxid"/>
+                                <field name="ptaxsrcm"/>
+                                <field name="ptaxpaidupto"/>
+                                <field name="ptaxlastdate"/>
+                            </group>
+                        </group>
+                        <group col="2">
+                            <group string="Additional Details">
+                                <field name="entrydate" />
+                            </group>
+                        </group>
+                        <group string="Notes">
+                            <field nolabel="1" name="notes" placeholder="Write here any other information related to this record"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='maint_lands_tree'>
+            <field name="name">maint.lands.tree</field>
+            <field name="model">maint.lands</field>
+            <field name="arch" type="xml">
+                <tree string="Land Records">
+                    <field name="entrydate" />
+                    <field name="vehicle_id" />
+                    <field name="registrationdate" />
+                    <field name="landnature" />
+                    <field name="conversion" />
+                    <field name="landaddress" />
+                    <field name="ptaxauthority" />
+                    <field name="ptaxid" />
+                    <field name="ptaxsrcm" />
+                    <field name="ptaxpaidupto" />
+                    <field name="ptaxlastdate" />
+                    <field name="slno" count="Count"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='maint_lands_search'>
+            <field name="name">maint.lands.search</field>
+            <field name="model">maint.lands</field>
+            <field name="arch" type="xml">
+                <search string="Land Records" >
+                    <field name="vehicle_id"/>
+                    <group expand="1" string="Group By">
+                        <filter name="groupby_ashram" context="{'group_by' : 'vehicle_id'}" string="Ashram"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_lands_act'>
+            <field name="name">Land Records</field>
+            <field name="res_model">maint.lands</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_groupby_ashram" : True,}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new land record
+              </p><p>
+                Odoo helps you keeping track of all the land records 
+                of your ashram. 
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="maint_lands_act" parent="maint_vehicles" id="maint_lands_menu" groups="group_maint_user"/>
+
+
+
 
         <record model='ir.ui.view' id='maint_vehicle_service_types_tree'>
             <field name="name">maint.service.type.tree</field>
