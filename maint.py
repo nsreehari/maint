@@ -315,13 +315,13 @@ class maint_vehicle(osv.Model):
         'name': fields.function(_vehicle_name_get_fnc, type="char", string='Name', store=True),
         'company_id': fields.many2one('res.company', 'Company'),
         'license_plate': fields.char('Ashram Name', required=True, help='enter Ashram Name'),
-        'vin_sn': fields.char('Ashram Code', help='Unique Code to identify the Ashram', copy=False),
+        'vin_sn': fields.char('Ashram Code', required=True, help='Unique Code to identify the Ashram', copy=False),
         'driver_id': fields.many2one('res.partner', 'Center In-charge', required=True, domain=[('company_type', '=', 'person'), ('active', '=', True)], help='CIC/Manager of the ashram'),
         'phone1': fields.char('Ashram Phone 1'),
         'phone2': fields.char('Ashram Phone 2'),
         'email1': fields.char('Ashram Email 1'),
 
-        'mgmt_committee': fields.one2many('maint.committee', 'vehicle_id', 'Management Committee'),
+        'maint_committee_ids': fields.one2many('maint.committee', 'vehicle_id', 'Management Committee'),
 
         'model_id': fields.many2one('maint.vehicle.model', 'Zone', required=True, help='Model of the vehicle'),
         'log_fuel': fields.one2many('maint.vehicle.log.fuel', 'vehicle_id', 'Fuel Logs'),
@@ -368,6 +368,11 @@ class maint_vehicle(osv.Model):
         'odometer_unit': 'kilometers',
         'state_id': _get_default_state,
     }
+
+    _sql_constraints = [
+            ('vin_sn_uniq', 'unique (vin_sn)', "Ashram Code already exists !"),
+    ]
+
 
     def on_change_model(self, cr, uid, ids, model_id, context=None):
         if not model_id:
@@ -828,7 +833,7 @@ class res_partner(osv.Model):
     }
 
 
-class mgmt_committee(osv.Model):
+class maint_committee(osv.Model):
     _name = "maint.committee"
 
     _columns = {
@@ -837,7 +842,7 @@ class mgmt_committee(osv.Model):
         'member_id': fields.many2one('res.partner', 'Member Detail', required=True ),
     }
 
-class mgmt_committee_roles(osv.Model):
+class maint_committee_roles(osv.Model):
     _name = "maint.committee.roles"
     _columns = {
             'name': fields.char('Role', required=True),

@@ -186,11 +186,65 @@
             </field>
         </record>
 
+
+        <record model='ir.ui.view' id='maint_committee_roles_tree'>
+            <field name="name">maint.committee.roles.tree</field>
+            <field name="model">maint.committee.roles</field>
+            <field name="arch" type="xml">
+                <tree string="Roles" editable="bottom">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_committee_roles_act'>
+            <field name="name">MC Roles</field>
+            <field name="res_model">maint.committee.roles</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new management committee role
+              </p><p>
+              </p>
+            </field>
+        </record>
+
+
+
+        <record model='ir.ui.view' id='maint_facility_types_tree'>
+            <field name="name">maint.facility.types.tree</field>
+            <field name="model">maint.facility.types</field>
+            <field name="arch" type="xml">
+                <tree string="Facility Types" editable="bottom">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_facility_types_act'>
+            <field name="name">Facility Types</field>
+            <field name="res_model">maint.facility.types</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new management facility type
+              </p><p>
+              </p>
+            </field>
+        </record>
+
+
+
+
         <menuitem name="Ashrams" id="menu_root" sequence="115" groups="group_maint_user" icon="fa-car" web_icon="maint,static/description/icon.png"/>
         <menuitem name="Configuration" parent="menu_root" id="maint_configuration" sequence="100" groups="group_maint_manager"/>
         <menuitem action="maint_vehicle_model_act" parent="maint_configuration" id="maint_vehicle_model_menu" groups="group_maint_manager"/>
         <menuitem action="maint_vehicle_model_brand_act" parent="maint_configuration" id="maint_vehicle_model_brand_menu" groups="group_maint_manager"/>
         <menuitem action="maint_vehicle_state_act" parent="maint_configuration" id="maint_vehicle_state_menu" groups="group_maint_manager"/>
+        <menuitem action="maint_committee_roles_act" parent="maint_configuration" id="maint_committee_roles_menu" groups="group_maint_manager"/>
+        <menuitem action="maint_facility_types_act" parent="maint_configuration" id="maint_facility_types_menu" groups="group_maint_manager"/>
 
         <record model='ir.ui.view' id='maint_vehicle_form'>
             <field name="name">maint.vehicle.form</field>
@@ -285,8 +339,15 @@
                                 <field name="vin_sn" />
                                 <field name="fulladdress" />
                             </group>
-                            <group>
-                            </group>
+                                <group string="Management Committee">
+                                    <field name="maint_committee_ids" nolabel="1" >
+                                        <tree editable="bottom">
+                                            <field name="member_id" string="Member" domain="[('active','=',True)]"/>
+                                            <field name="role_id" string="Role" />
+                                        </tree>
+                                    </field>
+
+                                </group>
                         </group>
                         <group col="2" attrs="{'invisible':1}" >
                             <group string="Additional Properties">
