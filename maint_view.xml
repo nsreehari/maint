@@ -264,7 +264,6 @@
                         <group col="2" string="General Information">
                             <group >
                                 <field name="driver_id" />
-                                <field name="zic_id" />
                                 <field name="location" />
                                 <field name="company_id" groups="base.group_multi_company"/>
                             </group>
@@ -285,6 +284,8 @@
                             <group string="Additional Information">
                                 <field name="vin_sn" />
                                 <field name="fulladdress" />
+                            </group>
+                            <group>
                             </group>
                         </group>
                         <group col="2" attrs="{'invisible':1}" >

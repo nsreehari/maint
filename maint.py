@@ -125,7 +125,7 @@ class maint_vehicle_model(osv.Model):
 
     _columns = {
         'name': fields.char('Zone name', required=True),
-        'zic_id': fields.many2one('res.partner', 'ZIC', help='Zonal In-charge', required=True),
+        'zic_id': fields.many2one('res.partner', 'ZIC', help='Zonal In-charge', required=True, domain=[('company_type', '=', 'person'), ('active', '=', True)] ),
         'brand_id': fields.many2one('maint.vehicle.model.brand', 'Country', required=True, help='Country'),
         'vendors': fields.many2many('res.partner', 'maint_vehicle_model_vendors', 'model_id', 'partner_id', string='Vendors'),
         'image': fields.related('brand_id', 'image', type="binary", string="Logo"),
@@ -310,17 +310,18 @@ class maint_vehicle(osv.Model):
 
     _name = 'maint.vehicle'
     _description = 'Information of an Ashram'
-    _order= 'license_plate asc'
+    _order= 'name asc'
     _columns = {
         'name': fields.function(_vehicle_name_get_fnc, type="char", string='Name', store=True),
         'company_id': fields.many2one('res.company', 'Company'),
         'license_plate': fields.char('Ashram Name', required=True, help='enter Ashram Name'),
         'vin_sn': fields.char('Ashram Code', help='Unique Code to identify the Ashram', copy=False),
-        'driver_id': fields.many2one('res.partner', 'Center In-charge', required=True, help='CIC/Manager of the ashram'),
+        'driver_id': fields.many2one('res.partner', 'Center In-charge', required=True, domain=[('company_type', '=', 'person'), ('active', '=', True)], help='CIC/Manager of the ashram'),
         'phone1': fields.char('Ashram Phone 1'),
         'phone2': fields.char('Ashram Phone 2'),
         'email1': fields.char('Ashram Email 1'),
 
+        'mgmt_committee': fields.one2many('maint.committee', 'vehicle_id', 'Management Committee'),
 
         'model_id': fields.many2one('maint.vehicle.model', 'Zone', required=True, help='Model of the vehicle'),
         'log_fuel': fields.one2many('maint.vehicle.log.fuel', 'vehicle_id', 'Fuel Logs'),
@@ -334,7 +335,7 @@ class maint_vehicle(osv.Model):
         'acquisition_date': fields.date('Established Date', required=False, help='Date when the ashram has started'),
         'color': fields.char('Color', help='Color of the vehicle'),
         'state_id': fields.many2one('maint.vehicle.state', 'State', help='Current state of the vehicle', ondelete="set null"),
-        'location': fields.char('City', help='Enter City or Town or Village'),
+        'location': fields.char('City', required=True, help='Enter City or Town or Village'),
         'fulladdress': fields.char('Full Address', help='Enter Full Address of the ashram (complete postal address inclusing town/city name and pincode)'),
         'seats': fields.integer('Seats Number', help='Number of seats of the vehicle'),
         'doors': fields.integer('Doors Number', help='Number of doors of the vehicle'),
@@ -350,7 +351,6 @@ class maint_vehicle(osv.Model):
         'image': fields.related('model_id', 'image', type="binary", string="Logo"),
         'image_medium': fields.related('model_id', 'image_medium', type="binary", string="Logo (medium)"),
         'image_small': fields.related('model_id', 'image_small', type="binary", string="Logo (small)"),
-        'zic_id': fields.related('model_id', 'zic_id', type="char", string="ZIC"),
         'contract_renewal_due_soon': fields.function(_get_contract_reminder_fnc, fnct_search=_search_contract_renewal_due_soon, type="boolean", string='Has Contracts to renew', multi='contract_info'),
         'contract_renewal_overdue': fields.function(_get_contract_reminder_fnc, fnct_search=_search_get_overdue_contract_reminder, type="boolean", string='Has Contracts Overdue', multi='contract_info'),
         'contract_renewal_name': fields.function(_get_contract_reminder_fnc, type="text", string='Name of contract to renew soon', multi='contract_info'),
@@ -815,3 +815,47 @@ class maint_contract_state(osv.Model):
     _columns = {
         'name':fields.char('Contract Status', required=True),
     }
+
+
+
+class res_partner(osv.Model):
+    _name = 'res.partner'
+    _inherit = 'res.partner'
+
+    _columns = {
+            'email': fields.char('Email', ),
+            'mobile': fields.char('Mobile'),
+    }
+
+
+class mgmt_committee(osv.Model):
+    _name = "maint.committee"
+
+    _columns = {
+        'vehicle_id': fields.many2one('maint.vehicle', 'Ashram', required=True ),
+        'role_id': fields.many2one('maint.committee.roles', 'Role', required=True ),
+        'member_id': fields.many2one('res.partner', 'Member Detail', required=True ),
+    }
+
+class mgmt_committee_roles(osv.Model):
+    _name = "maint.committee.roles"
+    _columns = {
+            'name': fields.char('Role', required=True),
+    }
+
+    _sql_constraints = [
+            ('name_uniq', 'unique (name)', "Role name already exists !"),
+    ]
+
+
+class facility_types(osv.Model):
+    _name = "maint.facility.types"
+    _columns = {
+            'name': fields.char('Facility Type', required=True),
+    }
+
+    _sql_constraints = [
+            ('name_uniq', 'unique (name)', "Facility Type already exists !"),
+    ]
+
+
