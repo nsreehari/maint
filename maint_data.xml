@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data noupdate="0">
+    <data noupdate="1">
       <!--
       <record forcecreate="True" id="ir_cron_service_services_reminders" model="ir.cron">
         <field name="name">Creation of Vehicle services and Services renewals reminders</field>
@@ -416,46 +416,63 @@
           <field name="category">service</field>
       </record> 
 
-      <record id="vehicle_tag_junior" model="maint.vehicle.tag" >
-        <field name="name">Junior</field>
-        <field name="color" eval="1"/>
-      </record>
-
-      <record id="vehicle_tag_senior" model="maint.vehicle.tag" >
-        <field name="name">Senior</field>
-        <field name="color" eval="2"/>
-      </record>
-
-      <record id="vehicle_tag_leasing" model="maint.vehicle.tag" >
-        <field name="name">Employee Car</field>
-        <field name="color" eval="3"/>
-      </record>
-
-      <record id="vehicle_tag_purchased" model="maint.vehicle.tag" >
-        <field name="name">Purchased</field>
-        <field name="color" eval="4"/>
-      </record>
-
       <record id="vehicle_tag_compact" model="maint.vehicle.tag" >
-        <field name="name">Compact</field>
+        <field name="name">Retreat Center</field>
         <field name="color" eval="5"/>
       </record>
 
       <record id="vehicle_tag_sedan" model="maint.vehicle.tag" >
-        <field name="name">Sedan</field>
+        <field name="name">CREST</field>
         <field name="color" eval="6"/>
       </record>
 
       <record id="vehicle_tag_convertible" model="maint.vehicle.tag" >
-        <field name="name">Convertible</field>
+        <field name="name">Ashram</field>
         <field name="color" eval="7"/>
       </record>
 
       <record id="vehicle_tag_break" model="maint.vehicle.tag" >
-        <field name="name">Break</field>
+        <field name="name">Center</field>
         <field name="color" eval="8"/>
       </record>
 
+
+      <record id="vehicle_state_inshop" model="maint.vehicle.state">
+        <field name="name">Proposed</field>
+        <field name="sequence">1</field>
+      </record>
+
+      <record id="vehicle_state_inactive" model="maint.vehicle.state">
+        <field name="name">Inactive</field>
+        <field name="sequence">2</field>
+      </record>
+
+      <record id="vehicle_state_active" model="maint.vehicle.state">
+        <field name="name">Active</field>
+        <field name="sequence">3</field>
+      </record>
+
+
+      <record id="country_india_east" model="maint.vehicle.model.brand">
+      	<field name="name">India East</field>
+      	<field name="image" type="base64" file="maint/static/img/east.png"/>
+      </record>
+      <record id="country_india_north" model="maint.vehicle.model.brand">
+      	<field name="name">India North</field>
+      	<field name="image" type="base64" file="maint/static/img/north.png"/>
+      </record>
+      <record id="country_india_west" model="maint.vehicle.model.brand">
+      	<field name="name">India West</field>
+      	<field name="image" type="base64" file="maint/static/img/west.png"/>
+      </record>
+      <record id="country_india_south" model="maint.vehicle.model.brand">
+      	<field name="name">India South</field>
+      	<field name="image" type="base64" file="maint/static/img/south.png"/>
+      </record>
+
+
+
+      <!--
       <record id="model_corsa" model="maint.vehicle.model">
           <field name="name">Hyderabad Zone</field>
           <field name="brand_id" ref="brand_opel" />
@@ -480,6 +497,7 @@
           <field name="name">Gujarat Zone</field>
           <field name="brand_id" ref="brand_mercedes" />
       </record>
+      -->
 
      </data>
 </openerp>

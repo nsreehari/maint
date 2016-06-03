@@ -125,8 +125,8 @@ class maint_vehicle_model(osv.Model):
 
     _columns = {
         'name': fields.char('Zone name', required=True),
-        'zic_id': fields.many2one('res.partner', 'ZIC', help='Zonal In-charge'),
-        'brand_id': fields.many2one('maint.vehicle.model.brand', 'Country', required=True, help='Make of the vehicle'),
+        'zic_id': fields.many2one('res.partner', 'ZIC', help='Zonal In-charge', required=True),
+        'brand_id': fields.many2one('maint.vehicle.model.brand', 'Country', required=True, help='Country'),
         'vendors': fields.many2many('res.partner', 'maint_vehicle_model_vendors', 'model_id', 'partner_id', string='Vendors'),
         'image': fields.related('brand_id', 'image', type="binary", string="Logo"),
         'image_medium': fields.related('brand_id', 'image_medium', type="binary", string="Logo (medium)"),
@@ -139,7 +139,7 @@ class maint_vehicle_model_brand(osv.Model):
     _description = 'Brand model of the vehicle'
     _order = 'name asc'
 
-    name = openerp.fields.Char('Make', required=True)
+    name = openerp.fields.Char('Country', required=True)
 
     image = openerp.fields.Binary("Logo", attachment=True,
         help="This field holds the image used as logo for the brand, limited to 1024x1024px.")
@@ -350,6 +350,7 @@ class maint_vehicle(osv.Model):
         'image': fields.related('model_id', 'image', type="binary", string="Logo"),
         'image_medium': fields.related('model_id', 'image_medium', type="binary", string="Logo (medium)"),
         'image_small': fields.related('model_id', 'image_small', type="binary", string="Logo (small)"),
+        'zic_id': fields.related('model_id', 'zic_id', type="char", string="ZIC"),
         'contract_renewal_due_soon': fields.function(_get_contract_reminder_fnc, fnct_search=_search_contract_renewal_due_soon, type="boolean", string='Has Contracts to renew', multi='contract_info'),
         'contract_renewal_overdue': fields.function(_get_contract_reminder_fnc, fnct_search=_search_get_overdue_contract_reminder, type="boolean", string='Has Contracts Overdue', multi='contract_info'),
         'contract_renewal_name': fields.function(_get_contract_reminder_fnc, type="text", string='Name of contract to renew soon', multi='contract_info'),

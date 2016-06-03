@@ -6,21 +6,6 @@
         <field name="groups_id" eval="[(4, ref('maint.group_maint_manager'))]" />
       </record>
 
-      <record id="vehicle_state_inshop" model="maint.vehicle.state">
-        <field name="name">Proposed</field>
-        <field name="sequence">1</field>
-      </record>
-
-      <record id="vehicle_state_inactive" model="maint.vehicle.state">
-        <field name="name">Inactive</field>
-        <field name="sequence">2</field>
-      </record>
-
-      <record id="vehicle_state_active" model="maint.vehicle.state">
-        <field name="name">Active</field>
-        <field name="sequence">3</field>
-      </record>
-
 
       <record id="vehicle_1" model="maint.vehicle">
           <field name="license_plate">Kanha</field>

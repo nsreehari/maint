@@ -7,6 +7,7 @@
             <field name="arch" type="xml">
                 <form string="Zone">
                     <field name="image_medium" widget='image' class="oe_avatar"/>
+                    <group>
                     <div class="oe_title">
                         <label for="modelname" class="oe_edit_only"/>
                         <h1>
@@ -14,11 +15,14 @@
                         </h1>
                         <label for="brand_id" class="oe_edit_only"/>
                         <h2>
-                            <field name="brand_id" on_change="on_change_brand(brand_id)" placeholder="e.g. Denmark"/>
+                            <field name="brand_id" on_change="on_change_brand(brand_id)" />
+                        </h2>
+                            <label for="zic_id" string="Zonal In-charge"/>
+                        <h2>
+                            <field name="zic_id"/>
                         </h2>
                     </div>
-                    <label for="zic_id"/>
-                    <field name="zic_id"/>
+                    </group>
 
                     <notebook>
 <!--
@@ -67,7 +71,7 @@
                 <search string="Maintenenance costs" >
                     <field name="brand_id" />
                     <group expand="1" string="Group By">
-                        <filter name="groupby_brand" context="{'group_by' : 'brand_id'}" string="Country"/>
+                        <filter name="groupby_brand" context="{'group_by' : 'brand_id'}" string="Country List"/>
                         <filter name="groupby_zic" context="{'group_by' : 'zic_id'}" string="ZIC"/>
                     </group>
                 </search>
@@ -105,11 +109,11 @@
                 <form string="Country">
                     <group>
                         <div>
-                            <field name="image_medium" widget="image" class="oe_avatar"/>
                             <label for="name" class="oe_edit_only"/>
                             <h1>
                                 <field name="name"/>
                             </h1>
+                            <field name="image_medium" widget="image" class="oe_avatar"/>
                         </div>
                     </group>
                 </form>
@@ -130,11 +134,11 @@
                                     <img t-att-src="kanban_image('maint.vehicle.model.brand', 'image_small', record.id.value)" class="img-responsive" style="width:100px;"/>
                                 </a>
                                 <div class="text-center">
-                                    <h4 class="oe_partner_heading">
+                                    <h1 class="oe_partner_heading">
                                         <a type="open">
                                             <field name="name"/>
                                         </a>
-                                    </h4>
+                                    </h1>
                                 </div>
                             </div>
                         </t>
@@ -248,33 +252,42 @@
                         <div class="oe_title">
                             <label for="model_id" class="oe_edit_only"/>
                             <h2>
-                                <field name="model_id" on_change="on_change_model(model_id)" placeholder="e.g. Telangana Zone"/>
+                                <field name="model_id" on_change="on_change_model(model_id)" />
                             </h2>
                             <label for="license_plate" class="oe_edit_only"/>
                             <h1>
-                                <field name="license_plate" class="oe_inline" placeholder="e.g. PAE 326"/>
+                                <field name="license_plate" class="oe_inline" />
                             </h1>
                             <label for="tag_ids" class="oe_edit_only"/>
                             <field name="tag_ids" widget="many2many_tags" />
                         </div>
-                        <group col="2" string="General Properties">
+                        <group col="2" string="General Information">
                             <group >
                                 <field name="driver_id" />
+                                <field name="zic_id" />
                                 <field name="location" />
-                                <field name="vin_sn" />
                                 <field name="company_id" groups="base.group_multi_company"/>
                             </group>
-                            <group >
-                                <label for="odometer"/>
-                                <div class="o_row">
+                            <group>
+                                <field name="email1"/>
+                                <field name="phone1"/>
+                                <field name="phone2"/>
+                            </group>
+                                <label for="odometer" attrs="{'invisible':1}" />
+                                <div class="o_row" attrs="{'invisible':1}" >
                                     <field name="odometer"/>
                                     <field name="odometer_unit"/>
                                 </div>
-                                <field name="acquisition_date" />
-                                <field name="car_value" />
-                            </group>
+                                <field name="acquisition_date"  attrs="{'invisible':1}" />
+                                <field name="car_value"  attrs="{'invisible':1}" />
                         </group>
                         <group col="2">
+                            <group string="Additional Information">
+                                <field name="vin_sn" />
+                                <field name="fulladdress" />
+                            </group>
+                        </group>
+                        <group col="2" attrs="{'invisible':1}" >
                             <group string="Additional Properties">
                                 <field name="seats" />
                                 <field name="doors" />
