@@ -296,6 +296,7 @@ class maint_vehicle(osv.Model):
         LogFuel = self.pool['maint.vehicle.log.fuel']
         LogService = self.pool['maint.vehicle.log.services']
         LandRecords = self.pool['maint.lands']
+        Facilities = self.pool['maint.facilities']
         LogContract = self.pool['maint.vehicle.log.contract']
         Cost = self.pool['maint.vehicle.cost']
         return {
@@ -304,6 +305,7 @@ class maint_vehicle(osv.Model):
                 'fuel_logs_count': LogFuel.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'service_count': LogService.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'lands_count': LandRecords.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
+                'facilities_count': Facilities.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'contract_count': LogContract.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'cost_count': Cost.search_count(cr, uid, [('vehicle_id', '=', vehicle_id), ('parent_id', '=', False)], context=context)
             }
@@ -333,6 +335,7 @@ class maint_vehicle(osv.Model):
         'contract_count': fields.function(_count_all, type='integer', string='Contracts', multi=True),
         'service_count': fields.function(_count_all, type='integer', string='Services', multi=True),
         'lands_count': fields.function(_count_all, type='integer', string='Land Records', multi=True),
+        'facilities_count': fields.function(_count_all, type='integer', string='Facilities', multi=True),
         'fuel_logs_count': fields.function(_count_all, type='integer', string='Fuel Logs', multi=True),
         'odometer_count': fields.function(_count_all, type='integer', string='Odometer', multi=True),
         'acquisition_date': fields.date('Established Date', required=False, help='Date when the ashram has started'),
@@ -868,9 +871,75 @@ class facility_types(osv.Model):
 
 
 
+class facilities_detail(osv.Model):
+    _name = "maint.facilities"
+
+    _inherit = 'mail.thread'
+    def _name_get_fnc(self, cr, uid, ids, prop, unknow_none, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            name = record.vehicle_id.name
+            if not name:
+                name = record.fcode
+            elif record.fcode:
+                name += ' / '+ str(record.fcode)
+            res[record.id] = name
+        return res
+
+
+    _columns = {
+
+        'name': fields.function(_name_get_fnc, type="char", string='Name', store=True),
+        'vehicle_id': fields.many2one('maint.vehicle', 'Ashram', required=True),
+        #'value': fields.float('Odometer Value', group_operator="max"),
+        #'unit': fields.related('vehicle_id', 'odometer_unit', type="char", string="Unit", readonly=True),
+        'entrydate': fields.date('Entry Date', readonly=True, required=True),
+        'fcode': fields.char('Facility Code', required=True, help="Used to uniquely identify the facility in an ashram"),
+        'facility_type': fields.many2one('maint.facility.types', 'Facility Type', required=True),
+
+        'constructiondate': fields.date('Construction Date', required=True),
+        'approvaldate': fields.date('Building Plan approved on', required=True),
+
+
+        'constructiontype': fields.selection([('rcc', 'RCC'), ('acc', 'ACC'), ('tiledroof', 'Tiled Roof'), ('brick', 'Brick'), ('barbedwire', 'Barbed Wire'), ('others', 'Others')], 'Construction Type', required=True),
+
+        'constructionarea': fields.integer('Construction Area in sq ft', required=True),
+        'surfacearea': fields.integer('Surface Area in sq ft',required=True),
+        'dimensions': fields.char('Dimensions length x width x height'),
+
+
+        'numtoilets': fields.integer('Toilet Count',required=True),
+        'numbathrooms': fields.integer('Bathroom Count',required=True),
+        'roomsize': fields.integer('Toilet Bathroom Size in sq ft', required=True),
+
+        'lastpainted': fields.date('Last Painted on', required=True),
+        'paintcolorcode': fields.char('Internal Paint Color Code', required=True),
+        'painttype': fields.char('Internal Paint Type', required=True),
+        'epaintcolorcode': fields.char('External Paint Color Code', required=True),
+        'epainttype': fields.char('External Paint Type', required=True),
+
+
+        'floortype': fields.char('Flooring Type', required=True),
+        'ceilingtype': fields.char('False Ceiling Type', required=True),
+
+
+        'notes': fields.text('Notes'),
+
+    }
+
+    
+    _defaults = {
+        'entrydate': fields.date.context_today,
+    }
+    _sql_constraints = [
+            ('name_uniq', 'unique (name)', "Facility Type already exists !"),
+    ]
+
+
 class lands_detail(osv.Model):
     _name = "maint.lands"
 
+    _inherit = 'mail.thread'
     def _name_get_fnc(self, cr, uid, ids, prop, unknow_none, context=None):
         res = {}
         for record in self.browse(cr, uid, ids, context=context):
@@ -897,7 +966,7 @@ class lands_detail(osv.Model):
         'landaddress': fields.text('Land Address', required=True),
         'ptaxauthority': fields.char('Property Tax Authority', required=True),
         'ptaxid': fields.char('Property Tax Identification No', required=True),
-        'ptaxsrcm': fields.boolean('Property Tax in SRCM Name', required=True),
+        'ptaxsrcm': fields.selection([('yes', 'Yes'), ('no', 'No')], 'Property Tax in SRCM Name', required=True),
         'ptaxpaidupto': fields.date('Property Tax paid upto', required=True),
         'ptaxlastdate': fields.date('Property Tax last paid date', required=True),
         'notes': fields.text('Notes'),
@@ -907,7 +976,6 @@ class lands_detail(osv.Model):
     
     _defaults = {
         'entrydate': fields.date.context_today,
-        'ptaxsrcm': False,
     }
     _sql_constraints = [
             ('name_uniq', 'unique (name)', "Facility Type already exists !"),

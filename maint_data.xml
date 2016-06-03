@@ -471,6 +471,48 @@
       </record>
 
 
+      <record id="facility_mediation_hall" model="maint.facility.types">
+      	<field name="name">Meditation Hall</field>
+      </record>
+
+      <record id="facility_kitchen" model="maint.facility.types">
+      	<field name="name">Kitchen</field>
+      </record>
+
+      <record id="facility_toilet_block" model="maint.facility.types">
+      	<field name="name">Toilet and Bathroom Block</field>
+      </record>
+
+      <record id="facility_compound_wall" model="maint.facility.types">
+      	<field name="name">Compound Wall</field>
+      </record>
+
+      <record id="facility_dining_area" model="maint.facility.types">
+      	<field name="name">Dining Area</field>
+      </record>
+
+      <record id="facility_dormitory" model="maint.facility.types">
+      	<field name="name">Dormitory</field>
+      </record>
+
+      <record id="facility_security_room" model="maint.facility.types">
+      	<field name="name">Security Room</field>
+      </record>
+
+      <record id="facility_children_center" model="maint.facility.types">
+      	<field name="name">Children Center</field>
+      </record>
+
+      <record id="facility_admin_office" model="maint.facility.types">
+      	<field name="name">Administrative Office</field>
+      </record>
+
+      <record id="facility_president_office" model="maint.facility.types">
+      	<field name="name">Presidents Office</field>
+      </record>
+
+
+
 
       <!--
       <record id="model_corsa" model="maint.vehicle.model">
