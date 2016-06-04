@@ -154,7 +154,7 @@
             <field name="view_mode">kanban,tree,form</field>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
-                Click to create a new make.
+                Click to create a new country.
               </p>
             </field>
         </record>
@@ -178,7 +178,7 @@
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
-                Click to create a vehicle status.
+                Click to create a ashram status.
               </p><p>
                 You can customize available status to track the evolution of
                 each vehicle. Example: Active, Being Repaired, Sold.
@@ -499,11 +499,11 @@
             <field name="view_mode">kanban,tree,form</field>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
-                Click to create a new vehicle.
+                Click to create a new ashram.
               </p><p>
                 You will be able to manage your maint by keeping track of the
-                contracts, services, fixed and recurring costs, odometers and
-                fuel logs associated to each vehicle.
+                contracts, services, fixed and recurring costs, lands and
+                facilities associated with each ashram.
             </p><p>
                 Odoo will warn you when services or contract have to be
                 renewed.
