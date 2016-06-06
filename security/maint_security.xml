@@ -53,30 +53,30 @@
             <field name="model_id" ref="model_maint_committee"/>
             <field name="groups" eval="[(4, ref('group_maint_user'))]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
-            <field name="domain_force">[('cost_id.vehicle_id.driver_id','=',user.partner_id.id)]</field>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('vehicle_id.driver_id','=',user.partner_id.id)]</field>
         </record>
         <record id="maint_user_facilities_visibility" model="ir.rule">
             <field name="name">User can only see his/her ashram's facilities</field>
             <field name="model_id" ref="model_maint_facilities"/>
             <field name="groups" eval="[(4, ref('group_maint_user'))]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
-            <field name="domain_force">[('cost_id.vehicle_id.driver_id','=',user.partner_id.id)]</field>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('vehicle_id.driver_id','=',user.partner_id.id)]</field>
         </record>
         <record id="maint_user_lands_visibility" model="ir.rule">
             <field name="name">User can only see his/her ashram's lands</field>
             <field name="model_id" ref="model_maint_lands"/>
             <field name="groups" eval="[(4, ref('group_maint_user'))]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
-            <field name="domain_force">[('cost_id.vehicle_id.driver_id','=',user.partner_id.id)]</field>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('vehicle_id.driver_id','=',user.partner_id.id)]</field>
         </record>
         <record id="maint_user_odometer_visibility" model="ir.rule">
             <field name="name">User can only see his/her vehicle's odometer</field>
