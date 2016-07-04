@@ -342,7 +342,7 @@ class maint_vehicle(osv.Model):
         'color': fields.char('Color', help='Color of the vehicle'),
         'state_id': fields.many2one('maint.vehicle.state', 'State', help='Current state of the vehicle', ondelete="set null"),
         'location': fields.char('City', required=True, help='Enter City or Town or Village'),
-        'fulladdress': fields.text('Full Address', required=True, help='Enter Full Address of the ashram (complete postal address inclusing town/city name and pincode)'),
+        'fulladdress': fields.text('Full Address', help='Enter Full Address of the ashram (complete postal address inclusing town/city name and pincode)'),
         'seats': fields.integer('Seats Number', help='Number of seats of the vehicle'),
         'doors': fields.integer('Doors Number', help='Number of doors of the vehicle'),
         'tag_ids' :fields.many2many('maint.vehicle.tag', 'maint_vehicle_vehicle_tag_rel', 'vehicle_tag_id','tag_id', 'Tags', copy=False),
@@ -897,30 +897,30 @@ class facilities_detail(osv.Model):
         'fcode': fields.char('Facility Code', required=True, help="Used to uniquely identify the facility in an ashram"),
         'facility_type': fields.many2one('maint.facility.types', 'Facility Type', required=True),
 
-        'constructiondate': fields.date('Construction Date', required=True),
-        'approvaldate': fields.date('Building Plan approved on', required=True),
+        'constructiondate': fields.date('Construction Date', required=False),
+        'approvaldate': fields.date('Building Plan approved on', required=False),
 
 
         'constructiontype': fields.selection([('rcc', 'RCC'), ('acc', 'ACC'), ('tiledroof', 'Tiled Roof'), ('brick', 'Brick'), ('barbedwire', 'Barbed Wire'), ('others', 'Others')], 'Construction Type', required=True),
 
         'constructionarea': fields.integer('Construction Area in sq ft', required=True),
-        'surfacearea': fields.integer('Surface Area in sq ft',required=True),
+        'surfacearea': fields.integer('Surface Area in sq ft',required=False),
         'dimensions': fields.char('Dimensions length x width x height'),
 
 
-        'numtoilets': fields.integer('Toilet Count',required=True),
-        'numbathrooms': fields.integer('Bathroom Count',required=True),
-        'roomsize': fields.integer('Toilet Bathroom Size in sq ft', required=True),
+        'numtoilets': fields.integer('Toilet Count',required=False),
+        'numbathrooms': fields.integer('Bathroom Count',required=False),
+        'roomsize': fields.integer('Toilet Bathroom Size in sq ft', required=False),
 
-        'lastpainted': fields.date('Last Painted on', required=True),
-        'paintcolorcode': fields.char('Internal Paint Color Code', required=True),
-        'painttype': fields.char('Internal Paint Type', required=True),
-        'epaintcolorcode': fields.char('External Paint Color Code', required=True),
-        'epainttype': fields.char('External Paint Type', required=True),
+        'lastpainted': fields.date('Last Painted on', required=False),
+        'paintcolorcode': fields.char('Internal Paint Color Code', required=False),
+        'painttype': fields.char('Internal Paint Type', required=False),
+        'epaintcolorcode': fields.char('External Paint Color Code', required=False),
+        'epainttype': fields.char('External Paint Type', required=False),
 
 
-        'floortype': fields.char('Flooring Type', required=True),
-        'ceilingtype': fields.char('False Ceiling Type', required=True),
+        'floortype': fields.char('Flooring Type', required=False),
+        'ceilingtype': fields.char('False Ceiling Type', required=False),
 
 
         'notes': fields.text('Notes'),
@@ -959,16 +959,16 @@ class lands_detail(osv.Model):
         #'value': fields.float('Odometer Value', group_operator="max"),
         #'unit': fields.related('vehicle_id', 'odometer_unit', type="char", string="Unit", readonly=True),
         'entrydate': fields.date('Entry Date', readonly=True, required=True),
-        'slno': fields.integer('Serial Number', required=True, help="Used to order the land records"),
-        'registrationdate': fields.date('Registration Date', required=True),
-        'landnature': fields.selection([('agriculture', 'Agricultural Land'), ('nonagriculture', 'Non-Agriculture Land')], 'Nature of Land', required=True),
-        'conversion': fields.selection([('yes', 'Conversion Done'), ('no', 'Conversion Not Done')], 'Conversion Done', required=True),
-        'landaddress': fields.text('Land Address', required=True),
-        'ptaxauthority': fields.char('Property Tax Authority', required=True),
-        'ptaxid': fields.char('Property Tax Identification No', required=True),
-        'ptaxsrcm': fields.selection([('yes', 'Yes'), ('no', 'No')], 'Property Tax in SRCM Name', required=True),
-        'ptaxpaidupto': fields.date('Property Tax paid upto', required=True),
-        'ptaxlastdate': fields.date('Property Tax last paid date', required=True),
+        'slno': fields.integer('Survey Number', required=True, help="Used to order the land records"),
+        'registrationdate': fields.date('Registration Date', required=False),
+        'landnature': fields.selection([('agriculture', 'Agricultural Land'), ('nonagriculture', 'Non-Agriculture Land')], 'Nature of Land', required=False),
+        'conversion': fields.selection([('yes', 'Conversion Done'), ('no', 'Conversion Not Done')], 'Conversion Done', required=False),
+        'landaddress': fields.text('Land Address', required=False),
+        'ptaxauthority': fields.char('Property Tax Authority', required=False),
+        'ptaxid': fields.char('Property Tax Identification No', required=False),
+        'ptaxsrcm': fields.selection([('yes', 'Yes'), ('no', 'No')], 'Property Tax in SRCM Name', required=False),
+        'ptaxpaidupto': fields.date('Property Tax paid upto', required=False),
+        'ptaxlastdate': fields.date('Property Tax last paid date', required=False),
         'notes': fields.text('Notes'),
 
     }
