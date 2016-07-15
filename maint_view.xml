@@ -1069,7 +1069,7 @@
                                 <field name="floortype"/>
                                 <field name="ceilingtype"/>
                             </group>
-                            <group string="Toilet Block Details">
+                            <group string="Toilet Block Details" attrs="{'invisible':[('|', ('facility_type', '!=', 'Toilet and Bathroom Block - Sisters'),  ('facility_type', '!=', 'Toilet and Bathroom Block - Brothers') )]}" >
                                 <field name="numtoilets"/>
                                 <field name="numbathrooms"/>
                                 <field name="roomsize"/>
