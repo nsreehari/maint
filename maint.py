@@ -884,12 +884,20 @@ class facilities_detail(osv.Model):
             elif record.fcode:
                 name += ' / '+ str(record.fcode)
             res[record.id] = name
+
+            res[record.istoilet] = True
+            if record.facility_type:
+                if  'toilet' in record.facility_type.name.lower() :
+                    res[record.istoilet] = True
+                else:
+                    res[record.istoilet] = False
         return res
 
 
     _columns = {
 
-        'name': fields.function(_name_get_fnc, type="char", string='Name', store=True),
+        'name': fields.function(_name_get_fnc, type="char", string='Name', store=True, multi="recordinfo"),
+        'istoilet': fields.function(_name_get_fnc, type="boolean", string='istoilet', store=True,multi="recordinfo"),
         'vehicle_id': fields.many2one('maint.vehicle', 'Ashram', required=True),
         #'value': fields.float('Odometer Value', group_operator="max"),
         #'unit': fields.related('vehicle_id', 'odometer_unit', type="char", string="Unit", readonly=True),
