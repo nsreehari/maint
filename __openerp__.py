@@ -38,7 +38,7 @@ Main Features
         'maint_board_view.xml',
     ],
 
-    'demo': ['maint_demo.xml'],
+    'demo': [],
 
     'installable' : True,
     'application' : True,
