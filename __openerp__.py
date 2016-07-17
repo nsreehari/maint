@@ -36,6 +36,7 @@ Main Features
         'maint_cars.xml',
         'maint_data.xml',
         'maint_board_view.xml',
+		'abhyasi_view.xml',
     ],
 
     'demo': [],
