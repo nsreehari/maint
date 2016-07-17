@@ -7,7 +7,7 @@
     'sequence': 165,
     'category': 'Managing vehicles and contracts',
     'website' : 'https://www.odoo.com/page/maint',
-    'summary' : 'Facilities, land, maintenance, leasing, insurances, costs',
+    'summary' : 'Facilities, land, maintenance, leasing, insurances, costs, Visitors',
     'description' : """
 Facilities, land, maintenenace, leasing, insurances, cost
 =========================================================
