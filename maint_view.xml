@@ -1068,9 +1068,9 @@
                                 <field name="epainttype"/>
                                 <field name="floortype"/>
                                 <field name="ceilingtype"/>
-                                <field name="istoilet"/>
+                                <field name="toilet" string="Toilet?" attrs="{'invisible':1}" />
                             </group>
-                            <group string="Toilet Block Details" attrs="{'invisible':[('istoilet', '=', True) ]}" >
+                            <group string="Toilet Block Details" attrs="{'invisible': [('toilet', '=', False)]  }"  >
                                 <field name="numtoilets"/>
                                 <field name="numbathrooms"/>
                                 <field name="roomsize"/>
