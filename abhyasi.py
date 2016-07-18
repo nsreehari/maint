@@ -12,6 +12,17 @@ from openerp.osv import fields, osv
 from openerp.tools.translate import _
 
 
+class visitor_rooms_tag(osv.Model):
+    _name = 'visitor.rooms.tag'
+    _columns = {
+        'name': fields.char('Name', required=True),
+        'color': fields.integer('Color Index'),
+    }
+    _sql_constraints = [
+            ('name_uniq', 'unique (name)', "Tag name already exists !"),
+    ]
+
+
 class visitor_abhyasi(osv.Model):
 	_name = 'visitor.abhyasi'
 	_columns = {
@@ -110,13 +121,15 @@ class visitor_rooms(osv.Model):
 		'roomid': fields.char('Room Id', required=True),				
 		'room_type': fields.char('Room type', required=True),	
 		'a/c': fields.char('A/C', required=True),	
-		'attached_bathroom': fields.char('Attached Bathroom', required=True),					#	Time				
-		'accessibility': fields.char('Accessibility', required=True),	
-		'family_priority': fields.char('Family Priority', required=True),					#	Time				
-		'familyinfantpriority': fields.char('Family Infant Priority', required=True),	
+		#'attached_bathroom': fields.char('Attached Bathroom', required=True),					#	Time				
+		#'accessibility': fields.char('Accessibility', required=True),	
+		#'family_priority': fields.char('Family Priority', required=True),					#	Time				
+		#'familyinfantpriority': fields.char('Family Infant Priority', required=True),	
 		'elderly': fields.char('Elderly', required=True),	
 		'active': fields.char('Active', required=True),	
-	}					
+		'tag_ids' :fields.many2many('visitor.rooms.tag', 'abhyasi_visitor_room_tag_rel', 'visitor_room_tag_id','tag_id', 'Tags', copy=False),
+		#'tag_ids' :fields.many2many('visitor.rooms.tag', 'abhyasi_visitor_room_tag_rel', 'visitor_room_tag_id','tag_id', copy=False),
+}					
 				
 	_sql_constraints = [			
 		('roomid_uniq', 'unique (roomid)', "Room ID already exists !"),			

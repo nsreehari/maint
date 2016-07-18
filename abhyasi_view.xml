@@ -334,10 +334,10 @@
 	    			<field name="roomid" />
 	    			<field name="room_type" />
 	    			<field name="a/c" />
-	    			<field name="attached_bathroom" />
+	    			<!--<field name="attached_bathroom" />
 	    			<field name="accessibility" />
 	    			<field name="family_priority" />
-	    			<field name="familyinfantpriority" />
+	    			<field name="familyinfantpriority" />-->
 	    			<field name="elderly" />
 	    			<field name="active" />
 	    		</tree>
@@ -355,17 +355,22 @@
 	    						<field name="roomid" />
 	    						<field name="room_type" />
 	    						<field name="a/c" />
-	    						<field name="attached_bathroom" />
-	    						
+	    						<!--<field name="attached_bathroom" />	-->
 	    					</group>
 	    					<group>
-	    						<field name="accessibility" />
+	    						<!--<field name="accessibility" />
 	    						<field name="family_priority" />
-	    						<field name="familyinfantpriority" />
+	    						<field name="familyinfantpriority" />-->
 	    						<field name="elderly" />
 	    						<field name="active" />
 	    					</group>
-	    				</group>
+							
+							<!--<label for="tag_ids" class="oe_edit_only"/>-->
+							<div>
+								<label for="tag_ids" class="oe_edit_only"/>
+								<field name="tag_ids" widget="many2many_tags" />
+							</div>
+						</group>
 	    			</sheet>
 	    		</form>
 	    	</field>
