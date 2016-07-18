@@ -31,6 +31,7 @@ class visitor_abhyasi(osv.Model):
 	_sql_constraints = [
 		('abhyasi_id_uniq', 'unique (abhyasi_id)', "abhyasi_id already exists !"),
 	]
+
 	
 class visitor_nonabhyasi(osv.Model):	
 	_name = 'visitor.nonabhyasi'	
@@ -42,32 +43,32 @@ class visitor_nonabhyasi(osv.Model):
 	}	
 	
 
-class visitor_reg_non_abhyasi(osv.Model):	
-	_name = 'visitor.reg.non.abhyasi'		
-	_columns = {	
-		'id': fields.char('ID', required=True),		
-		'person_id': fields.char('Person ID', required=True),		
-		'regestration_bach_id': fields.char('Regestration Batch ID', required=True),	
-	}		
+#class visitor_reg_non_abhyasi(osv.Model):	
+#	_name = 'visitor.reg.non.abhyasi'		
+#	_columns = {	
+#		'id': fields.char('ID', required=True),		
+#		'person_id': fields.char('Person ID', required=True),		
+#		'regestration_bach_id': fields.char('Regestration Batch ID', required=True),	
+#	}		
+#	
+#	_sql_constraints = [
+#		('id_uniq', 'unique (id)', "ID already exists !"),
+#		('person_id_uniq', 'unique (person_id)', "person_id already exists !"),
+#	]
 	
-	_sql_constraints = [
-		('id_uniq', 'unique (id)', "ID already exists !"),
-		('person_id_uniq', 'unique (person_id)', "person_id already exists !"),
-	]
 	
-	
-class visitor_reg_abhyasi(osv.Model):	
-	_name = 'visitor.reg.abhyasi'			
-	_columns = {		
-		'id': fields.char('ID', required=True),		
-		'person_id': fields.char('Person ID', required=True),			
-		'regestration_bach_id': fields.char('Regestration Batch ID', required=True),		
-	}			
-		
-	_sql_constraints = [	
-		('id_uniq', 'unique (id)', "ID already exists !"),	
-		('person_id_uniq', 'unique (person_id)', "person_id already exists !"),	
-	]	
+#class visitor_reg_abhyasi(osv.Model):	
+#	_name = 'visitor.reg.abhyasi'			
+#	_columns = {		
+#		'id': fields.char('ID', required=True),		
+#		'person_id': fields.char('Person ID', required=True),			
+#		'regestration_bach_id': fields.char('Regestration Batch ID', required=True),		
+#	}			
+#		
+#	_sql_constraints = [	
+#		('id_uniq', 'unique (id)', "ID already exists !"),	
+#		('person_id_uniq', 'unique (person_id)', "person_id already exists !"),	
+#	]	
 	
 class visitor_registration(osv.Model):	
 	_name = 'visitor.registration'				

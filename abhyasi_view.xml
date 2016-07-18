@@ -111,7 +111,8 @@
 	
 	
 		<!-- Tree view for the visitor_reg_non_abhyasi class-->
-	    <record model='ir.ui.view' id='visitor_reg_non_abhyasi_tree'>
+	   <!--
+	   <record model='ir.ui.view' id='visitor_reg_non_abhyasi_tree'>
 	        <field name="name">visitor.reg.non.abhyasi.tree</field>
 	        <field name="model">visitor.reg.non.abhyasi</field>
 	        <field name="arch" type="xml">
@@ -121,9 +122,9 @@
 	    			<field name="regestration_bach_id" />
 	            </tree>
 	        </field>
-	    </record>
+	    </record> -->
 	    <!-- Form view for the visitor_reg_non_abhyasi class-->
-	    <record model='ir.ui.view' id='visitor_reg_non_abhyasi_form'>
+	    <!--<record model='ir.ui.view' id='visitor_reg_non_abhyasi_form'>
 	        <field name="name">visitor.reg.non.abhyasi.form</field>
 	        <field name="model">visitor.reg.non.abhyasi</field>
 	        <field name="arch" type="xml">
@@ -141,9 +142,9 @@
 	                </sheet>
 	            </form>
 	        </field>
-	    </record>
+	    </record> -->
 	    <!-- Action for the Non Abhyasi class-->
-	    <record model='ir.actions.act_window' id='visitor_reg_non_abhyasi_act'>
+	    <!--<record model='ir.actions.act_window' id='visitor_reg_non_abhyasi_act'>
 	        <field name="name">Visitor Register Non Abhyasi</field>
 	        <field name="res_model">visitor.reg.non.abhyasi</field>
 	        <field name="view_type">form</field>
@@ -154,12 +155,12 @@
 	          </p><p>
 	          </p>
 	        </field>
-	    </record>
+	    </record>-->
 		
 		
 	
 		<!-- Tree view for the visitor_reg_abhyasi class-->
-	    <record model='ir.ui.view' id='visitor_reg_abhyasi_tree'>
+	    <!--<record model='ir.ui.view' id='visitor_reg_abhyasi_tree'>
 	        <field name="name">visitor.reg.abhyasi.tree</field>
 	        <field name="model">visitor.reg.abhyasi</field>
 	        <field name="arch" type="xml">
@@ -169,9 +170,9 @@
 	    			<field name="regestration_bach_id" />
 	            </tree>
 	        </field>
-	    </record>
+	    </record>-->
 	    <!-- Form view for the visitor_reg_abhyasi class-->
-	    <record model='ir.ui.view' id='visitor_reg_abhyasi_form'>
+	    <!--<record model='ir.ui.view' id='visitor_reg_abhyasi_form'>
 	        <field name="name">visitor.reg.abhyasi.form</field>
 	        <field name="model">visitor.reg.abhyasi</field>
 	        <field name="arch" type="xml">
@@ -189,9 +190,9 @@
 	                </sheet>
 	            </form>
 	        </field>
-	    </record>
+	    </record>-->
 	    <!-- Action for the visitor_reg_abhyasi class-->
-	    <record model='ir.actions.act_window' id='visitor_reg_abhyasi_act'>
+	    <!--<record model='ir.actions.act_window' id='visitor_reg_abhyasi_act'>
 	        <field name="name">Visitor Register Abhyasi</field>
 	        <field name="res_model">visitor.reg.abhyasi</field>
 	        <field name="view_type">form</field>
@@ -202,7 +203,7 @@
 	          </p><p>
 	          </p>
 	        </field>
-	    </record>
+	    </record>-->
 	
 	
 		<!-- Tree view for the visitor_registration class-->
@@ -384,13 +385,16 @@
 	    </record>
 
 	
-		<menuitem name="Visitor" id="visitor_root" sequence="115"/>
+		<menuitem name="Visitor" id="visitor_root1" sequence="115"/>
+		<menuitem name="Visitor" parent="visitor_root1" id="visitor_root"  sequence="150"/>
 		<menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
 		<menuitem action="visitor_nonabhyasi_act" parent="visitor_root" id="non_visitor_abhyasi_menu"/>
-		<menuitem action="visitor_reg_non_abhyasi_act" parent="visitor_root" id="visitor_reg_non_abhyasi_menu"/>
-		<menuitem action="visitor_reg_abhyasi_act" parent="visitor_root" id="visitor_reg_abhyasi_menu"/>
+		<!--<menuitem action="visitor_reg_non_abhyasi_act" parent="visitor_root" id="visitor_reg_non_abhyasi_menu"/>
+		<menuitem action="visitor_reg_abhyasi_act" parent="visitor_root" id="visitor_reg_abhyasi_menu"/>-->
 		<menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
 		<menuitem action="visitor_checkins_act" parent="visitor_root" id="visitor_checkins_menu"/>
-		<menuitem action="visitor_rooms_act" parent="visitor_root" id="visitor_rooms_menu"/>
+		<!--<menuitem action="visitor_rooms_act" parent="visitor_root" id="visitor_rooms_menu"/>-->
+		<menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>
+		<menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
     </data>
 </openerp>
