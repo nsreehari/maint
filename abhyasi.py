@@ -21,6 +21,16 @@ class visitor_rooms_tag(osv.Model):
     _sql_constraints = [
             ('name_uniq', 'unique (name)', "Tag name already exists !"),
     ]
+	
+class visitor_rooms_type(osv.Model):
+	_name = 'visitor.rooms.type'
+	_columns = {
+		'name': fields.char('Room Type', required=True),
+		#'type' :fields.one2many('visitor.rooms', 'types'),
+	}
+	_sql_constraints = [
+		('type_uniq', 'unique (type)', "Room Type already exists !"),
+	]
 
 
 class visitor_abhyasi(osv.Model):
@@ -128,6 +138,7 @@ class visitor_rooms(osv.Model):
 		'elderly': fields.char('Elderly', required=True),	
 		'active': fields.char('Active', required=True),	
 		'tag_ids' :fields.many2many('visitor.rooms.tag', 'abhyasi_visitor_room_tag_rel', 'visitor_room_tag_id','tag_id', 'Tags', copy=False),
+		'types': fields.many2one('visitor.rooms.type', 'visitor.rooms.type.name', required=True, help='Vehicle concerned by this log'),
 		#'tag_ids' :fields.many2many('visitor.rooms.tag', 'abhyasi_visitor_room_tag_rel', 'visitor_room_tag_id','tag_id', copy=False),
 }					
 				

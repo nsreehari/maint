@@ -363,6 +363,7 @@
 	    						<field name="familyinfantpriority" />-->
 	    						<field name="elderly" />
 	    						<field name="active" />
+								<field name="types" string="Room Types"/>
 	    					</group>
 							
 							<!--<label for="tag_ids" class="oe_edit_only"/>-->
@@ -370,6 +371,7 @@
 								<label for="tag_ids" class="oe_edit_only"/>
 								<field name="tag_ids" widget="many2many_tags" />
 							</div>
+							
 						</group>
 	    			</sheet>
 	    		</form>
