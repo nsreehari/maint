@@ -901,6 +901,7 @@ class facilities_detail(osv.Model):
     _columns = {
 
         'name': fields.function(_name_get_fnc, type="char", string='Name', store=True),
+        'istoilet': fields.boolean('ISTOILETD'),
         'toilet': fields.function(_toilet_get_fnc, type="boolean", string='istoilet', store=True),
         'vehicle_id': fields.many2one('maint.vehicle', 'Ashram', required=True),
         #'value': fields.float('Odometer Value', group_operator="max"),
