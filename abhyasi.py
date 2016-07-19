@@ -42,8 +42,8 @@ class visitor_abhyasi(osv.Model):
 		'overseas': fields.selection([('yes','Yes'), ('no','No')],'overseas', required=True),
 		'center': fields.char('Center', required=True),		
 		'country': fields.char('Country', required=True),		
-		'contactnumber': fields.Integer('Contact Number'),					
-		'birthyear': fields.Integer('Birth Year', required=True),						
+		'contactnumber': fields.char('Contact Number'),					
+		'birthyear': fields.char('Birth Year', required=True),						
 		'gender': fields.selection([('male','Male'), ('female','Female')],'overseas', required=True),
 		'identificationdoc': fields.char('Identification Doc', required=True),
 	}
