@@ -325,6 +325,7 @@
 	    	</field>
 	    </record>
 	
+	
 		<!-- Tree view for the visitor_rooms class-->
 	    <record model='ir.ui.view' id='visitor_rooms_tree'>
 	    	<field name="name">visitor.rooms.tree</field>
@@ -332,15 +333,11 @@
 	    	<field name="arch" type="xml">
 	    		<tree string="Roles" editable="bottom">
 	    			<field name="roomid" />
-	    			<field name="room_type" />
 	    			<field name="a/c" />
-	    			<!--<field name="attached_bathroom" />
-	    			<field name="accessibility" />
-	    			<field name="family_priority" />
-	    			<field name="familyinfantpriority" />-->
-	    			<field name="elderly" />
-	    			<field name="active" />
+	    			<field name="elder_active" />
 					<field name="types" string="Room Types"/>
+					<label for="tag_ids" class="oe_edit_only"/>
+					<field name="tag_ids" widget="many2many_tags" />
 					<field name="notes" />
 	    		</tree>
 	    	</field>
@@ -350,38 +347,23 @@
 	    	<field name="name">visitor.rooms.form</field>
 	    	<field name="model">visitor.rooms</field>
 	    	<field name="arch" type="xml">
-	    		<form string="Registration">
+	    		<form string="Visitor Room Form">
 	    			<sheet>
-	    				<group col="2" string="Registration">
+	    				<group col="2" string="Visitor Room Form">
 	    					<group>
 	    						<field name="roomid" />
-	    						<field name="room_type" />
 	    						<field name="a/c" />
-								<!--<label for="tag_ids" class="oe_edit_only"/>
-								<field name="tag_ids" widget="many2many_tags" />-->
-	    						<!--<field name="attached_bathroom" />	-->
 	    					</group>
 	    					<group>
-	    						<!--<field name="accessibility" />
-	    						<field name="family_priority" />
-	    						<field name="familyinfantpriority" />-->
-	    						<field name="elderly" />
-	    						<field name="active" />
+	    						<field name="elder_active" />
 								<field name="types" string="Room Types"/>
 	    					</group>
-							
-							<!--<label for="tag_ids" class="oe_edit_only"/>-->
 							<div>
 								<label for="tag_ids" class="oe_edit_only"/>
 								<field name="tag_ids" widget="many2many_tags" />
 							</div>
-							
-							<!--<div>
-							<field name="notes" string="Room Description"/>
-							</div>-->
-							
 						</group>
-						 <label for="notes"/>
+						<label for="notes"/>
 						<field name="notes"/>
 	    			</sheet>
 	    		</form>
@@ -406,12 +388,11 @@
 		<menuitem name="Visitor" parent="visitor_root1" id="visitor_root"  sequence="150"/>
 		<menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
 		<menuitem action="visitor_nonabhyasi_act" parent="visitor_root" id="non_visitor_abhyasi_menu"/>
-		<!--<menuitem action="visitor_reg_non_abhyasi_act" parent="visitor_root" id="visitor_reg_non_abhyasi_menu"/>
-		<menuitem action="visitor_reg_abhyasi_act" parent="visitor_root" id="visitor_reg_abhyasi_menu"/>-->
 		<menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
 		<menuitem action="visitor_checkins_act" parent="visitor_root" id="visitor_checkins_menu"/>
-		<!--<menuitem action="visitor_rooms_act" parent="visitor_root" id="visitor_rooms_menu"/>-->
 		<menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>
 		<menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
+		
+
     </data>
 </openerp>
