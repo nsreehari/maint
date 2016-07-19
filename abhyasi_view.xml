@@ -336,8 +336,8 @@
 	    			<field name="a/c" />
 	    			<field name="elder_active" />
 					<field name="types" string="Room Types"/>
-					<label for="tag_ids" class="oe_edit_only"/>
-					<field name="tag_ids" widget="many2many_tags" />
+					<!--<label for="tag_ids" class="oe_edit_only"/>-->
+					<!--<field name="tag_ids" widget="many2many_tags" />-->
 					<field name="notes" />
 	    		</tree>
 	    	</field>
