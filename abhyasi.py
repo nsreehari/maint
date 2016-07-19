@@ -130,7 +130,8 @@ class visitor_rooms(osv.Model):
 	_columns = {				
 		'roomid': fields.char('Room Id', required=True),				
 		'room_type': fields.char('Room type', required=True),	
-		'a/c': fields.char('A/C', required=True),	
+		'a/c': fields.selection([('yes','Yes'), ('no','No')],'A/C', required=True),
+		#'a/c': fields.char('A/C', required=True),	
 		#'attached_bathroom': fields.char('Attached Bathroom', required=True),					#	Time				
 		#'accessibility': fields.char('Accessibility', required=True),	
 		#'family_priority': fields.char('Family Priority', required=True),					#	Time				
@@ -140,6 +141,7 @@ class visitor_rooms(osv.Model):
 		'tag_ids' :fields.many2many('visitor.rooms.tag', 'abhyasi_visitor_room_tag_rel', 'visitor_room_tag_id','tag_id', 'Tags', copy=False),
 		'types': fields.many2one('visitor.rooms.type', 'visitor.rooms.type.name', required=True, help='Vehicle concerned by this log'),
 		#'tag_ids' :fields.many2many('visitor.rooms.tag', 'abhyasi_visitor_room_tag_rel', 'visitor_room_tag_id','tag_id', copy=False),
+		'notes': fields.text('Room Description'),
 }					
 				
 	_sql_constraints = [			

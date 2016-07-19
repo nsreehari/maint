@@ -340,6 +340,8 @@
 	    			<field name="familyinfantpriority" />-->
 	    			<field name="elderly" />
 	    			<field name="active" />
+					<field name="types" string="Room Types"/>
+					<field name="notes" />
 	    		</tree>
 	    	</field>
 	    </record>
@@ -355,6 +357,8 @@
 	    						<field name="roomid" />
 	    						<field name="room_type" />
 	    						<field name="a/c" />
+								<!--<label for="tag_ids" class="oe_edit_only"/>
+								<field name="tag_ids" widget="many2many_tags" />-->
 	    						<!--<field name="attached_bathroom" />	-->
 	    					</group>
 	    					<group>
@@ -372,7 +376,13 @@
 								<field name="tag_ids" widget="many2many_tags" />
 							</div>
 							
+							<!--<div>
+							<field name="notes" string="Room Description"/>
+							</div>-->
+							
 						</group>
+						 <label for="notes"/>
+						<field name="notes"/>
 	    			</sheet>
 	    		</form>
 	    	</field>
