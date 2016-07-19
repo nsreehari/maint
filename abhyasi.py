@@ -21,12 +21,12 @@ class visitor_rooms_tag(osv.Model):
     _sql_constraints = [
             ('name_uniq', 'unique (name)', "Tag name already exists !"),
     ]
+
 	
 class visitor_rooms_type(osv.Model):
 	_name = 'visitor.rooms.type'
 	_columns = {
 		'name': fields.char('Room Type', required=True),
-		#'type' :fields.one2many('visitor.rooms', 'types'),
 	}
 	_sql_constraints = [
 		('type_uniq', 'unique (type)', "Room Type already exists !"),
@@ -38,14 +38,13 @@ class visitor_abhyasi(osv.Model):
 	_columns = {
 		'abhyasi_id': fields.char('Abhyasi ID', required=True),
 		'full_name': fields.char('Full Name', required=True),
-		'preceptor': fields.char('Preceptor Name', required=True),
-		#'overseas': fields.char('Overseas (Y/N)', required=True),					#	Drop Down
+		'preceptor': fields.selection([('yes','Yes'), ('no','No')],'Preceptor', required=True),
 		'overseas': fields.selection([('yes','Yes'), ('no','No')],'overseas', required=True),
 		'center': fields.char('Center', required=True),		
 		'country': fields.char('Country', required=True),		
-		'contactnumber': fields.char('Abhyasi ID', required=True),					#	Int
-		'birthyear': fields.char('Birth Year', required=True),						#	Date
-		'gender': fields.char('Gender (M/F)', required=True),						#	Drop Down
+		'contactnumber': fields.Integer('Contact Number'),					
+		'birthyear': fields.Integer('Birth Year', required=True),						
+		'gender': fields.selection([('male','Male'), ('female','Female')],'overseas', required=True),
 		'identificationdoc': fields.char('Identification Doc', required=True),
 	}
 	
@@ -129,19 +128,10 @@ class visitor_rooms(osv.Model):
 	_name = 'visitor.rooms'					
 	_columns = {				
 		'roomid': fields.char('Room Id', required=True),				
-		#'room_type': fields.char('Room type', required=True),	
 		'a/c': fields.selection([('yes','Yes'), ('no','No')],'A/C', required=True),
-		#'a/c': fields.char('A/C', required=True),	
-		#'attached_bathroom': fields.char('Attached Bathroom', required=True),					#	Time				
-		#'accessibility': fields.char('Accessibility', required=True),	
-		#'family_priority': fields.char('Family Priority', required=True),					#	Time				
-		#'familyinfantpriority': fields.char('Family Infant Priority', required=True),
 		'elder_active': fields.selection([('elderly','Elderly'), ('active','Active')],'Elderly/Active', required=True),
-		#'elderly': fields.char('Elderly', required=True),	
-		#'active': fields.char('Active', required=True),	
 		'tag_ids' :fields.many2many('visitor.rooms.tag', 'abhyasi_visitor_room_tag_rel', 'visitor_room_tag_id','tag_id', 'Tags', copy=False, required=True),
 		'types': fields.many2one('visitor.rooms.type', 'visitor.rooms.type.name', required=True, help='Vehicle concerned by this log'),
-		#'tag_ids' :fields.many2many('visitor.rooms.tag', 'abhyasi_visitor_room_tag_rel', 'visitor_room_tag_id','tag_id', copy=False),
 		'notes': fields.text('Room Description'),
 }					
 				

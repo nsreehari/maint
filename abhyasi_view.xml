@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+	
+	
 		<!-- Tree view for the Abhyasi class-->
 		<record model='ir.ui.view' id='visitor_abhyasi_tree'>
             <field name="name">visitor.abhyasi.tree</field>
