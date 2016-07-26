@@ -19,6 +19,9 @@
 					<field name="birthyear" />
 					<field name="gender" />
 					<field name="identificationdoc" />
+                    <!--<div class="oe_chatter">
+                        <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+                    </div>-->
                 </tree>
             </field>
         </record>
@@ -42,10 +45,18 @@
 							    <field name="contactnumber" />
 							    <field name="birthyear" />
 							    <field name="gender" />
-							    <field name="identificationdoc" />                                
+							    <field name="identificationdoc" />
+                    <!--<div class="oe_chatter">
+                        <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+                    </div>   -->                            
                             </group>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+                    </div>
+					
+					
                 </form>
             </field>
         </record>

@@ -35,6 +35,7 @@ class visitor_rooms_type(osv.Model):
 
 class visitor_abhyasi(osv.Model):
 	_name = 'visitor.abhyasi'
+	_inherit = 'mail.thread'
 	_columns = {
 		'abhyasi_id': fields.char('Abhyasi ID', required=True),
 		'full_name': fields.char('Full Name', required=True),
