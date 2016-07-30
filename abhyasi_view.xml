@@ -45,7 +45,7 @@
 							    <field name="contactnumber" />
 							    <field name="birthyear" />
 							    <field name="gender" />
-							    <field name="identificationdoc" />
+							    <field name="attachment_ids" />
                     <!--<div class="oe_chatter">
                         <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
                     </div>   -->                            

@@ -47,6 +47,7 @@ class visitor_abhyasi(osv.Model):
 		'birthyear': fields.char('Birth Year', required=True),						
 		'gender': fields.selection([('male','Male'), ('female','Female')],'overseas', required=True),
 		'identificationdoc': fields.char('Identification Doc', required=True),
+                'attachment_ids': fields.one2many('ir.attachment', 'res_id', domain=lambda self: [('res_model', '=', self._name)], auto_join=True, string='Attachments'),
 	}
 	
 	_sql_constraints = [
