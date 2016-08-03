@@ -1,0 +1,22 @@
+
+
+
+1. Registrations tab:
+     constraint for Departure Date to be greater than or equal to Arrival Date
+       if Departure Date and Arrival Date are same, then the constraint should apply departure time >= arrival time
+
+2. Abhyasi and Non-Abhyasi
+     Include a new field -- age as a compute field and calculate age from birth year
+
+3. Include Abhyasi and Non-Abhyasis as many2many fields in Registrations table
+
+4. Create a check-in table/form with all the necessary fields -- all fields in registration table + checkin-id + allotted room
+    -- Implement the following workflow for check-in
+    	Add a button to registration form
+	Clicking on the button should open the check-in form with abhyasi/non-abhyasi data, checkin date, time and departure date, time pre-filled i.e., copied from the registration form 
+	All the fields are editable so that any field can be modified during checkin, abhyasis can be added/removed, etc.
+	The allotted-rrom-no field should be a selectable from room list and made a mandatory field in the checkin form; it should be blank by default
+
+
+	
+ 
