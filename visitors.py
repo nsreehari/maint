@@ -122,6 +122,9 @@ class visitor_rooms(models.Model):
 	_description = 'Visitor Rooms Description'
 	roomid =  fields.Char(string='Room Id', required=True)
 	roomtype =  fields.Many2one(comodel_name='visitor.room.type',      required=True )
+	ac =  fields.Selection(yesnosel,string='Air-Conditioned?', required=True)
+	tag_ids = fields.Many2many(comodel_name='visitor.room.tags', string ='Tags', copy=False)
+	#active =  fields.Selection([('Yes', 'Yes'), ('No', 'No')], string='Room in Operation?', required=True)
 	notes =  fields.Text('Room Description')
 	_sql_constraints = [
 		('roomid_uniq', 'unique (roomid)', "Room ID already exists !")

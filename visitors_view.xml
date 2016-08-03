@@ -16,11 +16,7 @@
                     <field name="country" />
                     <field name="contactnumber" />
                     <field name="gender" />
-                            <field name="birthyear" />
-                                        <!--<field name="identificationdoc" />-->
-                    <!--<div class="oe_chatter">
-                        <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
-                    </div>-->
+                    <field name="birthyear" />
                 </tree>
             </field>
         </record>
@@ -43,6 +39,7 @@
                                 <field name="country" />
                                 <field name="contactnumber" />
                                 <field name="gender" />
+								<field name="birthyear" />
                     <!--<div class="oe_chatter">
                         <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
                     </div>   -->                            
@@ -94,6 +91,7 @@
                         <group col="2" string="Non Abhyasi Details">
                             <group>
                                 <field name="full_name" />
+								<field name="birthyear" />
                             </group>
                             <group>
                                 <field name="gender" />
@@ -243,7 +241,7 @@
                         <group col="2" string="Registration">
                             <group>
                                 <field name="batchid" />
-                                <field name="record_entry" />
+                               <field name="record_entry" />
                                 <field name="arrival_date" />
                                 <field name="arrival_time" />
                                 <field name="departure_date" />
@@ -340,14 +338,14 @@
             <field name="name">visitor.rooms.tree</field>
             <field name="model">visitor.rooms</field>
             <field name="arch" type="xml">
-                <tree string="Roles" >
+                <tree string="Roles" editable="bottom">
                     <field name="roomid" />
                     <field name="roomtype" />
                     <field name="ac" />
-                    <field name="active" string="Room Types"/>
+                    <!--<field name="active"/>-->
                     <!--<label for="tag_ids" class="oe_edit_only"/>-->
                     <!--<field name="tag_ids" widget="many2many_tags" />-->
-                                        <field name="notes" />
+                    <field name="notes" />
                 </tree>
             </field>
         </record>
@@ -362,10 +360,11 @@
                             <group>
                                 <field name="roomid" />
                                 <field name="ac" />
-                            </group>
+								<!--<field name="active" />-->
+							</group>
                             <group>
-                                <field name="active" />
-                                <field name="roomtype" string="Room Types"/>
+                                
+								<field name="roomtype" string="Room Types"/>
                             </group>
                             <div>
                                 <label for="tag_ids" class="oe_edit_only"/>
