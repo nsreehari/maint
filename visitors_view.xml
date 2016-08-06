@@ -182,9 +182,7 @@
 					<field name="roomid" />
 					<field name="roomtype" />
 					<field name="ac" />
-					<!--<field name="tag_ids" />-->
 					<field name="is_active" />
-					<!--<field name="notes" />-->
 				</tree>
 			</field>
 		</record>

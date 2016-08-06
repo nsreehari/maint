@@ -8,13 +8,23 @@ from datetime import datetime
 
 #	Birth year validation.
 @api.one
+@api.constrains('arrival_date','departure_date')
+def _check_dates(self):
+	if self.arrival_date > self.departure_date:
+		raise ValidationError("Please give the Arrival date first.")
+	#todayyear = datetime.now().year
+	#if self.birthyear > todayyear:
+	#	raise ValidationError("BirthYear cannot be greather than %d" % todayyear )
+
+#	Date Validation.
+@api.one
 @api.constrains('birthyear')
 def _check_birthyear(self):
 	if self.birthyear < 1900:
-		raise ValidationError("BirthYear cannot be less than 1900")
+		raise ValidationError("BirthYear cannot be less than 1900")		
 	todayyear = datetime.now().year
 	if self.birthyear > todayyear:
-		raise ValidationError("BirthYear cannot be greather than %d" % todayyear )
+		raise ValidationError("BirthYear cannot be greather than %d" % todayyear )		
 
 
 #	Some Selection List.
@@ -106,9 +116,9 @@ class visitor_registration(models.Model):
 	_description = 'Visitor Registrations'
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
 	record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
-	arrival_date =  fields.Date(string='Arrival Date', required=True)
+	arrival_date =  fields.Date(string='Arrival Date', required=True, default=None)
 	arrival_time =  fields.Selection(timesel, string='Arrival Time', required=True)
-	departure_date =  fields.Date(string='Departure Date',required=True)
+	departure_date =  fields.Date(string='Departure Date',required=True,default=None)
 	departure_time =  fields.Selection(timesel, string='Departure Time', required=True)
 	spot_registration = fields.Selection(yesnosel, string='Spot Registeration?', required=True)
 	cancelled = fields.Selection(yesnosel, string='Cancelled?', default='No' )
@@ -119,6 +129,10 @@ class visitor_registration(models.Model):
 		return str(datetime.now().strftime("%Y%m%d%H%M%S%f")) 
 	
 	_sql_constraints = [('batchid_uniq', 'unique (batchid)', "ID already exists !")]
+	
+	_constraints = [
+		(_check_dates, "Arrival date should be less than or equal to depaure date", ['arrival_date','departure_date']),
+	]
 
 
 #	Visitor Rooms description.
