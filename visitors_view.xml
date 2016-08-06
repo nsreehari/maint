@@ -18,6 +18,7 @@
 					<field name="contactnumber" />
 					<field name="gender" />
 					<field name="birthyear" />
+					<field name="age" />
 				</tree>
 			</field>
 		</record>
@@ -40,7 +41,8 @@
 								<field name="country" />
 								<field name="contactnumber" />
 								<field name="gender" />
-								<field name="birthyear" />                          
+								<field name="birthyear" />
+								<field name="age" />
 							</group>
 						</group>
 					</sheet>
@@ -75,6 +77,7 @@
 					<field name="birthyear" />
 					<field name="gender" />
 					<field name="child" />
+					<field name="age" />
 				</tree>
 			</field>
 		</record>
@@ -89,6 +92,7 @@
 							<group>
 								<field name="full_name" />
 								<field name="birthyear" />
+								<field name="age" />
 							</group>
 							<group>
 								<field name="gender" />

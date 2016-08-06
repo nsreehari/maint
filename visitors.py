@@ -12,9 +12,7 @@ from datetime import datetime
 def _check_dates(self):
 	if self.arrival_date > self.departure_date:
 		raise ValidationError("Please give the Arrival date first.")
-	#todayyear = datetime.now().year
-	#if self.birthyear > todayyear:
-	#	raise ValidationError("BirthYear cannot be greather than %d" % todayyear )
+
 
 #	Date Validation.
 @api.one
@@ -67,7 +65,13 @@ class visitor_abhyasi(models.Model):
 			self.overseas = "True"
 		else:
 			self.overseas = "False"
-
+	
+	@api.one
+	@api.depends('birthyear')
+	def _compute_age(self):
+		self.age = datetime.now().year - self.birthyear
+	
+	
 	abhyasi_id =  fields.Char(string='Abhyasi ID', required=True)
 	full_name =  fields.Char(string='Full Name', required=True)
 	preceptor =  fields.Selection(yesnosel, string='Is Preceptor?', required=True)
@@ -75,8 +79,9 @@ class visitor_abhyasi(models.Model):
 	country =  fields.Char('Country', required=True,default='INDIA')
 	overseas =  fields.Char(compute="_compute_overseas", string = 'Overseas?')
 	contactnumber =  fields.Char('Contact Number')
-	birthyear =  fields.Integer(string='Birth Year', required=True, default=None)
+	birthyear =  fields.Integer(string='Birth Year', required=True)
 	gender =  fields.Selection(gendersel, string='Gender', required=True)
+	age = fields.Char(compute="_compute_age", string = 'Age')
 
 	_sql_constraints = [
 		('abhyasi_id_uniq', 'unique (abhyasi_id)', "abhyasi_id already exists !")
@@ -91,11 +96,17 @@ class visitor_abhyasi(models.Model):
 class visitor_nonabhyasi(models.Model):
 	_name = 'visitor.nonabhyasi'
 	_description = 'Children or People without Abhyasi ID' 
+	
+	@api.one
+	@api.depends('birthyear')
+	def _compute_age(self):
+		self.age = datetime.now().year - self.birthyear
 
 	full_name = fields.Char(string='Full Name', required=True)
 	birthyear =  fields.Integer(string='Birth Year', required=True)
 	gender =  fields.Selection(gendersel, string='Gender', required=True)
 	child =  fields.Char(compute="_compute_child", string = 'Child?')
+	age = fields.Char(compute="_compute_age", string = 'Age')
 	
 	_constraints = [
 		(_check_birthyear, "Invalid Birth Year", ['birthyear']),
