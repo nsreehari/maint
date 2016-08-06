@@ -1,406 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-    <data>
-    
-        <!-- Tree view for the Abhyasi class-->
-        <record model='ir.ui.view' id='visitor_abhyasi_tree'>
-            <field name="name">visitor.abhyasi.tree</field>
-            <field name="model">visitor.abhyasi</field>
-            <field name="arch" type="xml">
-                <tree string="Roles" editable="bottom">
-                    <field name="abhyasi_id" />
-                    <field name="full_name" />
-                    <field name="preceptor" />
-                    <field name="overseas" />
-                    <field name="center" />
-                    <field name="country" />
-                    <field name="contactnumber" />
-                    <field name="gender" />
-                    <field name="birthyear" />
-                </tree>
-            </field>
-        </record>
-        <!-- Form view for the Abhyasi class-->
-        <record model='ir.ui.view' id='visitor_abhyasi_form'>
-            <field name="name">visitor.abhyasi.form</field>
-            <field name="model">visitor.abhyasi</field>
-            <field name="arch" type="xml">
-                <form string="Abhyasi Visitor Form">
-                    <sheet>
-                        <group col="2" string="Abhyasi Details">
-                            <group>
-                                <field name="abhyasi_id" />
-                                <field name="full_name" />
-                                <field name="preceptor" />
-                                <field name="overseas" />
-                                <field name="center" />
-                            </group>
-                            <group>
-                                <field name="country" />
-                                <field name="contactnumber" />
-                                <field name="gender" />
-								<field name="birthyear" />
-                    <!--<div class="oe_chatter">
-                        <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
-                    </div>   -->                            
-                            </group>
-                        </group>
-                    </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
-                    </div>
-                    
-                    
-                </form>
-            </field>
-        </record>
-        <!-- Action for the Abhyasi class-->
-        <record model='ir.actions.act_window' id='visitor_abhyasi_act'>
-            <field name="name">Visitor Abhyasi</field>
-            <field name="res_model">visitor.abhyasi</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to create a new visitor abhyasi form
-              </p><p>
-              </p>
-            </field>
-        </record>
-    
-        <!-- Tree view for the Non Abhyasi class-->
-        <record model='ir.ui.view' id='visitor_nonabhyasi_tree'>
-            <field name="name">visitor.nonabhyasi.tree</field>
-            <field name="model">visitor.nonabhyasi</field>
-            <field name="arch" type="xml">
-                <tree string="Roles" editable="bottom">
-                    <field name="full_name" />
-                    <field name="birthyear" />
-                    <field name="gender" />
-                    <field name="child" />
-                </tree>
-            </field>
-        </record>
-        <!-- Form view for the Non Abhyasi class-->
-        <record model='ir.ui.view' id='visitor_nonabhyasi_form'>
-            <field name="name">visitor.nonabhyasi.form</field>
-            <field name="model">visitor.nonabhyasi</field>
-            <field name="arch" type="xml">
-                <form string="Non Abhyasi Details">
-                    <sheet>
-                        <group col="2" string="Non Abhyasi Details">
-                            <group>
-                                <field name="full_name" />
-								<field name="birthyear" />
-                            </group>
-                            <group>
-                                <field name="gender" />
-                                <field name="child" />       
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-        <!-- Action for the Non Abhyasi class-->
-        <record model='ir.actions.act_window' id='visitor_nonabhyasi_act'>
-            <field name="name">Visitor Non Abhyasi</field>
-            <field name="res_model">visitor.nonabhyasi</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to create a new visitor abhyasi form
-              </p><p>
-              </p>
-            </field>
-        </record>
-    
-    
-        <!-- Tree view for the visitor_reg_non_abhyasi class-->
-       <!--
-       <record model='ir.ui.view' id='visitor_reg_non_abhyasi_tree'>
-            <field name="name">visitor.reg.non.abhyasi.tree</field>
-            <field name="model">visitor.reg.non.abhyasi</field>
-            <field name="arch" type="xml">
-                <tree string="Roles" editable="bottom">
-                    <field name="id" />
-                    <field name="person_id" />
-                    <field name="regestration_bach_id" />
-                </tree>
-            </field>
-        </record> -->
-        <!-- Form view for the visitor_reg_non_abhyasi class-->
-        <!--<record model='ir.ui.view' id='visitor_reg_non_abhyasi_form'>
-            <field name="name">visitor.reg.non.abhyasi.form</field>
-            <field name="model">visitor.reg.non.abhyasi</field>
-            <field name="arch" type="xml">
-                <form string="Register Non Abhyasi">
-                    <sheet>
-                        <group col="2" string="Register Non Abhyasi">
-                            <group>
-                                <field name="id" />
-                                <field name="person_id" />
-                            </group>
-                            <group>
-                                <field name="regestration_bach_id" />     
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record> -->
-        <!-- Action for the Non Abhyasi class-->
-        <!--<record model='ir.actions.act_window' id='visitor_reg_non_abhyasi_act'>
-            <field name="name">Visitor Register Non Abhyasi</field>
-            <field name="res_model">visitor.reg.non.abhyasi</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to create a new register a visitor non abhyasi form
-              </p><p>
-              </p>
-            </field>
-        </record>-->
-        
-        
-    
-        <!-- Tree view for the visitor_reg_abhyasi class-->
-        <!--<record model='ir.ui.view' id='visitor_reg_abhyasi_tree'>
-            <field name="name">visitor.reg.abhyasi.tree</field>
-            <field name="model">visitor.reg.abhyasi</field>
-            <field name="arch" type="xml">
-                <tree string="Roles" editable="bottom">
-                    <field name="id" />
-                    <field name="person_id" />
-                    <field name="regestration_bach_id" />
-                </tree>
-            </field>
-        </record>-->
-        <!-- Form view for the visitor_reg_abhyasi class-->
-        <!--<record model='ir.ui.view' id='visitor_reg_abhyasi_form'>
-            <field name="name">visitor.reg.abhyasi.form</field>
-            <field name="model">visitor.reg.abhyasi</field>
-            <field name="arch" type="xml">
-                <form string="Register Non Abhyasi">
-                    <sheet>
-                        <group col="2" string="Register Non Abhyasi">
-                            <group>
-                                <field name="id" />
-                                <field name="person_id" />
-                            </group>
-                            <group>
-                                <field name="regestration_bach_id" />     
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>-->
-        <!-- Action for the visitor_reg_abhyasi class-->
-        <!--<record model='ir.actions.act_window' id='visitor_reg_abhyasi_act'>
-            <field name="name">Visitor Register Abhyasi</field>
-            <field name="res_model">visitor.reg.abhyasi</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to create a new register a visitor non abhyasi form
-              </p><p>
-              </p>
-            </field>
-        </record>-->
-    
-    
-        <!-- Tree view for the visitor_registration class-->
-        <record model='ir.ui.view' id='visitor_registration_tree'>
-            <field name="name">visitor.registration.tree</field>
-            <field name="model">visitor.registration</field>
-            <field name="arch" type="xml">
-                <tree string="Roles" editable="bottom">
-                    <field name="batchid" />
-                    <field name="record_entry" />
-                    <field name="arrival_date" />
-                    <field name="arrival_time" />
-                    <field name="departure_date" />
-                    <field name="departure_time" />
-                    <field name="spot_registration" />
-                    <field name="cancelled" />
-                    <field name="cancelation_date" />
-                </tree>
-            </field>
-        </record>
-        <!-- Form view for the visitor_registration class-->
-        <record model='ir.ui.view' id='visitor_registration_form'>
-            <field name="name">visitor.registration.form</field>
-            <field name="model">visitor.registration</field>
-            <field name="arch" type="xml">
-                <form string="Registration">
-                    <sheet>
-                        <group col="2" string="Registration">
-                            <group>
-                                <field name="batchid" />
-                               <field name="record_entry" />
-                                <field name="arrival_date" />
-                                <field name="arrival_time" />
-                                <field name="departure_date" />
-                            </group>
-                            <group>
-                                <field name="departure_time" />
-                                <field name="spot_registration" />
-                                <field name="cancelled" />
-                                <field name="cancelation_date" />
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-        <!-- Action for the visitor_registration class-->
-        <record model='ir.actions.act_window' id='visitor_registration_act'>
-            <field name="name">Visitor Registration</field>
-            <field name="res_model">visitor.registration</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                Click to create a new registration for a visitor
-            </p><p>
-            </p>
-            </field>
-        </record>
-    
+	<data>
 
-        <!-- Tree view for the visitor_checkins class
-        <record model='ir.ui.view' id='visitor_checkins_tree'>
-            <field name="name">visitor.checkins.tree</field>
-            <field name="model">visitor.checkins</field>
-            <field name="arch" type="xml">
-                <tree string="Roles" editable="bottom">
-                    <field name="checkinid" />
-                    <field name="entry_date" />
-                    <field name="arrival_date" />
-                    <field name="arrival_time" />
-                    <field name="departure_date" />
-                    <field name="departure_time" />
-                    <field name="regestration_id" />
-                    <field name="person_id" />
-                    <field name="accomodation_alloted" />
-                    <field name="documents" />
-                </tree>
-            </field>
-        </record>
-         Form view for the visitor_checkins class
-        <record model='ir.ui.view' id='visitor_checkins_form'>
-            <field name="name">visitor.checkins.form</field>
-            <field name="model">visitor.checkins</field>
-            <field name="arch" type="xml">
-                <form string="Registration">
-                    <sheet>
-                        <group col="2" string="Registration">
-                            <group>
-                                <field name="checkinid" />
-                                <field name="entry_date" />
-                                <field name="arrival_date" />
-                                <field name="arrival_time" />
-                                <field name="departure_date" />
-                            </group>
-                            <group>
-                                <field name="departure_time" />
-                                <field name="regestration_id" />
-                                <field name="person_id" />
-                                <field name="accomodation_alloted" />
-                                <field name="documents" />
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-         Action for the visitor_checkins class
-        <record model='ir.actions.act_window' id='visitor_checkins_act'>
-            <field name="name">Visitor Checkins</field>
-            <field name="res_model">visitor.checkins</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                Click to create a new Checkin for a visitor
-            </p><p>
-            </p>
-            </field>
-            </record>-->
-    
-    
-        <!-- Tree view for the visitor_rooms class-->
-        <record model='ir.ui.view' id='visitor_rooms_tree'>
-            <field name="name">visitor.rooms.tree</field>
-            <field name="model">visitor.rooms</field>
-            <field name="arch" type="xml">
-                <tree string="Roles" editable="bottom">
-                    <field name="roomid" />
-                    <field name="roomtype" />
-                    <field name="ac" />
-                    <!--<field name="active"/>-->
-                    <!--<label for="tag_ids" class="oe_edit_only"/>-->
-                    <!--<field name="tag_ids" widget="many2many_tags" />-->
-                    <field name="notes" />
-                </tree>
-            </field>
-        </record>
-        <!-- Form view for the visitor_rooms class-->
-        <record model='ir.ui.view' id='visitor_rooms_form'>
-            <field name="name">visitor.rooms.form</field>
-            <field name="model">visitor.rooms</field>
-            <field name="arch" type="xml">
-            <form string="Visitor Room Form">
-                    <sheet>
-                        <group col="2" string="Visitor Room Form">
-                            <group>
-                                <field name="roomid" />
-                                <field name="ac" />
-								<!--<field name="active" />-->
+
+		<!-- Tree view for the Visitor Abhyasi class-->
+		<record model='ir.ui.view' id='visitor_abhyasi_tree'>
+			<field name="name">visitor.abhyasi.tree</field>
+			<field name="model">visitor.abhyasi</field>
+			<field name="arch" type="xml">
+				<tree string="Roles" editable="bottom">
+					<field name="abhyasi_id" />
+					<field name="full_name" />
+					<field name="preceptor" />
+					<field name="overseas" />
+					<field name="center" />
+					<field name="country" />
+					<field name="contactnumber" />
+					<field name="gender" />
+					<field name="birthyear" />
+				</tree>
+			</field>
+		</record>
+        <!-- Form view for the Visitor Abhyasi class-->
+		<record model='ir.ui.view' id='visitor_abhyasi_form'>
+			<field name="name">visitor.abhyasi.form</field>
+			<field name="model">visitor.abhyasi</field>
+			<field name="arch" type="xml">
+				<form string="Abhyasi Visitor Form">
+					<sheet>
+						<group col="2" string="Abhyasi Details">
+							<group>
+								<field name="abhyasi_id" />
+								<field name="full_name" />
+								<field name="preceptor" />
+								<field name="overseas" />
+								<field name="center" />
 							</group>
-                            <group>
-                                
-								<field name="roomtype" string="Room Types"/>
-                            </group>
-                            <div>
-                                <label for="tag_ids" class="oe_edit_only"/>
-                                <field name="tag_ids" widget="many2many_tags" />
-                            </div>
-                        </group>
-                        <label for="notes"/>
-                        <field name="notes"/>
-                    </sheet>
-            </form>
-            </field>
-        </record>
-        <!-- Action for the visitor_rooms class-->
-        <record model='ir.actions.act_window' id='visitor_rooms_act'>
-            <field name="name">Visitor Rooms</field>
-            <field name="res_model">visitor.rooms</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                Click to create a new Room
-            </p><p>
-            </p>
-            </field>
-        </record>
+							<group>
+								<field name="country" />
+								<field name="contactnumber" />
+								<field name="gender" />
+								<field name="birthyear" />                          
+							</group>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+					</div>
+				</form>
+			</field>
+		</record>
+		<!-- Action for the Abhyasi class-->
+		<record model='ir.actions.act_window' id='visitor_abhyasi_act'>
+			<field name="name">Visitor Abhyasi</field>
+			<field name="res_model">visitor.abhyasi</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to create a new visitor abhyasi form
+			</p><p>
+			</p>
+			</field>
+		</record>
 
-    
-        <menuitem name="Visitor" id="visitor_root1" sequence="115"/>
-        <menuitem name="Visitor" parent="visitor_root1" id="visitor_root"  sequence="150"/>
-        <menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
-        <menuitem action="visitor_nonabhyasi_act" parent="visitor_root" id="non_visitor_abhyasi_menu"/>
-        <menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
-                <!--<menuitem action="visitor_checkins_act" parent="visitor_root" id="visitor_checkins_menu"/>-->
-        <menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>
-        <menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
-        
 
-    </data>
+		<!-- Tree view for the Non Abhyasi class-->
+		<record model='ir.ui.view' id='visitor_nonabhyasi_tree'>
+			<field name="name">visitor.nonabhyasi.tree</field>
+			<field name="model">visitor.nonabhyasi</field>
+			<field name="arch" type="xml">
+				<tree string="Roles" editable="bottom">
+					<field name="full_name" />
+					<field name="birthyear" />
+					<field name="gender" />
+					<field name="child" />
+				</tree>
+			</field>
+		</record>
+		<!-- Form view for the Non Abhyasi class-->
+		<record model='ir.ui.view' id='visitor_nonabhyasi_form'>
+			<field name="name">visitor.nonabhyasi.form</field>
+			<field name="model">visitor.nonabhyasi</field>
+			<field name="arch" type="xml">
+				<form string="Non Abhyasi Details">
+					<sheet>
+						<group col="2" string="Non Abhyasi Details">
+							<group>
+								<field name="full_name" />
+								<field name="birthyear" />
+							</group>
+							<group>
+								<field name="gender" />
+								<field name="child" />       
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- Action for the Non Abhyasi class-->
+		<record model='ir.actions.act_window' id='visitor_nonabhyasi_act'>
+			<field name="name">Visitor Non Abhyasi</field>
+			<field name="res_model">visitor.nonabhyasi</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to create a new visitor abhyasi form
+			</p><p>
+			</p>
+			</field>
+		</record>
+
+
+		<!-- Tree view for the visitor_registration class-->
+		<record model='ir.ui.view' id='visitor_registration_tree'>
+			<field name="name">visitor.registration.tree</field>
+			<field name="model">visitor.registration</field>
+			<field name="arch" type="xml">
+				<tree string="Roles" editable="bottom">
+					<field name="batchid" />
+					<field name="record_entry" />
+					<field name="arrival_date" />
+					<field name="arrival_time" />
+					<field name="departure_date" />
+					<field name="departure_time" />
+					<field name="spot_registration" />
+					<field name="cancelled" />
+					<field name="cancelation_date" />
+				</tree>
+			</field>
+		</record>
+		<!-- Form view for the visitor_registration class-->
+		<record model='ir.ui.view' id='visitor_registration_form'>
+			<field name="name">visitor.registration.form</field>
+			<field name="model">visitor.registration</field>
+			<field name="arch" type="xml">
+				<form string="Registration">
+					<sheet>
+						<group col="2" string="Registration">
+							<group>
+								<field name="batchid" />
+							<field name="record_entry" />
+								<field name="arrival_date" />
+								<field name="arrival_time" />
+								<field name="departure_date" />
+							</group>
+							<group>
+								<field name="departure_time" />
+								<field name="spot_registration" />
+								<field name="cancelled" />
+								<field name="cancelation_date" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- Action for the visitor_registration class-->
+		<record model='ir.actions.act_window' id='visitor_registration_act'>
+			<field name="name">Visitor Registration</field>
+			<field name="res_model">visitor.registration</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to create a new registration for a visitor
+			</p><p>
+			</p>
+			</field>
+		</record>  
+
+
+		<!-- Tree view for the visitor.rooms class-->
+		<record model='ir.ui.view' id='visitor_rooms_tree'>
+			<field name="name">visitor.rooms.tree</field>
+			<field name="model">visitor.rooms</field>
+			<field name="arch" type="xml">
+				<tree string="Room Details">
+					<field name="roomid" />
+					<field name="roomtype" />
+					<field name="ac" />
+					<!--<field name="tag_ids" />-->
+					<field name="is_active" />
+					<!--<field name="notes" />-->
+				</tree>
+			</field>
+		</record>
+		<!-- Form view for the visitor.rooms class-->
+		<record model='ir.ui.view' id='visitor_rooms_form'>
+			<field name="name">visitor.rooms.form</field>
+			<field name="model">visitor.rooms</field>
+			<field name="arch" type="xml">
+				<form string="Room Details">
+					<sheet>
+						<group col="2" string="Room Details">
+							<group>
+								<field name="roomid" />
+								<field name="roomtype" />
+							</group>
+							<group>
+								<field name="ac" />
+								<field name="is_active" />
+							</group>
+						</group>
+						<label for="tag_ids" class="oe_edit_only"/>
+						<field name="tag_ids" widget="many2many_tags" />
+						<label for="notes"/>
+						<field name="notes"/>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- Action for the visitor_registration class-->
+		<record model='ir.actions.act_window' id='visitor_rooms_act'>
+			<field name="name">Visitor Rooms</field>
+			<field name="res_model">visitor.rooms</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to create a new registration for a visitor
+			</p><p>
+			</p>
+			</field>
+		</record> 
+		
+		
+		<menuitem name="Visitor" id="visitor_root1" sequence="115"/>
+		<menuitem name="Visitor" parent="visitor_root1" id="visitor_root"  sequence="150"/>
+		<menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
+		<menuitem action="visitor_nonabhyasi_act" parent="visitor_root" id="non_visitor_abhyasi_menu"/>
+		<menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
+		<menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>  
+		<menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
+
+	</data>
 </openerp>

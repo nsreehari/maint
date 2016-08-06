@@ -16,7 +16,3 @@
 	Clicking on the button should open the check-in form with abhyasi/non-abhyasi data, checkin date, time and departure date, time pre-filled i.e., copied from the registration form 
 	All the fields are editable so that any field can be modified during checkin, abhyasis can be added/removed, etc.
 	The allotted-rrom-no field should be a selectable from room list and made a mandatory field in the checkin form; it should be blank by default
-
-
-	
- 

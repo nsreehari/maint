@@ -13,14 +13,14 @@ from openerp.tools.translate import _
 
 
 class visitor_rooms_tag(osv.Model):
-    _name = 'visitor.rooms.tag'
-    _columns = {
-        'name': fields.char('Name', required=True),
-        'color': fields.integer('Color Index'),
-    }
-    _sql_constraints = [
-            ('name_uniq', 'unique (name)', "Tag name already exists !"),
-    ]
+	_name = 'visitor.rooms.tag'
+	_columns = {
+		'name': fields.char('Name', required=True),
+		'color': fields.integer('Color Index'),
+	}
+	_sql_constraints = [
+			('name_uniq', 'unique (name)', "Tag name already exists !"),
+	]
 
 	
 class visitor_rooms_type(osv.Model):
