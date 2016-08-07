@@ -134,6 +134,8 @@ class visitor_registration(models.Model):
 	spot_registration = fields.Selection(yesnosel, string='Spot Registeration?', required=True)
 	cancelled = fields.Selection(yesnosel, string='Cancelled?', default='No' )
 	cancelation_date =  fields.Date('Cancelation Date')
+	abhyasi_visitor = fields.Many2many(comodel_name='visitor.abhyasi',string='Abhyasi Visitors Details') 
+	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Abhyasi Non-Visitors Details') 
 
 	@api.model
 	def _compute_batchid(self):
@@ -159,3 +161,32 @@ class visitor_rooms(models.Model):
 	_sql_constraints = [
 		('roomid_uniq', 'unique (roomid)', "Room ID already exists !")
 	]
+
+
+
+'''
+@api.one
+def generate_record_password(self):
+	#Generates a random password between 12 and 15 characters long and writes it to the record.
+	self.write({'password': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(12,15)))})
+
+@api.one
+def clear_record_data(self):
+	self.write({
+	'name': '',
+	'password': ''
+	})
+
+class button_action_demo(models.Model):
+	@api.one
+	#@api.depends('name')
+	def generate_record_name(self):
+		#pass
+		#Generates a random name between 9 and 15 characters long and writes it to the record.
+		#self.write({'name': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(9,15)))})
+		self.write({'name':'Sanjaya'})
+		#self.name = "Sanjaya"
+	_name = 'button.demo'
+	name = fields.Char()
+	password = fields.Char()
+'''

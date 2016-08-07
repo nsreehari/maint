@@ -123,7 +123,7 @@
 			<field name="name">visitor.registration.tree</field>
 			<field name="model">visitor.registration</field>
 			<field name="arch" type="xml">
-				<tree string="Roles" editable="bottom">
+				<tree string="Roles">
 					<field name="batchid" />
 					<field name="record_entry" />
 					<field name="arrival_date" />
@@ -158,6 +158,10 @@
 								<field name="cancelation_date" />
 							</group>
 						</group>
+						<label for="abhyasi_visitor"/>
+						<field name="abhyasi_visitor" />
+						<label for="abhyasi_non_visitor"/>
+						<field name="abhyasi_non_visitor" />
 					</sheet>
 				</form>
 			</field>
@@ -229,12 +233,48 @@
 			</field>
 		</record> 
 		
+		<!--
+		<record model="ir.ui.view" id="view_buttons_form">
+			<field name="name">Buttons</field>
+			<field name="model">button.demo</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+			<form string="Button record">-->
+				<!--The header tag is built to add buttons within. This puts them at the top -->
+				<!--<header>-->
+					<!--The oe_highlight class gives the button a red color when it is saved.
+					It is usually used to indicate the expected behaviour. -->
+					<!--<button string="Generate name" type="object" name="generate_record_name" class="oe_highlight"/>
+					<<button string="Generate password" type="object" name="generate_record_password"/>
+					<button string="Clear data" type="object" name="clear_record_data"/>
+				</header>
+				<group>
+					<field name="name"/>
+					<field name="password"/>
+				</group>
+			</form>
+			</field>
+		</record>
+		<record model='ir.actions.act_window' id='button_demo_act'>
+			<field name="name">Buttons</field>
+			<field name="res_model">button.demo</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to create a new registration for a visitor
+			</p><p>
+			</p>
+			</field>
+		</record>-->
+		
 		
 		<menuitem name="Visitor" id="visitor_root1" sequence="115"/>
 		<menuitem name="Visitor" parent="visitor_root1" id="visitor_root"  sequence="150"/>
 		<menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
 		<menuitem action="visitor_nonabhyasi_act" parent="visitor_root" id="non_visitor_abhyasi_menu"/>
 		<menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
+		<!--<menuitem action="button_demo_act" parent="visitor_root" id="button_demo_menu"/>-->
 		<menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>  
 		<menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
 
