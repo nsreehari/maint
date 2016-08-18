@@ -142,6 +142,13 @@
 			<field name="model">visitor.registration</field>
 			<field name="arch" type="xml">
 				<form string="Registration">
+					<!--The header tag is built to add buttons within. This puts them at the top -->
+					<header>
+						<!--The oe_highlight class gives the button a red color when it is saved.
+						It is usually used to indicate the expected behaviour. -->
+						<button string="Checkin" type="object" name="check_in" class="oe_highlight" 
+								context="{'xml_id':'visitor_checkin_act'}"/>
+					</header>
 					<sheet>
 						<group col="2" string="Registration">
 							<group>
@@ -162,15 +169,6 @@
 						<field name="abhyasi_visitor" />
 						<label for="abhyasi_non_visitor"/>
 						<field name="abhyasi_non_visitor" />
-						<div class="oe_button_box" name="button_box">
-						<button name="return_action_to_open"
-							type="object"
-							class="oe_stat_button"
-							icon="fa-book"
-							context="{'xml_id':'visitor_checkin_act'}"
-							help="Show the checkin details.">
-							<field name="contract_count" widget="statinfo" string="Contracts"/>
-						</button>
 					</sheet>
 				</form>
 			</field>
@@ -242,6 +240,45 @@
 			</field>
 		</record> 
 		
+		
+		<!-- Tree view for the visitor.checkin class-->
+		<record model='ir.ui.view' id='visitor_checkin_tree'>
+			<field name="name">visitor.checkin.tree</field>
+			<field name="model">visitor.checkin</field>
+			<field name="arch" type="xml">
+				<tree string="Room Details">
+					<field name="batchid" />
+				</tree>
+			</field>
+		</record>
+		<!-- Form view for the visitor.checkin class-->
+		<record model='ir.ui.view' id='visitor_checkin_form'>
+			<field name="name">visitor.checkin.form</field>
+			<field name="model">visitor.checkin</field>
+			<field name="arch" type="xml">
+				<form string="Checkin Details">
+					<sheet>
+						<group>
+							<field name="batchid" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- Action for the visitor.checkin class-->
+		<record model='ir.actions.act_window' id='visitor_checkin_act'>
+			<field name="name">Visitor Checkin</field>
+			<field name="res_model">visitor.checkin</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to create a new checkin for a visitor
+			</p><p>
+			</p>
+			</field>
+		</record> 
+		
 		<!--
 		<record model="ir.ui.view" id="view_buttons_form">
 			<field name="name">Buttons</field>
@@ -283,7 +320,7 @@
 		<menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
 		<menuitem action="visitor_nonabhyasi_act" parent="visitor_root" id="non_visitor_abhyasi_menu"/>
 		<menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
-		<!--<menuitem action="button_demo_act" parent="visitor_root" id="button_demo_menu"/>-->
+		<menuitem action="visitor_checkin_act" parent="visitor_root" id="visitor_checkin_menu"/>
 		<menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>  
 		<menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
 

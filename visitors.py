@@ -125,6 +125,22 @@ class visitor_nonabhyasi(models.Model):
 class visitor_registration(models.Model):
 	_name = 'visitor.registration'
 	_description = 'Visitor Registrations'
+	
+	@api.one
+	def check_in(self, context=None):
+		""" This opens the xml view specified in xml_id for the current registration"""
+		if context is None:
+			context = {}
+		if context.get('xml_id'):
+			res = self.pool.get('ir.actions.act_window').for_xml_id(self.env.cr, self.env.uid ,'visitor.checkin', context['xml_id'], context=context)
+			res['context'] = context
+			#res['context'].update({'default_vehicle_id': ids[0]})
+			#res['domain'] = [('vehicle_id','=', ids[0])]
+			return res
+			#pass
+		return False
+		
+		
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
 	record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
 	arrival_date =  fields.Date(string='Arrival Date', required=True, default=None)
@@ -162,6 +178,11 @@ class visitor_rooms(models.Model):
 		('roomid_uniq', 'unique (roomid)', "Room ID already exists !")
 	]
 
+
+class visitor_checkin(models.Model):
+	_name = 'visitor.checkin'
+	_description = 'Visitor Checkin'
+	batchid = fields.Char(string='Batch Id', required=True)
 
 
 '''
