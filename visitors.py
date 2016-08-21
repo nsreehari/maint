@@ -132,7 +132,7 @@ class visitor_registration(models.Model):
 		if context is None:
 			context = {}
 		if context.get('xml_id'):
-			res = self.pool.get('ir.actions.act_window').for_xml_id(self.env.cr, self.env.uid ,'visitor.checkin', context['xml_id'], context=context)
+			res = self.pool.get('ir.actions.act_window').for_xml_id(self.env.cr, self.env.uid ,'maint', context['xml_id'], context=context)
 			res['context'] = context
 			#res['context'].update({'default_vehicle_id': ids[0]})
 			#res['domain'] = [('vehicle_id','=', ids[0])]
