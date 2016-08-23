@@ -125,22 +125,41 @@ class visitor_nonabhyasi(models.Model):
 class visitor_registration(models.Model):
 	_name = 'visitor.registration'
 	_description = 'Visitor Registrations'
-	
+
+	#This function is triggered when the user clicks on the button 'Set to Registration'
 	@api.one
-	def check_in(self, context=None):
-		""" This opens the xml view specified in xml_id for the current registration"""
-		if context is None:
-			context = {}
-		if context.get('xml_id'):
-			res = self.pool.get('ir.actions.act_window').for_xml_id(self.env.cr, self.env.uid ,'maint', context['xml_id'], context=context)
-			res['context'] = context
-			#res['context'].update({'default_vehicle_id': ids[0]})
-			#res['domain'] = [('vehicle_id','=', ids[0])]
-			return res
-			#pass
-		return False
-		
-		
+	def regestration_progressbar(self):
+		self.write({
+			'state': 'register',
+		})
+	
+	#This function is triggered when the user clicks on the button 'Set to Cancel'
+	@api.one
+	def cancel_progressbar(self):
+		self.write({
+		'state': 'cancel'
+		})
+	
+	#This function is triggered when the user clicks on the button 'Set to Checkin'
+	@api.one
+	def checkin_progressbar(self):
+		self.write({
+		'state': 'checkin'
+		})
+	
+	#This function is triggered when the user clicks on the button 'Set to Checkout'
+	@api.one
+	def checkout_progressbar(self):
+		self.write({
+		'state': 'checkout',
+		})
+
+	state = fields.Selection([
+			('register', 'Registere'),
+			('checkin', 'Checkin'),
+			('checkout', 'Checkout'),
+			('cancel', 'Cancel'),
+			],default='register')
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
 	record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
 	arrival_date =  fields.Date(string='Arrival Date', required=True, default=None)
@@ -152,6 +171,7 @@ class visitor_registration(models.Model):
 	cancelation_date =  fields.Date('Cancelation Date')
 	abhyasi_visitor = fields.Many2many(comodel_name='visitor.abhyasi',string='Abhyasi Visitors Details') 
 	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Abhyasi Non-Visitors Details') 
+	#roomid = fields.Many2one(comodel_name='visitor.rooms.roomid')
 
 	@api.model
 	def _compute_batchid(self):
@@ -177,37 +197,3 @@ class visitor_rooms(models.Model):
 	_sql_constraints = [
 		('roomid_uniq', 'unique (roomid)', "Room ID already exists !")
 	]
-
-
-class visitor_checkin(models.Model):
-	_name = 'visitor.checkin'
-	_description = 'Visitor Checkin'
-	batchid = fields.Char(string='Batch Id', required=True)
-
-
-'''
-@api.one
-def generate_record_password(self):
-	#Generates a random password between 12 and 15 characters long and writes it to the record.
-	self.write({'password': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(12,15)))})
-
-@api.one
-def clear_record_data(self):
-	self.write({
-	'name': '',
-	'password': ''
-	})
-
-class button_action_demo(models.Model):
-	@api.one
-	#@api.depends('name')
-	def generate_record_name(self):
-		#pass
-		#Generates a random name between 9 and 15 characters long and writes it to the record.
-		#self.write({'name': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(9,15)))})
-		self.write({'name':'Sanjaya'})
-		#self.name = "Sanjaya"
-	_name = 'button.demo'
-	name = fields.Char()
-	password = fields.Char()
-'''

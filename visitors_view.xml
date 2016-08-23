@@ -143,11 +143,21 @@
 			<field name="arch" type="xml">
 				<form string="Registration">
 					<!--The header tag is built to add buttons within. This puts them at the top -->
-					<header>
+					<!--<header>-->
 						<!--The oe_highlight class gives the button a red color when it is saved.
 						It is usually used to indicate the expected behaviour. -->
-						<button string="Checkin" type="object" name="check_in" class="oe_highlight" 
+						<!--<button string="Checkin" type="object" name="check_in" class="oe_highlight" 
 								context="{'xml_id':'visitor_checkin_act'}"/>
+					</header>-->
+					<header>
+						<button string="Set to Registration" type="object" name="regestration_progressbar" attrs="{'invisible': [('state', '=', 'register')]}"/>
+						<!--The oe_highlight class gives the button a red color when it is saved.
+						It is usually used to indicate the expected behaviour. -->
+						<button string="Set to Checkin" type="object" name="checkin_progressbar" attrs="{'invisible': [('state','=','checkin')]}"/>
+						<button string="Set to Checkout" type="object" name="checkout_progressbar" attrs="{'invisible': [('state','=','checkout')]}"/>
+						<!--This will create the statusbar, thanks to the widget. --> <!--class="oe_highlight"-->
+						<button string="Set to Cancel" type="object" name="cancel_progressbar"  attrs="{'invisible': [('state','=','cancel')]}"/>
+						<field name="state" widget="statusbar"/>
 					</header>
 					<sheet>
 						<group col="2" string="Registration">
@@ -161,8 +171,9 @@
 							<group>
 								<field name="departure_time" />
 								<field name="spot_registration" />
-								<field name="cancelled" />
-								<field name="cancelation_date" />
+								<field name="cancelled" attrs="{'invisible': [('state','!=','cancel')]}"  />
+								<field name="cancelation_date" attrs="{'invisible': [('state','!=','cancel')]}" />
+								<!--<field name="roomid" />-->
 							</group>
 						</group>
 						<label for="abhyasi_visitor"/>
@@ -241,86 +252,11 @@
 		</record> 
 		
 		
-		<!-- Tree view for the visitor.checkin class-->
-		<record model='ir.ui.view' id='visitor_checkin_tree'>
-			<field name="name">visitor.checkin.tree</field>
-			<field name="model">visitor.checkin</field>
-			<field name="arch" type="xml">
-				<tree string="Room Details">
-					<field name="batchid" />
-				</tree>
-			</field>
-		</record>
-		<!-- Form view for the visitor.checkin class-->
-		<record model='ir.ui.view' id='visitor_checkin_form'>
-			<field name="name">visitor.checkin.form</field>
-			<field name="model">visitor.checkin</field>
-			<field name="arch" type="xml">
-				<form string="Checkin Details">
-					<sheet>
-						<group>
-							<field name="batchid" />
-						</group>
-					</sheet>
-				</form>
-			</field>
-		</record>
-		<!-- Action for the visitor.checkin class-->
-		<record model='ir.actions.act_window' id='visitor_checkin_act'>
-			<field name="name">Visitor Checkin</field>
-			<field name="res_model">visitor.checkin</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="help" type="html">
-			<p class="oe_view_nocontent_create">
-				Click to create a new checkin for a visitor
-			</p><p>
-			</p>
-			</field>
-		</record> 
-		
-		<!--
-		<record model="ir.ui.view" id="view_buttons_form">
-			<field name="name">Buttons</field>
-			<field name="model">button.demo</field>
-			<field name="type">form</field>
-			<field name="arch" type="xml">
-			<form string="Button record">-->
-				<!--The header tag is built to add buttons within. This puts them at the top -->
-				<!--<header>-->
-					<!--The oe_highlight class gives the button a red color when it is saved.
-					It is usually used to indicate the expected behaviour. -->
-					<!--<button string="Generate name" type="object" name="generate_record_name" class="oe_highlight"/>
-					<<button string="Generate password" type="object" name="generate_record_password"/>
-					<button string="Clear data" type="object" name="clear_record_data"/>
-				</header>
-				<group>
-					<field name="name"/>
-					<field name="password"/>
-				</group>
-			</form>
-			</field>
-		</record>
-		<record model='ir.actions.act_window' id='button_demo_act'>
-			<field name="name">Buttons</field>
-			<field name="res_model">button.demo</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">form</field>
-			<field name="help" type="html">
-			<p class="oe_view_nocontent_create">
-				Click to create a new registration for a visitor
-			</p><p>
-			</p>
-			</field>
-		</record>-->
-		
-		
 		<menuitem name="Visitor" id="visitor_root1" sequence="115"/>
 		<menuitem name="Visitor" parent="visitor_root1" id="visitor_root"  sequence="150"/>
 		<menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
 		<menuitem action="visitor_nonabhyasi_act" parent="visitor_root" id="non_visitor_abhyasi_menu"/>
 		<menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
-		<menuitem action="visitor_checkin_act" parent="visitor_root" id="visitor_checkin_menu"/>
 		<menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>  
 		<menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
 
