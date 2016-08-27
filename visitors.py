@@ -166,13 +166,17 @@ class visitor_registration(models.Model):
 	arrival_time =  fields.Selection(timesel, string='Arrival Time', required=True)
 	departure_date =  fields.Date(string='Departure Date',required=True,default=None)
 	departure_time =  fields.Selection(timesel, string='Departure Time', required=True)
+	checkin_date =  fields.Date(string='Checkin Date', default=None)
+	checkin_time =  fields.Selection(timesel, string='Checkin Time')
+	checkout_date =  fields.Date(string='Checkout Date',default=None)
+	checkout_time =  fields.Selection(timesel, string='Checkout Time')
 	spot_registration = fields.Selection(yesnosel, string='Spot Registeration?', required=True)
 	cancelled = fields.Selection(yesnosel, string='Cancelled?', default='No' )
 	cancelation_date =  fields.Date('Cancelation Date')
 	abhyasi_visitor = fields.Many2many(comodel_name='visitor.abhyasi',string='Abhyasi Visitors Details') 
 	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Abhyasi Non-Visitors Details') 
-	#roomid = fields.Many2one(comodel_name='visitor.rooms.roomid')
-
+	roomid =  fields.Many2one(comodel_name='visitor.rooms')
+	
 	@api.model
 	def _compute_batchid(self):
 		return str(datetime.now().strftime("%Y%m%d%H%M%S%f")) 
@@ -188,7 +192,7 @@ class visitor_registration(models.Model):
 class visitor_rooms(models.Model):
 	_name = 'visitor.rooms'
 	_description = 'Visitor Rooms Description'
-	roomid =  fields.Char(string='Room Id', required=True)
+	name = fields.Char(string='Room Id', required=True)
 	roomtype =  fields.Many2one(comodel_name='visitor.room.type',required=True )
 	ac =  fields.Selection(yesnosel,string='Air-Conditioned?', required=True)
 	tag_ids = fields.Many2many(comodel_name='visitor.room.tags', string ='Tags', copy=False)

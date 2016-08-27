@@ -150,11 +150,11 @@
 								context="{'xml_id':'visitor_checkin_act'}"/>
 					</header>-->
 					<header>
-						<button string="Set to Registration" type="object" name="regestration_progressbar" attrs="{'invisible': [('state', '=', 'register')]}"/>
+						<button string="Set to Registration" type="object" name="regestration_progressbar" attrs="{'invisible': [('state', '!=', 'cancel')]}"/>
 						<!--The oe_highlight class gives the button a red color when it is saved.
 						It is usually used to indicate the expected behaviour. -->
-						<button string="Set to Checkin" type="object" name="checkin_progressbar" attrs="{'invisible': [('state','=','checkin')]}"/>
-						<button string="Set to Checkout" type="object" name="checkout_progressbar" attrs="{'invisible': [('state','=','checkout')]}"/>
+						<button string="Set to Checkin" type="object" name="checkin_progressbar" attrs="{'invisible': [('state','!=','register')]}"/>
+						<button string="Set to Checkout" type="object" name="checkout_progressbar" attrs="{'invisible': [('state','!=','checkin')]}"/>
 						<!--This will create the statusbar, thanks to the widget. --> <!--class="oe_highlight"-->
 						<button string="Set to Cancel" type="object" name="cancel_progressbar"  attrs="{'invisible': [('state','=','cancel')]}"/>
 						<field name="state" widget="statusbar"/>
@@ -173,7 +173,11 @@
 								<field name="spot_registration" />
 								<field name="cancelled" attrs="{'invisible': [('state','!=','cancel')]}"  />
 								<field name="cancelation_date" attrs="{'invisible': [('state','!=','cancel')]}" />
-								<!--<field name="roomid" />-->
+								<field name="roomid" attrs="{'invisible': [('state','!=','checkin')]}" />
+								<field name="checkin_date" attrs="{'invisible': [('state','=','register')]}" />
+								<field name="checkin_time" attrs="{'invisible': [('state','=','register')]}" />
+								<field name="checkout_date" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />
+								<field name="checkout_time" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />
 							</group>
 						</group>
 						<label for="abhyasi_visitor"/>
@@ -205,7 +209,7 @@
 			<field name="model">visitor.rooms</field>
 			<field name="arch" type="xml">
 				<tree string="Room Details">
-					<field name="roomid" />
+					<field name="name" />
 					<field name="roomtype" />
 					<field name="ac" />
 					<field name="is_active" />
@@ -221,7 +225,7 @@
 					<sheet>
 						<group col="2" string="Room Details">
 							<group>
-								<field name="roomid" />
+								<field name="name" />
 								<field name="roomtype" />
 							</group>
 							<group>
