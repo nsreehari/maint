@@ -131,8 +131,8 @@
 					<field name="departure_date" />
 					<field name="departure_time" />
 					<field name="spot_registration" />
-					<field name="cancelled" />
-					<field name="cancelation_date" />
+					<!--<field name="cancelled" />
+					<field name="cancelation_date" />-->
 				</tree>
 			</field>
 		</record>
@@ -150,10 +150,20 @@
 								context="{'xml_id':'visitor_checkin_act'}"/>
 					</header>-->
 					<header>
-						<button string="Set to Registration" type="object" name="regestration_progressbar" attrs="{'invisible': [('state', '!=', 'cancel')]}"/>
+						<!--<button string="Set to Registration" 
+								type="object" 
+								name="regestration_progressbar" 
+								context="{'xml_id':'visitor_checkin_act'}"
+								attrs="{'invisible': [('state', '!=', 'cancel')]}" />-->
+						<!--<button string="Set to Registration" type="object" name="check_in" class="oe_highlight" 
+								context="{'xml_id':'visitor_checkin_act'}"/>-->
 						<!--The oe_highlight class gives the button a red color when it is saved.
 						It is usually used to indicate the expected behaviour. -->
-						<button string="Set to Checkin" type="object" name="checkin_progressbar" attrs="{'invisible': [('state','!=','register')]}"/>
+						<button string="Set to Checkin"
+								type="object"
+								name="checkin_progressbar"
+								context="{'xml_id':'visitor_checkin_act'}"
+								attrs="{'invisible': [('state','!=','register')]}"/>
 						<button string="Set to Checkout" type="object" name="checkout_progressbar" attrs="{'invisible': [('state','!=','checkin')]}"/>
 						<!--This will create the statusbar, thanks to the widget. --> <!--class="oe_highlight"-->
 						<button string="Set to Cancel" type="object" name="cancel_progressbar"  attrs="{'invisible': [('state','=','cancel')]}"/>
@@ -163,7 +173,7 @@
 						<group col="2" string="Registration">
 							<group>
 								<field name="batchid" />
-							<field name="record_entry" />
+								<field name="record_entry" />
 								<field name="arrival_date" />
 								<field name="arrival_time" />
 								<field name="departure_date" />
@@ -171,13 +181,13 @@
 							<group>
 								<field name="departure_time" />
 								<field name="spot_registration" />
-								<field name="cancelled" attrs="{'invisible': [('state','!=','cancel')]}"  />
+								<!--<field name="cancelled" attrs="{'invisible': [('state','!=','cancel')]}"  />
 								<field name="cancelation_date" attrs="{'invisible': [('state','!=','cancel')]}" />
 								<field name="roomid" attrs="{'invisible': [('state','!=','checkin')]}" />
 								<field name="checkin_date" attrs="{'invisible': [('state','=','register')]}" />
 								<field name="checkin_time" attrs="{'invisible': [('state','=','register')]}" />
 								<field name="checkout_date" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />
-								<field name="checkout_time" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />
+								<field name="checkout_time" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />-->
 							</group>
 						</group>
 						<label for="abhyasi_visitor"/>
@@ -201,6 +211,75 @@
 			</p>
 			</field>
 		</record>  
+
+
+		<!-- Form view for the visitor_checkin class-->
+		<record model='ir.ui.view' id='visitor_checkin_form'>
+			<field name="name">visitor.checkin.form</field>
+			<field name="model">visitor.checkin</field>
+			<field name="arch" type="xml">
+				<form string="Checkin">
+					<!--The header tag is built to add buttons within. This puts them at the top -->
+					<!--<header>-->
+						<!--The oe_highlight class gives the button a red color when it is saved.
+						It is usually used to indicate the expected behaviour. -->
+						<!--<button string="Checkin" type="object" name="check_in" class="oe_highlight" 
+								context="{'xml_id':'visitor_checkin_act'}"/>
+					</header>-->
+					<header>
+						<button string="Set to Registration" type="object" name="regestration_progressbar" attrs="{'invisible': [('state', '!=', 'cancel')]}"/>
+						<!--The oe_highlight class gives the button a red color when it is saved.
+						It is usually used to indicate the expected behaviour. -->
+						<button string="Checkin" type="object" name="check_in" class="oe_highlight" 
+								context="{'xml_id':'visitor_checkin_act'}"/>
+						<!--<button string="Set to Checkin" type="object" name="checkin_progressbar" attrs="{'invisible': [('state','!=','register')]}"/>-->
+						<button string="Set to Checkout" type="object" name="checkout_progressbar" attrs="{'invisible': [('state','!=','checkin')]}"/>
+						<!--This will create the statusbar, thanks to the widget. --> <!--class="oe_highlight"-->
+						<button string="Set to Cancel" type="object" name="cancel_progressbar"  attrs="{'invisible': [('state','=','cancel')]}"/>
+						<field name="state" widget="statusbar"/>
+					</header>
+					<sheet>
+						<group col="2" string="Registration">
+							<group>
+								<field name="batchid" />
+							<field name="record_entry" />
+								<field name="arrival_date" />
+								<field name="arrival_time" />
+								<field name="departure_date" />
+							</group>
+							<group>
+								<field name="departure_time" />
+								<field name="spot_registration" />
+								<field name="checkin_date" attrs="{'invisible': [('state','=','register')]}" />
+								<field name="checkin_time" attrs="{'invisible': [('state','=','register')]}" />
+								<!--<field name="cancelled" attrs="{'invisible': [('state','!=','cancel')]}"  />
+								<field name="cancelation_date" attrs="{'invisible': [('state','!=','cancel')]}" />
+								<field name="roomid" attrs="{'invisible': [('state','!=','checkin')]}" />
+								<field name="checkout_date" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />
+								<field name="checkout_time" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />-->
+							</group>
+						</group>
+						<label for="abhyasi_visitor"/>
+						<field name="abhyasi_visitor" />
+						<label for="abhyasi_non_visitor"/>
+						<field name="abhyasi_non_visitor" />
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- Action for the visitor_checkin class-->
+		<record model='ir.actions.act_window' id='visitor_checkin_act'>
+			<field name="name">Visitor Checkin</field>
+			<field name="res_model">visitor.checkin</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to create a new registration for a visitor
+			</p><p>
+			</p>
+			</field>
+		</record> 
 
 
 		<!-- Tree view for the visitor.rooms class-->

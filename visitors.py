@@ -126,7 +126,23 @@ class visitor_registration(models.Model):
 	_name = 'visitor.registration'
 	_description = 'Visitor Registrations'
 
-	#This function is triggered when the user clicks on the button 'Set to Registration'
+	#This function is triggered when the user clicks on the button 'Set to Checkin'
+	@api.one
+	def checkin_progressbar(self):
+		self.write({
+		'state': 'checkin'
+		})
+		view_id = self.env.ref('maint.visitor_checkin_form').id
+		return {
+		'name': ('visitor.checkin.form'),
+		'view_type': 'form',
+		'view_mode': 'form',
+		'res_model': 'maint',
+		'view_id': view_id,
+		'type': 'ir.actions.act_window',
+		'target':'new'
+		}
+			#This function is triggered when the user clicks on the button 'Set to Registration'
 	@api.one
 	def regestration_progressbar(self):
 		self.write({
@@ -139,20 +155,51 @@ class visitor_registration(models.Model):
 		self.write({
 		'state': 'cancel'
 		})
-	
-	#This function is triggered when the user clicks on the button 'Set to Checkin'
-	@api.one
-	def checkin_progressbar(self):
-		self.write({
-		'state': 'checkin'
-		})
-	
 	#This function is triggered when the user clicks on the button 'Set to Checkout'
 	@api.one
 	def checkout_progressbar(self):
 		self.write({
 		'state': 'checkout',
 		})
+
+
+	state = fields.Selection([
+			('register', 'Registere'),
+			('checkin', 'Checkin'),
+			('checkout', 'Checkout'),
+			('cancel', 'Cancel'),
+			],default='register')
+	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
+	record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
+	arrival_date =  fields.Date(string='Arrival Date', required=True, default=None)
+	arrival_time =  fields.Selection(timesel, string='Arrival Time', required=True)
+	departure_date =  fields.Date(string='Departure Date',required=True,default=None)
+	departure_time =  fields.Selection(timesel, string='Departure Time', required=True)
+	checkin_date =  fields.Date(string='Checkin Date', default=None)
+	checkin_time =  fields.Selection(timesel, string='Checkin Time')
+	checkout_date =  fields.Date(string='Checkout Date',default=None)
+	checkout_time =  fields.Selection(timesel, string='Checkout Time')
+	spot_registration = fields.Selection(yesnosel, string='Spot Registeration?', required=True)
+	cancelled = fields.Selection(yesnosel, string='Cancelled?', default='No' )
+	cancelation_date =  fields.Date('Cancelation Date')
+	abhyasi_visitor = fields.Many2many(comodel_name='visitor.abhyasi',string='Abhyasi Visitors Details') 
+	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Abhyasi Non-Visitors Details') 
+	roomid =  fields.Many2one(comodel_name='visitor.rooms')
+	
+	@api.model
+	def _compute_batchid(self):
+		return str(datetime.now().strftime("%Y%m%d%H%M%S%f")) 
+	
+	_sql_constraints = [('batchid_uniq', 'unique (batchid)', "ID already exists !")]
+	
+	_constraints = [
+		(_check_dates, "Arrival date should be less than or equal to depaure date", ['arrival_date','departure_date']),
+	]
+
+#	Visitor Registration Class.
+class visitor_checkin(models.Model):
+	_name = 'visitor.checkin'
+	_description = 'Visitor Checkin'
 
 	state = fields.Selection([
 			('register', 'Registere'),
