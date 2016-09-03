@@ -157,7 +157,6 @@
 					<field name="arrival_time" />
 					<field name="departure_date" />
 					<field name="departure_time" />
-					<field name="spot_registration" />
 					<!--<field name="cancelled" />
 					<field name="cancelation_date" />-->
 				</tree>
@@ -212,8 +211,7 @@
                                     <div> <button name="write" type="object" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
 				    <group col="2" string="Cancellation">
 					<field name="batchid" />
-					<field name="cancelation_date" required="1"/>
-					<field name="cancelled" required="1"/>
+					<field name="cancellation_date" required="1"/>
                                     </group>
 					<label for="abhyasi_visitor"/>
 					<field name="abhyasi_visitor" readonly="1" />
@@ -230,46 +228,30 @@
 			<field name="arch" type="xml">
 				<form string="Registration">
 					<!--The header tag is built to add buttons within. This puts them at the top -->
-					<!--<header>-->
-						<!--The oe_highlight class gives the button a red color when it is saved.
-						It is usually used to indicate the expected behaviour. -->
-						<!--<button string="Checkin" type="object" name="check_in" class="oe_highlight" 
-								context="{'xml_id':'visitor_checkin_act'}"/>
-					</header>-->
 					<header>
-						<!--<button string="Set to Registration" 
-								type="object" 
-								name="regestration_progressbar" 
-								context="{'xml_id':'visitor_checkin_act'}"
-								attrs="{'invisible': [('state', '!=', 'cancel')]}" />-->
-						<!--<button string="Set to Registration" type="object" name="check_in" class="oe_highlight" 
-								context="{'xml_id':'visitor_checkin_act'}"/>-->
-						<!--The oe_highlight class gives the button a red color when it is saved.
-						It is usually used to indicate the expected behaviour. -->
-						<button string="Set to Checkin"
-								type="object"
-								name="checkin_progressbar"
-								context="{'xml_id':'visitor_checkin_act'}"
-								attrs="{'invisible': [('state','!=','register')]}"/>
-						<button string="Set to Checkout" type="object" name="checkout_progressbar" attrs="{'invisible': [('state','!=','checkin')]}"/>
-						<!--This will create the statusbar, thanks to the widget. --> <!--class="oe_highlight"-->
-						<button string="Set to Cancel" type="object" name="cancel_progressbar"  attrs="{'invisible': [('state','=','cancel')]}"/>
-						<field name="state" widget="statusbar"/>
+						<field name="status" widget="statusbar"/>
 					</header>
 					<sheet>
-                                            <button name="button_checkin" string="Check-in" type="object" />
-                                            <button name="button_checkout" string="Check-out" type="object" />
+                                            <button name="button_cancel" string="Cancel Registration" type="object" attrs="{'invisible': [('status','!=','registered')]}" />
+                                            <button name="button_checkin" string="Check-In" type="object" attrs="{'invisible': [('status','!=','registered')]}" />
+
+
+                                            <button name="button_checkout" string="Check-Out" type="object" attrs="{'invisible': [('status','!=','checkedin')]}" />
+                                            <button name="button_uncheckin" string="Undo Check-In" type="object" attrs="{'invisible': [('status','!=','checkedin')]}" confirm="Are you sure you want to undo this check-in?"  />
+
+                                            <button name="button_uncheckout" string="Undo Check-Out" type="object" attrs="{'invisible': [('status','!=','checkedout')]}"   confirm="Are you sure you want to undo this check-out?"  />
+
 						<group col="2" string="Registration">
 							<group>
 								<field name="batchid" />
 								<field name="record_entry" />
 								<field name="arrival_date" />
-								<field name="arrival_time" />
+								<field name="arrival_time" widget="float_time" />
 								<field name="departure_date" />
+								<field name="status" />
 							</group>
 							<group>
-								<field name="departure_time" />
-								<field name="spot_registration" />
+								<field name="departure_time"  widget="float_time" />
 								<!--<field name="cancelled" attrs="{'invisible': [('state','!=','cancel')]}"  />
 								<field name="cancelation_date" attrs="{'invisible': [('state','!=','cancel')]}" />
 								<field name="roomid" attrs="{'invisible': [('state','!=','checkin')]}" />
