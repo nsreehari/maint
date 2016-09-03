@@ -151,7 +151,7 @@
 			<field name="model">visitor.registration</field>
 			<field name="arch" type="xml">
 				<tree string="Roles">
-					<field name="batchid" />
+					<field name="batchid"  readonly="1" />
 					<field name="record_entry" />
 					<field name="arrival_date" />
 					<field name="arrival_time" />
@@ -168,11 +168,14 @@
 			<field name="arch" type="xml">
                             <form string="Check-In">
                                 <sheet>
-                                    <div> <button name="write" type="object" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
+                                    <div> <button name="write" type="object" class="oe_highlight" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
 				    <group col="2" string="Check-In">
-					<field name="batchid" />
+					<field name="batchid"  readonly="1" />
 					<field name="checkin_date" required="1"/>
 					<field name="checkin_time" required="1"/>
+					<field name="departure_date" required="1"/>
+					<field name="departure_time" required="1"/>
+					<field name="roomid" required="1"/>
                                     </group>
 					<label for="abhyasi_visitor"/>
 					<field name="abhyasi_visitor" />
@@ -188,9 +191,9 @@
 			<field name="arch" type="xml">
                             <form string="Check-Out">
                                 <sheet>
-                                    <div> <button name="write" type="object" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
+                                    <div> <button name="write" type="object" class="oe_highlight" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
 				    <group col="2" string="Check-Out">
-					<field name="batchid" />
+					<field name="batchid"  readonly="1" />
 					<field name="checkout_date" required="1"/>
 					<field name="checkout_time" required="1"/>
                                     </group>
@@ -208,9 +211,9 @@
 			<field name="arch" type="xml">
                             <form string="Cancellation">
                                 <sheet>
-                                    <div> <button name="write" type="object" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
+                                    <div> <button name="write" type="object" class="oe_highlight" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
 				    <group col="2" string="Cancellation">
-					<field name="batchid" />
+					<field name="batchid"  readonly="1" />
 					<field name="cancellation_date" required="1"/>
                                     </group>
 					<label for="abhyasi_visitor"/>
@@ -229,36 +232,37 @@
 				<form string="Registration">
 					<!--The header tag is built to add buttons within. This puts them at the top -->
 					<header>
-						<field name="status" widget="statusbar"/>
-					</header>
-					<sheet>
+                                            <button name="button_checkin" string="Check-In" type="object" attrs="{'invisible': [('status','!=','registered')]}" class="oe_highlight" />
                                             <button name="button_cancel" string="Cancel Registration" type="object" attrs="{'invisible': [('status','!=','registered')]}" />
-                                            <button name="button_checkin" string="Check-In" type="object" attrs="{'invisible': [('status','!=','registered')]}" />
 
 
-                                            <button name="button_checkout" string="Check-Out" type="object" attrs="{'invisible': [('status','!=','checkedin')]}" />
+                                            <button name="button_checkout" string="Check-Out" type="object" attrs="{'invisible': [('status','!=','checkedin')]}" class="oe_highlight" />
                                             <button name="button_uncheckin" string="Undo Check-In" type="object" attrs="{'invisible': [('status','!=','checkedin')]}" confirm="Are you sure you want to undo this check-in?"  />
 
                                             <button name="button_uncheckout" string="Undo Check-Out" type="object" attrs="{'invisible': [('status','!=','checkedout')]}"   confirm="Are you sure you want to undo this check-out?"  />
 
+
+					    <field name="status" widget="statusbar" statusbar_visible="new,registered,checkedin,checkedout"/>
+					</header>
+					<sheet>
+
+						<group>
+							<field name="batchid" readonly="1" />
+							<field name="record_entry" />
+                                                </group>
 						<group col="2" string="Registration">
 							<group>
-								<field name="batchid" />
-								<field name="record_entry" />
-								<field name="arrival_date" />
-								<field name="arrival_time" widget="float_time" />
-								<field name="departure_date" />
-								<field name="status" />
+							    <field name="arrival_date" />
+							    <field name="arrival_time" widget="float_time" class="oe_inline" />
+					                    <field name="checkin_date" readonly="1"/>
+					                    <field name="checkin_time"  widget="float_time" readonly="1"/>
+					                    <field name="roomid" readonly="1"/>
 							</group>
 							<group>
-								<field name="departure_time"  widget="float_time" />
-								<!--<field name="cancelled" attrs="{'invisible': [('state','!=','cancel')]}"  />
-								<field name="cancelation_date" attrs="{'invisible': [('state','!=','cancel')]}" />
-								<field name="roomid" attrs="{'invisible': [('state','!=','checkin')]}" />
-								<field name="checkin_date" attrs="{'invisible': [('state','=','register')]}" />
-								<field name="checkin_time" attrs="{'invisible': [('state','=','register')]}" />
-								<field name="checkout_date" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />
-								<field name="checkout_time" attrs="{'invisible': ['|',('state','=','register'),('state','=','checkin')]}" />-->
+							    <field name="departure_date" />
+							    <field name="departure_time"  widget="float_time" />
+					                    <field name="checkout_date" readonly="1"/>
+					                    <field name="checkout_time"  widget="float_time" readonly="1"/>
 							</group>
 						</group>
 						<label for="abhyasi_visitor"/>

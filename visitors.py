@@ -122,6 +122,10 @@ class visitor_registration(models.Model):
         @api.depends('arrival_date', 'checkin_date', 'checkout_date', 'cancellation_date')
         def _compute_state(self):
             for r in self:
+                if isinstance(r.id, models.NewId):
+                    r.status = 'new'
+                    return
+
                 if r.cancellation_date:
                     r.status = 'cancelled'
                 elif r.checkout_date:
@@ -132,11 +136,14 @@ class visitor_registration(models.Model):
                     r.status = 'registered'
 
         # Date Validation.
-        @api.constrains('arrival_date','departure_date')
+        @api.constrains('arrival_date','departure_date', 'checkin_date', 'checkout_date')
         def _check_dates(self):
             for r in self:
 	        if r.arrival_date > r.departure_date:
 	    	    raise ValidationError("Departure Date should be later than Arrival Date")
+                if r.checkin_date is not None and r.checkin_date > r.departure_date:
+	    	    raise ValidationError("Departure Date should be later than Checkin Date")
+
 
         # Time validation.
         @api.constrains('arrival_time')
@@ -204,7 +211,7 @@ class visitor_registration(models.Model):
 		'res_model':'visitor.registration',
 		'view_id':view_id,
 		'type':'ir.actions.act_window',
-		'target':'modify',
+		'target':'new',
 		'res_id':self.id,
 		#'context':context,
             }
@@ -213,41 +220,15 @@ class visitor_registration(models.Model):
         def button_uncheckin(self):
 
             self.checkin_date = None
-            self.checkin_time = 0
+            self.checkin_time = None
+            self.roomid = None
 
-            view_id = self.env.ref('maint.visitor_registration_form').id
-            form_name = 'Registration Form'
-            return {
-		'name':form_name,
-		'view_type':'form',
-		'view_mode':'form',
-		'res_model':'visitor.registration',
-		'view_id':view_id,
-		'type':'ir.actions.act_window',
-		'target':'self',
-		'res_id':self.id,
-		#'context':context,
-            }
 
         @api.multi
         def button_uncheckout(self):
 
             self.checkout_date = None
-            self.checkout_time = 0
-
-            view_id = self.env.ref('maint.visitor_registration_form').id
-            form_name = 'Registration Form'
-            return {
-		'name':form_name,
-		'view_type':'form',
-		'view_mode':'form',
-		'res_model':'visitor.registration',
-		'view_id':view_id,
-		'type':'ir.actions.act_window',
-		'target':'self',
-		'res_id':self.id,
-		#'context':context,
-            }
+            self.checkout_time = None
 
 
 
@@ -255,10 +236,11 @@ class visitor_registration(models.Model):
 
 
 	status = fields.Selection([
-			('cancelled', 'Unregistered'),
+                        ('new', 'Draft'),
 			('registered', 'Registered'),
 			('checkedin', 'Checked in'),
 			('checkedout', 'Checked out'),
+			('cancelled', 'Cancelled'),
 			], compute='_compute_state', store=True)
 
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
@@ -271,12 +253,11 @@ class visitor_registration(models.Model):
 	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Children / Non-abhyasi Details') 
 
 	checkin_date =  fields.Date(string='Checkin Date', default=None)
-        checkin_time = fields.Float(string='Checkin Time', default=0 )
+        checkin_time = fields.Float(string='Checkin Time', default=None )
+	roomid =  fields.Many2one(comodel_name='visitor.rooms', default=None)
 	checkout_date =  fields.Date(string='Checkout Date',default=None)
-        checkout_time = fields.Float(string='Checkout Time', default=0)
-	cancelled = fields.Selection(yesnosel, string='Cancelled?', default='No' )
-	cancellation_date =  fields.Date('Cancelation Date')
-	roomid =  fields.Many2one(comodel_name='visitor.rooms')
+        checkout_time = fields.Float(string='Checkout Time', default=None)
+	cancellation_date =  fields.Date('Cancelation Date', default=None)
 	
 	@api.model
 	def _compute_batchid(self):
@@ -298,5 +279,5 @@ class visitor_rooms(models.Model):
 	is_active =  fields.Selection(yesnosel, string='Room in Operation?', required=True)
 	notes =  fields.Text('Room Description')
 	_sql_constraints = [
-		('roomid_uniq', 'unique (roomid)', "Room ID already exists !")
+		('roomid_uniq', 'unique (name)', "Room ID already exists !")
 	]
