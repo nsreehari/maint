@@ -6,18 +6,6 @@ from openerp import models, fields, api, exceptions
 from datetime import datetime
 
 
-
-# Birth year validation.
-@api.one
-@api.constrains('birthyear')
-def _check_birthyear(self):
-	if self.birthyear < 1900:
-		raise ValidationError("BirthYear cannot be less than 1900")		
-	todayyear = datetime.now().year
-	if self.birthyear > todayyear:
-		raise ValidationError("BirthYear cannot be greather than %d" % todayyear )		
-
-
 # Some Selection List.
 yesnosel = [('Yes', 'Yes'), ('No', 'No')]
 gendersel = [('male','Male'), ('female','Female')]
@@ -47,7 +35,6 @@ class visitor_room_type(models.Model):
 # Class for visitor abhyasi information. 
 class visitor_abhyasi(models.Model):
 	_name = 'visitor.abhyasi'
-	_inherit = 'mail.thread'
 	_description = 'Abhyasi Detail'
 	
 	@api.depends('country','overseas')
@@ -58,7 +45,16 @@ class visitor_abhyasi(models.Model):
 		else:
 			self.overseas = "False"
 	
-	@api.one
+        # Birth year validation.
+        @api.constrains('birthyear')
+        def _check_birthyear(self):
+	    if self.birthyear < 1900:
+                raise exceptions.ValidationError("BirthYear cannot be less than 1900")		
+	    todayyear = datetime.now().year
+	    if self.birthyear > todayyear:
+		raise exceptions.ValidationError("BirthYear cannot be greather than %d" % todayyear )		
+
+
 	@api.depends('birthyear')
 	def _compute_age(self):
 		self.age = datetime.now().year - self.birthyear
@@ -79,17 +75,23 @@ class visitor_abhyasi(models.Model):
 		('abhyasi_id_uniq', 'unique (abhyasi_id)', "abhyasi_id already exists !")
 	]
 
-	_constraints = [
-		(_check_birthyear, "Invalid Birth Year", ['birthyear']),
-	]
 
 
 # Class for Non Abhyasi Information. 
 class visitor_nonabhyasi(models.Model):
 	_name = 'visitor.nonabhyasi'
-	_description = 'Children or People without Abhyasi ID' 
+	_description = 'Children or Other Guests' 
 	
-	@api.one
+        # Birth year validation.
+        @api.constrains('birthyear')
+        def _check_birthyear(self):
+	    if self.birthyear < 1900:
+                raise exceptions.ValidationError("BirthYear cannot be less than 1900")		
+	    todayyear = datetime.now().year
+	    if self.birthyear > todayyear:
+		raise exceptions.ValidationError("BirthYear cannot be greather than %d" % todayyear )		
+
+
 	@api.depends('birthyear')
 	def _compute_age(self):
 		self.age = datetime.now().year - self.birthyear
@@ -100,9 +102,6 @@ class visitor_nonabhyasi(models.Model):
 	child =  fields.Char(compute="_compute_child", string = 'Child?')
 	age = fields.Char(compute="_compute_age", string = 'Age')
 	
-	_constraints = [
-		(_check_birthyear, "Invalid Birth Year", ['birthyear']),
-	]
 
 	@api.depends('birthyear','child')
 	def _compute_child(self):
@@ -154,14 +153,14 @@ class visitor_registration(models.Model):
 
         # Time validation.
         @api.constrains('checkin_time')
-        def _check_time(self):
+        def _checkin_time(self):
             for r in self:
 	        if r.checkin_time >=24 or r.checkin_time < 0 :
                     raise exceptions.ValidationError("Please enter TIME in the range of 00:00 to 23:59")
 
         # Time validation.
         @api.constrains('checkout_time')
-        def _check_time(self):
+        def _checkout_time(self):
             for r in self:
 	        if r.checkout_time >=24 or r.checkout_time < 0 :
                     raise exceptions.ValidationError("Please enter TIME in the range of 00:00 to 23:59")
@@ -231,10 +230,6 @@ class visitor_registration(models.Model):
             self.checkout_time = None
 
 
-
-
-
-
 	status = fields.Selection([
                         ('new', 'Draft'),
 			('registered', 'Registered'),
@@ -246,18 +241,18 @@ class visitor_registration(models.Model):
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
 	record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
 	arrival_date =  fields.Date(string='Arrival Date', required=True)
-        arrival_time = fields.Float(string='Start Time', required=True)
+        arrival_time = fields.Float(string='Arrival Time', required=True)
 	departure_date =  fields.Date(string='Departure Date',required=True,default=None)
-        departure_time = fields.Float(string='Departure Time', required=True)
-	abhyasi_visitor = fields.Many2many(comodel_name='visitor.abhyasi',string='Abhyasi Visitors Details') 
-	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Children / Non-abhyasi Details') 
+        departure_time = fields.Float(string='Departure Time', required=True, default=None)
+	abhyasi_visitor = fields.Many2many(comodel_name='visitor.abhyasi',string='Visiting Abhyasi Details') 
+	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Children and Other Guests') 
 
 	checkin_date =  fields.Date(string='Checkin Date', default=None)
         checkin_time = fields.Float(string='Checkin Time', default=None )
 	roomid =  fields.Many2one(comodel_name='visitor.rooms', default=None)
 	checkout_date =  fields.Date(string='Checkout Date',default=None)
         checkout_time = fields.Float(string='Checkout Time', default=None)
-	cancellation_date =  fields.Date('Cancelation Date', default=None)
+	cancellation_date =  fields.Date('Cancellation Date', default=None)
 	
 	@api.model
 	def _compute_batchid(self):
