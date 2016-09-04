@@ -28,3 +28,17 @@ http://odoo-new-api-guide-line.readthedocs.io/en/latest/decorator.html#api-model
 
 
 >>>>>>> origin/master
+
+
+1. auto compute -- batchid appropriately
+2. Enhance Fonts appropriately
+3. View for Room and Date List
+4. View for Date and Occupants List
+5. View for Date and Planned Occupants List
+6. View for Date and Estimated guests List
+7. Search by Abhyasi number in Registration
+8. Search by Date in Registration
+9. Search by Batchid in Registrations
+DONE 10. Get Date/Time side-by-side
+11. Auto-Calculate Expired entries
+12. Get date/time formats properly

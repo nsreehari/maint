@@ -165,6 +165,13 @@ class visitor_registration(models.Model):
 	        if r.checkout_time >=24 or r.checkout_time < 0 :
                     raise exceptions.ValidationError("Please enter TIME in the range of 00:00 to 23:59")
 
+        # Time validation.
+        @api.constrains('departure_time')
+        def _departure_time(self):
+            for r in self:
+	        if r.departure_time >=24 or r.departure_time < 0 :
+                    raise exceptions.ValidationError("Please enter TIME in the range of 00:00 to 23:59")
+
 
         @api.multi
         def button_checkin(self):
@@ -241,9 +248,9 @@ class visitor_registration(models.Model):
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
 	record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
 	arrival_date =  fields.Date(string='Arrival Date', required=True)
-        arrival_time = fields.Float(string='Arrival Time', required=True)
+        arrival_time = fields.Float(string='Arrival Time', required=True, default=-1)
 	departure_date =  fields.Date(string='Departure Date',required=True,default=None)
-        departure_time = fields.Float(string='Departure Time', required=True, default=None)
+        departure_time = fields.Float(string='Departure Time', required=True, default=-1)
 	abhyasi_visitor = fields.Many2many(comodel_name='visitor.abhyasi',string='Visiting Abhyasi Details') 
 	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Children and Other Guests') 
 

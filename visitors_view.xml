@@ -135,17 +135,32 @@
                             <form string="Check-In">
                                 <sheet>
                                     <div> <button name="write" type="object" class="oe_highlight" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
+                                    <group>
+				    <field name="batchid"  readonly="1" />
+                                    </group>
 				    <group col="2" string="Check-In">
-					<field name="batchid"  readonly="1" />
-					<field name="roomid" required="1"/>
                                         <group>
-					<field name="checkin_date" required="1"/>
-					<field name="checkin_time"  widget="float_time" required="1" class="oe_inline"/>
+                                            <label for="checkin_date" string="Actual Arrival Date"  >
+                                            </label>
+                                            <div> 
+						    <field name="checkin_date" class="oe_inline" required="1"/>
+                                                    <label for="checkin_time" string="Time"  />
+						    <field name="checkin_time" widget="float_time" class="oe_inline" required="1"/>
+                                            </div>
+                                        </group>
                                         <group>
+                                            <label for="departure_date" string="Planned Deparure Date/Time"  >
+                                            </label>
+                                            <div >
+						    <field name="departure_date" class="oe_inline" required="1"/>
+						    <field name="departure_time" widget="float_time" class="oe_inline" required="1"/>
+                                            </div>
+
                                         </group>
-					<field name="departure_date" required="1"/>
-					<field name="departure_time"  widget="float_time" required="1" class="oe_inline"/>
-                                        </group>
+                                        <h1>
+                                            <label for="roomid" string="Room Allotted"  />
+					    <field name="roomid" required="1"/>
+                                        </h1>
                                     </group>
 					<label for="abhyasi_visitor"/>
 					<field name="abhyasi_visitor" />
@@ -261,7 +276,7 @@
 						<group col="2" string="Room Allotted"
                                                          attrs="{'invisible': [('status','in',['registered', 'cancelled', 'new'])]}" >
 							<group>
-					                    <field name="roomid" readonly="1"/>
+					                    <field name="roomid" string="Room Allotted" readonly="1"/>
 							</group>
 						</group>
 						<group col="2" string="Cancelled"
