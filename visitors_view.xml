@@ -125,6 +125,9 @@
 					<field name="arrival_time"  widget="float_time" />
 					<field name="departure_date" />
 					<field name="departure_time"  widget="float_time" />
+							<field name="guest_count" />
+							<field name="abhyasi_count" />
+							<field name="children_count" />
 				</tree>
 			</field>
 		</record>

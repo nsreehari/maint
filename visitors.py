@@ -143,6 +143,11 @@ class visitor_registration(models.Model):
                 r.children_count = len(r.visiting_children)
                 r.guest_count = r.abhyasi_count + r.children_count
 
+        @api.depends('batchid', 'record_entry')
+        def _compute_name(self):
+            for r in self:
+                r.name = "%s %s" % (r.record_entry, r.batchid)
+
 
 
         # Update status based on the values of arrival, check-in, check-out, cancellation, etc.
@@ -162,14 +167,20 @@ class visitor_registration(models.Model):
                 else:
                     r.status = 'registered'
 
+        @api.constrains('abhyasi_count')
+        def _check_abhyasi_count(self):
+            for r in self:
+                if r.abhyasi_count < 1:
+                    raise exceptions.ValidationError("Please add atleast one visiting abhyasi")
+
         # Date Validation.
         @api.constrains('arrival_date','departure_date', 'checkin_date', 'checkout_date')
         def _check_dates(self):
             for r in self:
 	        if r.arrival_date > r.departure_date:
-	    	    raise ValidationError("Departure Date should be later than Arrival Date")
+                    raise exceptions.ValidationError("Departure Date should be later than Arrival Date")
                 if r.checkin_date is not None and r.checkin_date > r.departure_date:
-	    	    raise ValidationError("Departure Date should be later than Checkin Date")
+                    raise exceptions.ValidationError("Departure Date should be later than Checkin Date")
 
 
         # Time validation.
@@ -271,6 +282,7 @@ class visitor_registration(models.Model):
         abhyasi_count = fields.Integer(string='Abhyasi Count', compute='_compute_counts', store=True, multi='_counts')
         children_count = fields.Integer(string='Children Count', compute='_compute_counts', store=True, multi='_counts')
 
+        name = fields.Char(string='Registration Id', compute="_compute_name")
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
 	record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
 	arrival_date =  fields.Date(string='Arrival Date', required=True)
