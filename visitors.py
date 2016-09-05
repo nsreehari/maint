@@ -3,7 +3,8 @@
 
 
 from openerp import models, fields, api, exceptions
-from datetime import datetime
+from datetime import datetime, timedelta
+from copy import copy
 
 
 # Some Selection List.
@@ -123,11 +124,17 @@ class visitor_datewise(models.Model):
     _name = 'visitor.datewise'
     _description = 'Visitor Date-wise Occupancy List'
 
+    display_name = fields.Char(compute='_compute_display_name')
+
+    @api.one
+    @api.depends('date')
+    def _compute_display_name(self):
+        self.display_name = "%s" % self.date
+
     date = fields.Date(string='Date', required=True)
-    time = fields.Float(string='Time', required=True)
-    roomid = fields.Many2one(comodel_name='visitor.rooms', default=None)
-    status = fields.Selection(statussel, required=True)
-    batchid = fields.Many2one(comodel_name='visitor.registration', required=True)
+    registrationid = fields.Many2one(comodel_name='visitor.registration', required=True)
+
+
 
 # Visitor Registration Class.
 class visitor_registration(models.Model):
@@ -151,12 +158,9 @@ class visitor_registration(models.Model):
 
 
         # Update status based on the values of arrival, check-in, check-out, cancellation, etc.
-        @api.depends('arrival_date', 'checkin_date', 'checkout_date', 'cancellation_date')
+        @api.depends('checkin_date', 'checkout_date', 'cancellation_date', 'arrival_date')
         def _compute_state(self):
             for r in self:
-                if isinstance(r.id, models.NewId):
-                    r.status = 'new'
-                    return
 
                 if r.cancellation_date:
                     r.status = 'cancelled'
@@ -164,8 +168,63 @@ class visitor_registration(models.Model):
                     r.status = 'checkedout'
                 elif r.checkin_date:
                     r.status = 'checkedin'
+                elif isinstance(r.id, models.NewId):
+                    r.status = 'new'
                 else:
                     r.status = 'registered'
+
+
+
+    
+        @api.multi
+        def create(self, vals):
+            res = super(visitor_registration, self).create(vals)
+            self.button_refresh()
+            return res
+ 
+        @api.multi
+        def write(self, vals):
+            res = super(visitor_registration, self).write(vals)
+            self.button_refresh()
+            return res
+
+
+        
+        @api.multi
+        def button_refresh(self):
+                r = self
+
+                fromdate = fields.Datetime.from_string(r.arrival_date)
+                todate = fields.Datetime.from_string(r.departure_date)
+
+                if r.checkout_date:
+                    todate = fields.Datetime.from_string(r.checkout_date)
+                if r.checkin_date:
+                    fromdate = fields.Datetime.from_string(r.checkin_date)
+
+                to_remove = [ fields.Datetime.from_string(dw.date) for dw in r.datewise ]
+                to_add = []
+
+                xdate = fromdate
+                while xdate <= todate:
+                    if xdate in to_remove:
+                        to_remove.remove(xdate)
+                    else:
+                        to_add.append(xdate)
+
+                    xdate += timedelta(days=1)
+
+                # to_remove 
+                if to_remove:
+                    r.datewise.filtered(lambda rec: fields.Datetime.from_string(rec.date) in to_remove).unlink()
+
+                # to_add
+                for xdate in to_add:
+                    r.datewise.create({'date':xdate, 'registrationid':r.id})
+
+
+                
+
 
         @api.constrains('abhyasi_count')
         def _check_abhyasi_count(self):
@@ -212,10 +271,7 @@ class visitor_registration(models.Model):
                     raise exceptions.ValidationError("Please enter TIME in the range of 00:00 to 23:59")
 
 
-        @api.multi
-        def button_checkin(self):
-            view_id = self.env.ref('maint.visitor_registration_formcheckin').id
-            form_name = 'Check-In Form'
+        def retform(self, form_name, view_id):
             return {
 		'name':form_name,
 		'view_type':'form',
@@ -227,39 +283,25 @@ class visitor_registration(models.Model):
 		'res_id':self.id,
 		#'context':context,
             }
+
+        @api.multi
+        def button_checkin(self):
+            view_id = self.env.ref('maint.visitor_registration_formcheckin').id
+            form_name = 'Check-In Form'
+            return self.retform(form_name, view_id)
 
 
         @api.multi
         def button_checkout(self):
             view_id = self.env.ref('maint.visitor_registration_formcheckout').id
             form_name = 'Check-Out Form'
-            return {
-		'name':form_name,
-		'view_type':'form',
-		'view_mode':'form',
-		'res_model':'visitor.registration',
-		'view_id':view_id,
-		'type':'ir.actions.act_window',
-		'target':'new',
-		'res_id':self.id,
-		#'context':context,
-            }
+            return self.retform(form_name, view_id)
 
         @api.multi
         def button_cancel(self):
             view_id = self.env.ref('maint.visitor_registration_formcancel').id
             form_name = 'Cancellation Form'
-            return {
-		'name':form_name,
-		'view_type':'form',
-		'view_mode':'form',
-		'res_model':'visitor.registration',
-		'view_id':view_id,
-		'type':'ir.actions.act_window',
-		'target':'new',
-		'res_id':self.id,
-		#'context':context,
-            }
+            return self.retform(form_name, view_id)
 
         @api.multi
         def button_uncheckin(self):
@@ -298,6 +340,7 @@ class visitor_registration(models.Model):
 	checkout_date =  fields.Date(string='Checkout Date',default=None)
         checkout_time = fields.Float(string='Checkout Time', default=None)
 	cancellation_date =  fields.Date('Cancellation Date', default=None)
+	datewise = fields.One2many('visitor.datewise', 'registrationid', string='Date-wise Line Items') 
 	
 	@api.model
 	def _compute_batchid(self):

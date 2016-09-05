@@ -3,6 +3,30 @@
 	<data>
 
 
+
+		<!-- Tree view for the Visitor datewise class-->
+		<record model='ir.ui.view' id='visitor_datewise_tree'>
+			<field name="name">visitor.datewise.tree</field>
+			<field name="model">visitor.datewise</field>
+			<field name="arch" type="xml">
+				<tree string="datewises" >
+					<field name="date" />
+					<field name="registrationid" />
+				</tree>
+			</field>
+		</record>
+		<!-- Action for the datewise class-->
+		<record model='ir.actions.act_window' id='visitor_datewise_act'>
+			<field name="name">datewise</field>
+			<field name="res_model">visitor.datewise</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+			<p>
+			</p>
+			</field>
+		</record>
+
 		<!-- Tree view for the Visitor Abhyasi class-->
 		<record model='ir.ui.view' id='visitor_abhyasi_tree'>
 			<field name="name">visitor.abhyasi.tree</field>
@@ -291,6 +315,8 @@
 					                    <field name="cancellation_date" readonly="1"/>
 							</group>
 						</group>
+					<label for="datewise" string="Stay Dates"/>
+					<field name="datewise" widget="many2many_tags" />
 						<label for="visiting_abhyasis"/>
 						<field name="visiting_abhyasis" />
 						<label for="visiting_children"/>
@@ -373,6 +399,7 @@
 		<menuitem name="Visitor" parent="visitor_root1" id="visitor_root"  sequence="150"/>
 		<menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
 		<menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
+		<menuitem action="visitor_datewise_act" parent="visitor_root" id="visitor_datewise_menu"/>
 		<menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>  
 		<menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
 
