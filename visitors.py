@@ -9,7 +9,13 @@ from datetime import datetime
 # Some Selection List.
 yesnosel = [('Yes', 'Yes'), ('No', 'No')]
 gendersel = [('male','Male'), ('female','Female')]
-
+statussel = [
+        ('new', 'Draft'),
+	('registered', 'Registered'),
+	('checkedin', 'Checked in'),
+	('checkedout', 'Checked out'),
+	('cancelled', 'Cancelled'),
+]
 
 # Class for the visitor room tag. Eg: AC, Accessibility Etc..
 class visitor_room_tags(models.Model):
@@ -112,10 +118,32 @@ class visitor_nonabhyasi(models.Model):
 			self.child = "False"
 
 
+# Date-wise Guest Occupancy list -- auto-generated DB
+class visitor_datewise(models.Model):
+    _name = 'visitor.datewise'
+    _description = 'Visitor Date-wise Occupancy List'
+
+    date = fields.Date(string='Date', required=True)
+    time = fields.Float(string='Time', required=True)
+    roomid = fields.Many2one(comodel_name='visitor.rooms', default=None)
+    status = fields.Selection(statussel, required=True)
+    batchid = fields.Many2one(comodel_name='visitor.registration', required=True)
+
 # Visitor Registration Class.
 class visitor_registration(models.Model):
 	_name = 'visitor.registration'
-	_description = 'Visitor Registrations'
+	_description = 'Visitor Registration'
+
+
+        # compute the count of abhyasis and non-abhyasis
+        @api.depends('visiting_abhyasis', 'visiting_children')
+        def _compute_counts(self):
+            for r in self:
+                r.abhyasi_count = len(r.visiting_abhyasis)
+                r.children_count = len(r.visiting_children)
+                r.guest_count = r.abhyasi_count + r.children_count
+
+
 
         # Update status based on the values of arrival, check-in, check-out, cancellation, etc.
         @api.depends('arrival_date', 'checkin_date', 'checkout_date', 'cancellation_date')
@@ -237,13 +265,11 @@ class visitor_registration(models.Model):
             self.checkout_time = None
 
 
-	status = fields.Selection([
-                        ('new', 'Draft'),
-			('registered', 'Registered'),
-			('checkedin', 'Checked in'),
-			('checkedout', 'Checked out'),
-			('cancelled', 'Cancelled'),
-			], compute='_compute_state', store=True)
+	status = fields.Selection(statussel, compute='_compute_state', store=True)
+
+        guest_count = fields.Integer(string='Guest Count', compute='_compute_counts', store=True, multi='_counts')
+        abhyasi_count = fields.Integer(string='Abhyasi Count', compute='_compute_counts', store=True, multi='_counts')
+        children_count = fields.Integer(string='Children Count', compute='_compute_counts', store=True, multi='_counts')
 
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
 	record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
@@ -251,8 +277,8 @@ class visitor_registration(models.Model):
         arrival_time = fields.Float(string='Arrival Time', required=True, default=-1)
 	departure_date =  fields.Date(string='Departure Date',required=True,default=None)
         departure_time = fields.Float(string='Departure Time', required=True, default=-1)
-	abhyasi_visitor = fields.Many2many(comodel_name='visitor.abhyasi',string='Visiting Abhyasi Details') 
-	abhyasi_non_visitor = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Children and Other Guests') 
+	visiting_abhyasis = fields.Many2many(comodel_name='visitor.abhyasi',string='Visiting Abhyasi Details') 
+	visiting_children = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Children and Other Guests') 
 
 	checkin_date =  fields.Date(string='Checkin Date', default=None)
         checkin_time = fields.Float(string='Checkin Time', default=None )

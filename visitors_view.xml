@@ -162,10 +162,10 @@
 					    <field name="roomid" required="1"/>
                                         </h1>
                                     </group>
-					<label for="abhyasi_visitor"/>
-					<field name="abhyasi_visitor" />
-					<label for="abhyasi_non_visitor"/>
-					<field name="abhyasi_non_visitor" />
+					<label for="visiting_abhyasis"/>
+					<field name="visiting_abhyasis" />
+					<label for="visiting_children"/>
+					<field name="visiting_children" />
                                 </sheet>
 			    </form>
 			</field>
@@ -182,10 +182,10 @@
 					<field name="checkout_date" required="1"/>
 					<field name="checkout_time"  widget="float_time" required="1"/>
                                     </group>
-					<label for="abhyasi_visitor"/>
-					<field name="abhyasi_visitor" readonly="1" />
-					<label for="abhyasi_non_visitor"/>
-					<field name="abhyasi_non_visitor" readonly="1" />
+					<label for="visiting_abhyasis"/>
+					<field name="visiting_abhyasis" readonly="1" />
+					<label for="visiting_children"/>
+					<field name="visiting_children" readonly="1" />
                                 </sheet>
 			    </form>
 			</field>
@@ -201,10 +201,10 @@
 					<field name="batchid"  readonly="1" />
 					<field name="cancellation_date" required="1"/>
                                     </group>
-					<label for="abhyasi_visitor"/>
-					<field name="abhyasi_visitor" readonly="1" />
-					<label for="abhyasi_non_visitor"/>
-					<field name="abhyasi_non_visitor" readonly="1" />
+					<label for="visiting_abhyasis"/>
+					<field name="visiting_abhyasis" readonly="1" />
+					<label for="visiting_children"/>
+					<field name="visiting_children" readonly="1" />
                                 </sheet>
 			    </form>
 			</field>
@@ -234,6 +234,9 @@
 						<group>
 							<field name="batchid" readonly="1" />
 							<field name="record_entry" />
+							<field name="guest_count" />
+							<field name="abhyasi_count" />
+							<field name="children_count" />
                                                 </group>
                                                 <group col="2">
                                                   <group>
@@ -285,10 +288,10 @@
 					                    <field name="cancellation_date" readonly="1"/>
 							</group>
 						</group>
-						<label for="abhyasi_visitor"/>
-						<field name="abhyasi_visitor" />
-						<label for="abhyasi_non_visitor"/>
-						<field name="abhyasi_non_visitor" />
+						<label for="visiting_abhyasis"/>
+						<field name="visiting_abhyasis" />
+						<label for="visiting_children"/>
+						<field name="visiting_children" />
 					</sheet>
 				</form>
 			</field>
