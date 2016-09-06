@@ -12,6 +12,11 @@
 				<tree string="datewises" >
 					<field name="date" />
 					<field name="registrationid" />
+					<field name="abhyasi_count" />
+					<field name="children_count" />
+					<field name="guest_count" />
+							<field name="abhyasis" />
+							<field name="children" />
 				</tree>
 			</field>
 		</record>
@@ -152,6 +157,8 @@
 							<field name="guest_count" />
 							<field name="abhyasi_count" />
 							<field name="children_count" />
+							<field name="abhyasis" />
+							<field name="children" />
 				</tree>
 			</field>
 		</record>
@@ -264,6 +271,8 @@
 							<field name="guest_count" />
 							<field name="abhyasi_count" />
 							<field name="children_count" />
+							<field name="abhyasis" />
+							<field name="children" />
                                                 </group>
                                                 <group col="2">
                                                   <group>

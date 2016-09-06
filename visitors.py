@@ -46,25 +46,28 @@ class visitor_abhyasi(models.Model):
 	
 	@api.depends('country','overseas')
 	def _compute_overseas(self):
-		mystring = self.country
+            for r in self:
+		mystring = r.country
 		if (str(mystring).lower().strip() != 'india') == True:
-			self.overseas = "True"
+			r.overseas = "True"
 		else:
-			self.overseas = "False"
+			r.overseas = "False"
 	
         # Birth year validation.
         @api.constrains('birthyear')
         def _check_birthyear(self):
-	    if self.birthyear < 1900:
-                raise exceptions.ValidationError("BirthYear cannot be less than 1900")		
-	    todayyear = datetime.now().year
-	    if self.birthyear > todayyear:
-		raise exceptions.ValidationError("BirthYear cannot be greather than %d" % todayyear )		
+            for r in self:
+                if r.birthyear < 1900:
+                    raise exceptions.ValidationError("BirthYear cannot be less than 1900")		
+                todayyear = datetime.now().year
+	        if r.birthyear > todayyear:
+		    raise exceptions.ValidationError("BirthYear cannot be greather than %d" % todayyear )		
 
 
 	@api.depends('birthyear')
 	def _compute_age(self):
-		self.age = datetime.now().year - self.birthyear
+            for r in self:
+		r.age = datetime.now().year - r.birthyear
 	
 	
 	abhyasi_id =  fields.Char(string='Abhyasi ID', required=True)
@@ -92,16 +95,18 @@ class visitor_nonabhyasi(models.Model):
         # Birth year validation.
         @api.constrains('birthyear')
         def _check_birthyear(self):
-	    if self.birthyear < 1900:
-                raise exceptions.ValidationError("BirthYear cannot be less than 1900")		
-	    todayyear = datetime.now().year
-	    if self.birthyear > todayyear:
-		raise exceptions.ValidationError("BirthYear cannot be greather than %d" % todayyear )		
+            for r in self:
+		    if r.birthyear < 1900:
+                        raise exceptions.ValidationError("BirthYear cannot be less than 1900")		
+		    todayyear = datetime.now().year
+		    if r.birthyear > todayyear:
+			raise exceptions.ValidationError("BirthYear cannot be greather than %d" % todayyear )		
 
 
 	@api.depends('birthyear')
 	def _compute_age(self):
-		self.age = datetime.now().year - self.birthyear
+            for r in self:
+		r.age = datetime.now().year - r.birthyear
 
 	full_name = fields.Char(string='Full Name', required=True)
 	birthyear =  fields.Integer(string='Birth Year', required=True)
@@ -112,11 +117,12 @@ class visitor_nonabhyasi(models.Model):
 
 	@api.depends('birthyear','child')
 	def _compute_child(self):
+            for r in self:
 		todayyear = datetime.now().year
-		if (todayyear - self.birthyear <= 15) == True:
-			self.child = "True"
+		if (todayyear - r.birthyear <= 15) == True:
+			r.child = "True"
 		else:
-			self.child = "False"
+			r.child = "False"
 
 
 # Date-wise Guest Occupancy list -- auto-generated DB
@@ -134,6 +140,12 @@ class visitor_datewise(models.Model):
     date = fields.Date(string='Date')
     registrationid = fields.Many2one(comodel_name='visitor.registration', required=True, ondelete='cascade')
 
+    abhyasi_count = fields.Integer(related='registrationid.abhyasi_count')
+    guest_count = fields.Integer(related='registrationid.guest_count')
+    children_count = fields.Integer(related='registrationid.children_count')
+    abhyasis = fields.Char(related='registrationid.abhyasis')
+    children = fields.Char(related='registrationid.children')
+
 
 
 # Visitor Registration Class.
@@ -149,6 +161,10 @@ class visitor_registration(models.Model):
                 r.abhyasi_count = len(r.visiting_abhyasis)
                 r.children_count = len(r.visiting_children)
                 r.guest_count = r.abhyasi_count + r.children_count
+
+                r.abhyasis = ','.join(r.visiting_abhyasis.mapped('full_name'))
+                r.children = ','.join(r.visiting_children.mapped('full_name'))
+
 
         @api.depends('batchid', 'record_entry')
         def _compute_name(self):
@@ -325,11 +341,18 @@ class visitor_registration(models.Model):
             self.checkout_time = None
 
 
+	@api.model
+	def _compute_batchid(self):
+		return str(datetime.now().strftime("%Y%m%d%H%M%S%f")) 
+	
+
 	status = fields.Selection(statussel, compute='_compute_state', store=True)
 
         guest_count = fields.Integer(string='Guest Count', compute='_compute_counts', store=True, multi='_counts')
         abhyasi_count = fields.Integer(string='Abhyasi Count', compute='_compute_counts', store=True, multi='_counts')
         children_count = fields.Integer(string='Children Count', compute='_compute_counts', store=True, multi='_counts')
+        abhyasis = fields.Char(string='Abhyasis', compute='_compute_counts', store=True, multi='_counts')
+        children = fields.Char(string='Children', compute='_compute_counts', store=True, multi='_counts')
 
         name = fields.Char(string='Registration Id', compute="_compute_name")
 	batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
@@ -348,10 +371,6 @@ class visitor_registration(models.Model):
         checkout_time = fields.Float(string='Checkout Time', default=None)
 	cancellation_date =  fields.Date('Cancellation Date', default=None)
 	datewise = fields.One2many('visitor.datewise', 'registrationid', string='Date-wise Line Items') 
-	
-	@api.model
-	def _compute_batchid(self):
-		return str(datetime.now().strftime("%Y%m%d%H%M%S%f")) 
 	
 	_sql_constraints = [('batchid_uniq', 'unique (batchid)', "ID already exists !")]
 	
