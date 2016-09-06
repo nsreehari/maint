@@ -130,6 +130,8 @@ class visitor_datewise(models.Model):
     _name = 'visitor.datewise'
     _description = 'Visitor Date-wise Occupancy List'
 
+    _order = "date asc, status, abhyasis"
+
     display_name = fields.Char(compute='_compute_display_name')
 
     @api.one
@@ -138,13 +140,16 @@ class visitor_datewise(models.Model):
         self.display_name = "%s" % self.date
 
     date = fields.Date(string='Date')
+    stay = fields.Selection([('arrival','Arrival'), ('fullday','Full Day'), ('departure','Departure')])
+    status = fields.Selection(statussel, related='registrationid.status', store=True)
     registrationid = fields.Many2one(comodel_name='visitor.registration', required=True, ondelete='cascade')
 
-    abhyasi_count = fields.Integer(related='registrationid.abhyasi_count')
-    guest_count = fields.Integer(related='registrationid.guest_count')
-    children_count = fields.Integer(related='registrationid.children_count')
-    abhyasis = fields.Char(related='registrationid.abhyasis')
-    children = fields.Char(related='registrationid.children')
+    abhyasi_count = fields.Integer(related='registrationid.abhyasi_count', store=True)
+    guest_count = fields.Integer(related='registrationid.guest_count', store=True)
+    children_count = fields.Integer(related='registrationid.children_count', store=True)
+    abhyasis = fields.Char(related='registrationid.abhyasis', store=True)
+    children = fields.Char(related='registrationid.children', store=True)
+    roomid = fields.Char(related='registrationid.roomid.name', store=True)
 
 
 
@@ -204,7 +209,13 @@ class visitor_registration(models.Model):
 
               xdate = fromdate
               while xdate <= todate:
-                r.datewise += r.datewise.new({'date': xdate})
+                if xdate == fromdate:
+                    stay = 'arrival'
+                elif xdate == todate:
+                    stay = 'departure'
+                else:
+                    stay = 'fullday'
+                r.datewise += r.datewise.new({'date':xdate, 'stay':stay})
                 xdate += timedelta(days=1)
 
             return res
@@ -223,25 +234,20 @@ class visitor_registration(models.Model):
                 if r.checkout_date:
                     todate = fields.Datetime.from_string(r.checkout_date)
 
-                to_remove = [ fields.Datetime.from_string(dw.date) for dw in r.datewise ]
-                to_add = []
-
-                xdate = fromdate
-                while xdate <= todate:
-                    if xdate in to_remove:
-                        to_remove.remove(xdate)
-                    else:
-                        to_add.append(xdate)
-
-                    xdate += timedelta(days=1)
-
-                # to_remove 
-                if to_remove:
-                    r.datewise.filtered(lambda rec: fields.Datetime.from_string(rec.date) in to_remove).unlink()
+                r.datewise.unlink()
 
                 # to_add
-                for xdate in to_add:
-                    r.datewise.create({'date':xdate, 'registrationid':r.id})
+                xdate = fromdate
+                while xdate <= todate:
+                    if xdate == fromdate:
+                        stay = 'arrival'
+                    elif xdate == todate:
+                        stay = 'departure'
+                    else:
+                        stay = 'fullday'
+
+                    r.datewise.create({'date':xdate, 'stay':stay, 'registrationid':r.id})
+                    xdate += timedelta(days=1)
 
             return res
 

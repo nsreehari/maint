@@ -11,12 +11,15 @@
 			<field name="arch" type="xml">
 				<tree string="datewises" >
 					<field name="date" />
+					<field name="stay" />
+					<field name="status" />
 					<field name="registrationid" />
 					<field name="abhyasi_count" />
 					<field name="children_count" />
 					<field name="guest_count" />
 							<field name="abhyasis" />
 							<field name="children" />
+							<field name="roomid" />
 				</tree>
 			</field>
 		</record>
