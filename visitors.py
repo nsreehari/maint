@@ -131,8 +131,8 @@ class visitor_datewise(models.Model):
     def _compute_display_name(self):
         self.display_name = "%s" % self.date
 
-    date = fields.Date(string='Date', required=True)
-    registrationid = fields.Many2one(comodel_name='visitor.registration', required=True)
+    date = fields.Date(string='Date')
+    registrationid = fields.Many2one(comodel_name='visitor.registration', required=True, ondelete='cascade')
 
 
 
@@ -176,31 +176,36 @@ class visitor_registration(models.Model):
 
 
     
-        @api.multi
+        @api.model
         def create(self, vals):
+
+
             res = super(visitor_registration, self).create(vals)
-            self.button_refresh()
+
+            for r in res:
+              fromdate = fields.Datetime.from_string(r.arrival_date)
+              todate = fields.Datetime.from_string(r.departure_date)
+
+              xdate = fromdate
+              while xdate <= todate:
+                r.datewise += r.datewise.new({'date': xdate})
+                xdate += timedelta(days=1)
+
             return res
  
         @api.multi
         def write(self, vals):
             res = super(visitor_registration, self).write(vals)
-            self.button_refresh()
-            return res
 
-
-        
-        @api.multi
-        def button_refresh(self):
-                r = self
+            for r in self:
 
                 fromdate = fields.Datetime.from_string(r.arrival_date)
                 todate = fields.Datetime.from_string(r.departure_date)
 
-                if r.checkout_date:
-                    todate = fields.Datetime.from_string(r.checkout_date)
                 if r.checkin_date:
                     fromdate = fields.Datetime.from_string(r.checkin_date)
+                if r.checkout_date:
+                    todate = fields.Datetime.from_string(r.checkout_date)
 
                 to_remove = [ fields.Datetime.from_string(dw.date) for dw in r.datewise ]
                 to_add = []
@@ -222,6 +227,7 @@ class visitor_registration(models.Model):
                 for xdate in to_add:
                     r.datewise.create({'date':xdate, 'registrationid':r.id})
 
+            return res
 
                 
 
@@ -271,6 +277,7 @@ class visitor_registration(models.Model):
                     raise exceptions.ValidationError("Please enter TIME in the range of 00:00 to 23:59")
 
 
+        @api.multi
         def retform(self, form_name, view_id):
             return {
 		'name':form_name,
