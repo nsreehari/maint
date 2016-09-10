@@ -23,6 +23,33 @@
 				</tree>
 			</field>
 		</record>
+		<record model='ir.ui.view' id='visitor_datewise_kanban'>
+			<field name="name">visitor.datewise.kanban</field>
+			<field name="model">visitor.datewise</field>
+			<field name="arch" type="xml">
+                            <kanban>
+				    <field name="guest_count" sum="1" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_vignette oe_semantic_html_override">
+                                <a type="open" href="#" class="oe_kanban_action">
+                                </a>
+                                <div class="text-center">
+				    <field name="date" />
+                                    <h1 class="oe_partner_heading">
+                                        <a type="open">
+				    <field name="guest_count" />
+                                        </a>
+                                    </h1>
+                                            <field name="abhyasis"/>
+                                            <field name="children"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+			    </kanban>
+			</field>
+		</record>
 		<record model='ir.ui.view' id='visitor_datewise_search'>
 			<field name="name">visitor.datewise.search</field>
 			<field name="model">visitor.datewise</field>
@@ -34,9 +61,12 @@
 					<field name="registrationid" />
 
                                         <filter name="filter_cancelled" domain="[('states', '!=', 'cancelled')]" string="Not Cancelled"/>
+                                        <filter name="filter_today" string="Today" domain="[('date','&lt;=',time.strftime('%Y-%m-%d 23:59:59')),('date','&gt;=',time.strftime('%Y-%m-%d 00:00:00'))]"/>
 
                                         <group expand="1" string="Group By">
                                             <filter name="groupby_date" context="{'group_by': 'date:day'}" string="Date" />
+                                            <filter name="groupby_roomid" context="{'group_by': 'roomid'}" string="Room" />
+                                            <filter name="groupby_states" context="{'group_by': 'states'}" string="State" />
                                         </group>
 				</search>
 			</field>
@@ -47,7 +77,63 @@
 			<field name="res_model">visitor.datewise</field>
 			<field name="view_type">form</field>
                         <field name="view_mode">tree</field>
-                        <field name="context">{"search_default_groupby_date" : True, "search_default_filter_cancelled": True}</field>
+                        <field name="view_id" ref="visitor_datewise_tree"></field>
+                        <field name="context">{"search_default_groupby_date" : True, "search_default_groupby_roomid":True, "search_default_filter_cancelled": True}</field>
+			<field name="help" type="html">
+			<p>
+			</p>
+			</field>
+		</record>
+		<record model='ir.ui.view' id='visitor_datewise_roomwise_tree'>
+			<field name="name">visitor.datewise.roomwise.tree</field>
+			<field name="model">visitor.datewise</field>
+			<field name="arch" type="xml">
+				<tree string="datewises" create="false" delete="false"  >
+					<field name="date" />
+					<field name="stay" />
+					<field name="states" />
+					<field name="registrationid" />
+					<field name="abhyasi_count" />
+					<field name="children_count" />
+					<field name="guest_count" />
+					<field name="abhyasis" />
+					<field name="children" />
+					<field name="roomid" />
+				</tree>
+			</field>
+		</record>
+		<record model='ir.actions.act_window' id='visitor_datewise_roomwise_act'>
+			<field name="name">datewise.roomwise</field>
+			<field name="res_model">visitor.datewise</field>
+			<field name="view_type">form</field>
+                        <field name="view_mode">tree</field>
+                        <field name="view_id" ref="visitor_datewise_roomwise_tree"></field>
+                        <field name="context">{"search_default_groupby_roomid":True, "search_default_filter_today":True }</field>
+			<field name="help" type="html">
+			<p>
+			</p>
+			</field>
+		</record>
+		<record model='ir.ui.view' id='visitor_datewise_kitchen_tree'>
+			<field name="name">visitor.datewise.kitchen.tree</field>
+			<field name="model">visitor.datewise</field>
+			<field name="arch" type="xml">
+				<tree string="datewises" create="false" delete="false"  >
+					<field name="date" />
+					<field name="breakfast" />
+					<field name="lunch" />
+					<field name="dinner" />
+					<field name="states" />
+				</tree>
+			</field>
+		</record>
+		<record model='ir.actions.act_window' id='visitor_datewise_kitchen_act'>
+			<field name="name">datewise.kitchen</field>
+			<field name="res_model">visitor.datewise</field>
+			<field name="view_type">form</field>
+                        <field name="view_mode">tree</field>
+                        <field name="view_id" ref="visitor_datewise_kitchen_tree"></field>
+                        <field name="context">{"search_default_groupby_date":True, "search_default_filter_cancelled": True }</field>
 			<field name="help" type="html">
 			<p>
 			</p>
@@ -349,7 +435,7 @@
 					<label for="datewise" string="Stay Dates"/>
 					<field name="datewise" widget="many2many_tags" />
 						<label for="visiting_abhyasis"/>
-						<field name="visiting_abhyasis" />
+						<field name="visiting_abhyasis" widget="x2many" />
 						<label for="visiting_children"/>
 						<field name="visiting_children" />
 					</sheet>
@@ -386,7 +472,31 @@
 					<field name="is_active" />
 				</tree>
 			</field>
-		</record>
+                    </record><!--
+		<record model='ir.ui.view' id='visitor_rooms_kanban'>
+			<field name="name">visitor.rooms.kanban</field>
+			<field name="model">visitor.rooms</field>
+			<field name="arch" type="xml">
+                            <kanban>
+                                <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_vignette oe_semantic_html_override">
+                                <a type="open" href="#" class="oe_kanban_action">
+                                </a>
+                                <div class="text-center">
+                                    <h1 class="oe_partner_heading">
+                                        <a type="open">
+                                            <field name="datewiseids"/>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+			    </kanban>
+			</field>
+                </record> -->
 		<!-- Form view for the visitor.rooms class-->
 		<record model='ir.ui.view' id='visitor_rooms_form'>
 			<field name="name">visitor.rooms.form</field>
@@ -432,7 +542,9 @@
 		<menuitem name="Visitor" parent="visitor_root1" id="visitor_root"  sequence="150"/>
 		<menuitem action="visitor_registration_act" parent="visitor_root" id="visitor_registration_menu"/>
 		<menuitem action="visitor_abhyasi_act" parent="visitor_root" id="visitor_abhyasi_menu"/>
-		<menuitem action="visitor_datewise_act" parent="visitor_root" id="visitor_datewise_menu"/>
+		<menuitem action="visitor_datewise_act" parent="visitor_root" id="visitor_datewise_menu" string="Date-wise Data"/>
+		<menuitem action="visitor_datewise_roomwise_act" parent="visitor_root" id="visitor_datewise_roomwise_menu" string="Today Occupancy"/>
+		<menuitem action="visitor_datewise_kitchen_act" parent="visitor_root" id="visitor_datewise_kitchen_menu" string="Kitchen Data"/>
 		<menuitem name="Configuration" parent="visitor_root" id="visitor_configuration" sequence="200"/>  
 		<menuitem action="visitor_rooms_act" parent="visitor_configuration" id="visitor_rooms_menu"/>
 

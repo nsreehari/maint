@@ -134,13 +134,62 @@ class visitor_datewise(models.Model):
 
     display_name = fields.Char(compute='_compute_display_name')
 
+
+
+
+
+
     @api.one
     @api.depends('date')
     def _compute_display_name(self):
         self.display_name = "%s" % self.date
 
+    @api.one
+    @api.depends('guest_count', 'date', 'stay', 'registrationid')
+    def _compute_kitchen(self):
+        r = self
+
+        xdate = fields.Datetime.from_string(r.date)
+
+        if r.stay == "arrival":
+            arrtime = r.registrationid.checkin_time or r.registrationid.arrival_time
+            if arrtime < 10:
+                r.breakfast = r.guest_count
+            if arrtime < 14:
+                r.lunch = r.guest_count
+            if arrtime < 21:
+                r.dinner = r.guest_count
+
+        elif r.stay == "departure":
+            deptime = r.registrationid.checkout_time or r.registrationid.departure_time
+            if deptime >= 21:
+                r.dinner = r.guest_count
+            if deptime >= 14:
+                r.lunch = r.guest_count
+            if deptime > 10:
+                r.breakfast = r.guest_count
+
+        elif r.stay == "fullday":
+            r.breakfast = r.guest_count
+            r.lunch = r.guest_count
+            r.dinner = r.guest_count
+
+        else:
+            #control should not come here
+            pass
+
+
+
+
     date = fields.Date(string='Date', readonly=True)
     stay = fields.Selection([('arrival','Arrival'), ('fullday','Full Day'), ('departure','Departure')], readonly=True)
+
+
+    breakfast = fields.Integer(string='Breakfast', store=True, compute="_compute_kitchen", multi="kitchen"  )
+    lunch = fields.Integer(string='Lunch', store=True, compute="_compute_kitchen" , multi="kitchen"   )
+    dinner = fields.Integer(string='Dinner', store=True, compute="_compute_kitchen" , multi="kitchen"   )
+
+
     states = fields.Selection(statussel, related='registrationid.states', store=True)
     registrationid = fields.Many2one(comodel_name='visitor.registration', required=True, ondelete='cascade', readonly=True)
 
@@ -390,6 +439,7 @@ class visitor_rooms(models.Model):
         roomtype =  fields.Many2one(comodel_name='visitor.room.type',required=True )
         ac =  fields.Selection(yesnosel,string='Air-Conditioned?', required=True)
         tag_ids = fields.Many2many(comodel_name='visitor.room.tags', string ='Tags', copy=False)
+        datewise_ids = fields.One2many('visitor.datewise', 'roomid', string='Date-wise Line Items') 
         is_active =  fields.Selection(yesnosel, string='Room in Operation?', required=True)
         notes =  fields.Text('Room Description')
         _sql_constraints = [
