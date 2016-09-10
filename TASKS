@@ -1,4 +1,4 @@
-1. auto compute -- batchid appropriately
+DONE 1. auto compute -- batchid appropriately
 2. Enhance Fonts appropriately
 3. Room Occupancy List:  View for Room and Date List
 4. View for Date and Occupants List
@@ -13,6 +13,7 @@ DONE 10. Get Date/Time side-by-side
 13. handle duplicate records if a person is registered for the same dates from different registrations ids
 14. ease the flow of adding abhyasis to the registration form
 15. Bulk registration support
+DONE 16. Kitchen report
 
 
 Some Links:

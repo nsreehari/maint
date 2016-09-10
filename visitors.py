@@ -409,6 +409,7 @@ class visitor_registration(models.Model):
 
         name = fields.Char(string='Registration Id', compute="_compute_name")
         batchid = fields.Char(string='Batch Id', readonly=True)
+        phonenum = fields.Char(string='Phone Number', required=True)
         record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
         arrival_date =  fields.Date(string='Arrival Date', required=True)
         arrival_time = fields.Float(string='Arrival Time', required=True, default=-1)

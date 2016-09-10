@@ -258,6 +258,7 @@
 				<tree string="Roles">
 					<field name="batchid"  readonly="1" />
 					<field name="record_entry" />
+					<field name="phonenum" />
 					<field name="arrival_date" />
 					<field name="arrival_time"  widget="float_time" />
 					<field name="departure_date" />
@@ -376,6 +377,7 @@
 						<group>
 							<field name="batchid" readonly="1" />
 							<field name="record_entry" />
+					                <field name="phonenum" />
 							<field name="guest_count" />
 							<field name="abhyasi_count" />
 							<field name="children_count" />
