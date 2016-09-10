@@ -12,7 +12,7 @@
 				<tree string="datewises" create="false" delete="false"  >
 					<field name="date" />
 					<field name="stay" />
-					<field name="status" />
+					<field name="states" />
 					<field name="registrationid" />
 					<field name="abhyasi_count" />
 					<field name="children_count" />
@@ -30,10 +30,10 @@
 				<search string="Datewise" >
 					<field name="date" />
 					<field name="stay" />
-					<field name="status" />
+					<field name="states" />
 					<field name="registrationid" />
 
-                                        <filter name="filter_cancelled" domain="[('status', '!=', 'cancelled')]" string="Not Cancelled"/>
+                                        <filter name="filter_cancelled" domain="[('states', '!=', 'cancelled')]" string="Not Cancelled"/>
 
                                         <group expand="1" string="Group By">
                                             <filter name="groupby_date" context="{'group_by': 'date:day'}" string="Date" />
@@ -273,17 +273,17 @@
 				<form string="Registration">
 					<!--The header tag is built to add buttons within. This puts them at the top -->
 					<header>
-                                            <button name="button_checkin" string="Check-In" type="object" attrs="{'invisible': [('status','!=','registered')]}" class="oe_highlight" />
-                                            <button name="button_cancel" string="Cancel Registration" type="object" attrs="{'invisible': [('status','!=','registered')]}" />
+                                            <button name="button_checkin" string="Check-In" type="object" attrs="{'invisible': [('states','!=','registered')]}" class="oe_highlight" />
+                                            <button name="button_cancel" string="Cancel Registration" type="object" attrs="{'invisible': [('states','!=','registered')]}" />
 
 
-                                            <button name="button_checkout" string="Check-Out" type="object" attrs="{'invisible': [('status','!=','checkedin')]}" class="oe_highlight" />
-                                            <button name="button_uncheckin" string="Undo Check-In" type="object" attrs="{'invisible': [('status','!=','checkedin')]}" confirm="Are you sure you want to undo this check-in?"  />
+                                            <button name="button_checkout" string="Check-Out" type="object" attrs="{'invisible': [('states','!=','checkedin')]}" class="oe_highlight" />
+                                            <button name="button_uncheckin" string="Undo Check-In" type="object" attrs="{'invisible': [('states','!=','checkedin')]}" confirm="Are you sure you want to undo this check-in?"  />
 
-                                            <button name="button_uncheckout" string="Undo Check-Out" type="object" attrs="{'invisible': [('status','!=','checkedout')]}"   confirm="Are you sure you want to undo this check-out?"  />
+                                            <button name="button_uncheckout" string="Undo Check-Out" type="object" attrs="{'invisible': [('states','!=','checkedout')]}"   confirm="Are you sure you want to undo this check-out?"  />
 
 
-					    <field name="status" widget="statusbar" statusbar_visible="new,registered,checkedin,checkedout"/>
+					    <field name="states" widget="statusbar" statusbar_visible="new,registered,checkedin,checkedout"/>
 					</header>
 					<sheet>
 
@@ -299,49 +299,49 @@
                                                 <group col="2">
                                                   <group>
                                                     <label for="arrival_date" string="Planned Arrival Date/Time"  
-                                                         attrs="{'invisible': [('status','in',['checkedin', 'checkedout'])]}" >
+                                                         attrs="{'invisible': [('states','in',['checkedin', 'checkedout'])]}" >
                                                     </label>
                                                     <div 
-                                                         attrs="{'invisible': [('status','in',['checkedin', 'checkedout'])]}" >
+                                                         attrs="{'invisible': [('states','in',['checkedin', 'checkedout'])]}" >
 							    <field name="arrival_date" class="oe_inline"/>
 							    <field name="arrival_time" widget="float_time" class="oe_inline" />
                                                     </div>
                                                     <label for="checkin_date" string="Actual Arrival Date/Time"  
-                                                         attrs="{'invisible': [('status','in',['registered', 'cancelled', 'new'])]}" >
+                                                         attrs="{'invisible': [('states','in',['registered', 'cancelled', 'new'])]}" >
                                                     </label>
                                                     <div 
-                                                         attrs="{'invisible': [('status','in',['registered', 'cancelled', 'new'])]}" >
+                                                         attrs="{'invisible': [('states','in',['registered', 'cancelled', 'new'])]}" >
 							    <field name="checkin_date" class="oe_inline" readonly="1"/>
 							    <field name="checkin_time" widget="float_time" class="oe_inline"  readonly="1"/>
                                                     </div>
                                                   </group>
                                                   <group>
                                                     <label for="departure_date" string="Planned Departure Date/Time" 
-                                                         attrs="{'invisible': [('status','in',['checkedout'])]}" >
+                                                         attrs="{'invisible': [('states','in',['checkedout'])]}" >
                                                     </label>
                                                     <div 
-                                                         attrs="{'invisible': [('status','in',['checkedout'])]}" >
+                                                         attrs="{'invisible': [('states','in',['checkedout'])]}" >
 							    <field name="departure_date" class="oe_inline"/>
 							    <field name="departure_time" widget="float_time" class="oe_inline" />
                                                     </div>
                                                     <label for="checkout_date" string="Actual Departure Date/Time" 
-                                                         attrs="{'invisible': [('status','in',['new', 'cancelled', 'registered', 'checkedin'])]}" >
+                                                         attrs="{'invisible': [('states','in',['new', 'cancelled', 'registered', 'checkedin'])]}" >
                                                     </label>
                                                     <div 
-                                                         attrs="{'invisible': [('status','in',['new', 'cancelled', 'registered', 'checkedin'])]}" >
+                                                         attrs="{'invisible': [('states','in',['new', 'cancelled', 'registered', 'checkedin'])]}" >
 							    <field name="checkout_date" class="oe_inline" readonly="1"/>
 							    <field name="checkout_time" widget="float_time" class="oe_inline"  readonly="1"/>
                                                     </div>
                                                   </group>
                                                 </group>
 						<group col="2" string="Room Allotted"
-                                                         attrs="{'invisible': [('status','in',['registered', 'cancelled', 'new'])]}" >
+                                                         attrs="{'invisible': [('states','in',['registered', 'cancelled', 'new'])]}" >
 							<group>
 					                    <field name="roomid" string="Room Allotted" readonly="1"/>
 							</group>
 						</group>
 						<group col="2" string="Cancelled"
-                                                         attrs="{'invisible': [('status','in',['registered', 'checkedin', 'checkedout', 'new'])]}" >
+                                                         attrs="{'invisible': [('states','in',['registered', 'checkedin', 'checkedout', 'new'])]}" >
 							<group>
 					                    <field name="cancellation_date" readonly="1"/>
 							</group>
@@ -381,6 +381,7 @@
 				<tree string="Room Details">
 					<field name="name" />
 					<field name="roomtype" />
+					<field name="capacity" />
 					<field name="ac" />
 					<field name="is_active" />
 				</tree>
@@ -397,6 +398,7 @@
 							<group>
 								<field name="name" />
 								<field name="roomtype" />
+								<field name="capacity" />
 							</group>
 							<group>
 								<field name="ac" />

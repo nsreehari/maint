@@ -130,7 +130,7 @@ class visitor_datewise(models.Model):
     _name = 'visitor.datewise'
     _description = 'Visitor Date-wise Occupancy List'
 
-    _order = "date asc, status, abhyasis"
+    _order = "date asc, states, abhyasis"
 
     display_name = fields.Char(compute='_compute_display_name')
 
@@ -139,17 +139,17 @@ class visitor_datewise(models.Model):
     def _compute_display_name(self):
         self.display_name = "%s" % self.date
 
-    date = fields.Date(string='Date')
-    stay = fields.Selection([('arrival','Arrival'), ('fullday','Full Day'), ('departure','Departure')])
-    status = fields.Selection(statussel, related='registrationid.status', store=True)
-    registrationid = fields.Many2one(comodel_name='visitor.registration', required=True, ondelete='cascade')
+    date = fields.Date(string='Date', readonly=True)
+    stay = fields.Selection([('arrival','Arrival'), ('fullday','Full Day'), ('departure','Departure')], readonly=True)
+    states = fields.Selection(statussel, related='registrationid.states', store=True)
+    registrationid = fields.Many2one(comodel_name='visitor.registration', required=True, ondelete='cascade', readonly=True)
 
-    abhyasi_count = fields.Integer(related='registrationid.abhyasi_count', store=True)
-    guest_count = fields.Integer(related='registrationid.guest_count', store=True)
-    children_count = fields.Integer(related='registrationid.children_count', store=True)
-    abhyasis = fields.Char(related='registrationid.abhyasis', store=True)
-    children = fields.Char(related='registrationid.children', store=True)
-    roomid = fields.Char(related='registrationid.roomid.name', store=True)
+    abhyasi_count = fields.Integer(related='registrationid.abhyasi_count', store=True, readonly=True)
+    guest_count = fields.Integer(related='registrationid.guest_count', store=True, readonly=True)
+    children_count = fields.Integer(related='registrationid.children_count', store=True, readonly=True)
+    abhyasis = fields.Char(related='registrationid.abhyasis', store=True, readonly=True)
+    children = fields.Char(related='registrationid.children', store=True, readonly=True)
+    roomid = fields.Char(related='registrationid.roomid.name', store=True, readonly=True)
 
 
 
@@ -174,25 +174,25 @@ class visitor_registration(models.Model):
         @api.depends('batchid', 'record_entry')
         def _compute_name(self):
             for r in self:
-                r.name = "%s %s" % (r.record_entry, r.batchid)
+                r.name = "%s/%s" % (r.batchid, r.record_entry )
 
 
 
-        # Update status based on the values of arrival, check-in, check-out, cancellation, etc.
+        # Update states based on the values of arrival, check-in, check-out, cancellation, etc.
         @api.depends('checkin_date', 'checkout_date', 'cancellation_date', 'arrival_date')
         def _compute_state(self):
             for r in self:
 
                 if r.cancellation_date:
-                    r.status = 'cancelled'
+                    r.states = 'cancelled'
                 elif r.checkout_date:
-                    r.status = 'checkedout'
+                    r.states = 'checkedout'
                 elif r.checkin_date:
-                    r.status = 'checkedin'
+                    r.states = 'checkedin'
                 elif isinstance(r.id, models.NewId):
-                    r.status = 'new'
+                    r.states = 'new'
                 else:
-                    r.status = 'registered'
+                    r.states = 'registered'
 
 
 
@@ -200,6 +200,8 @@ class visitor_registration(models.Model):
         @api.model
         def create(self, vals):
 
+
+            vals['batchid'] = self.env['ir.sequence'].get('visitor.batch')
 
             res = super(visitor_registration, self).create(vals)
 
@@ -347,12 +349,8 @@ class visitor_registration(models.Model):
             self.checkout_time = None
 
 
-        @api.model
-        def _compute_batchid(self):
-                return str(datetime.now().strftime("%Y%m%d%H%M%S%f")) 
         
-
-        status = fields.Selection(statussel, compute='_compute_state', store=True)
+        states = fields.Selection(statussel, compute='_compute_state', store=True)
 
         guest_count = fields.Integer(string='Guest Count', compute='_compute_counts', store=True, multi='_counts')
         abhyasi_count = fields.Integer(string='Abhyasi Count', compute='_compute_counts', store=True, multi='_counts')
@@ -361,7 +359,7 @@ class visitor_registration(models.Model):
         children = fields.Char(string='Children', compute='_compute_counts', store=True, multi='_counts')
 
         name = fields.Char(string='Registration Id', compute="_compute_name")
-        batchid = fields.Char(string='Batch Id', default=lambda self: self._compute_batchid(), required=True)
+        batchid = fields.Char(string='Batch Id', readonly=True)
         record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
         arrival_date =  fields.Date(string='Arrival Date', required=True)
         arrival_time = fields.Float(string='Arrival Time', required=True, default=-1)
@@ -388,6 +386,7 @@ class visitor_rooms(models.Model):
         _name = 'visitor.rooms'
         _description = 'Visitor Rooms Description'
         name = fields.Char(string='Room Id', required=True)
+        capacity = fields.Integer(string="Room Capacity", required=True)
         roomtype =  fields.Many2one(comodel_name='visitor.room.type',required=True )
         ac =  fields.Selection(yesnosel,string='Air-Conditioned?', required=True)
         tag_ids = fields.Many2many(comodel_name='visitor.room.tags', string ='Tags', copy=False)

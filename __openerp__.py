@@ -37,6 +37,7 @@ Main Features
         'maint_data.xml',
         'maint_board_view.xml',
 		'visitors_view.xml',
+		'visitors_data.xml',
     ],
 
     'demo': [],
