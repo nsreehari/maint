@@ -174,7 +174,7 @@ class visitor_registration(models.Model):
         @api.depends('batchid', 'record_entry')
         def _compute_name(self):
             for r in self:
-                r.name = "%s/%s" % (r.batchid, r.record_entry )
+                r.name = "%s %s" % (r.batchid, r.record_entry )
 
 
 
