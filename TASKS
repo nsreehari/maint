@@ -1,6 +1,6 @@
 1. auto compute -- batchid appropriately
 2. Enhance Fonts appropriately
-3. View for Room and Date List
+3. Room Occupancy List:  View for Room and Date List
 4. View for Date and Occupants List
 5. View for Date and Planned Occupants List
 6. View for Date and Estimated guests List
@@ -11,8 +11,8 @@ DONE 10. Get Date/Time side-by-side
 11. Auto-Calculate Expired entries
 12. Format all date/time formats properly
 13. handle duplicate records if a person is registered for the same dates from different registrations ids
-
-
+14. ease the flow of adding abhyasis to the registration form
+15. Bulk registration support
 
 
 Some Links:

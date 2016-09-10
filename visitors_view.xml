@@ -9,7 +9,7 @@
 			<field name="name">visitor.datewise.tree</field>
 			<field name="model">visitor.datewise</field>
 			<field name="arch" type="xml">
-				<tree string="datewises" >
+				<tree string="datewises" create="false" delete="false"  >
 					<field name="date" />
 					<field name="stay" />
 					<field name="status" />
@@ -17,18 +17,37 @@
 					<field name="abhyasi_count" />
 					<field name="children_count" />
 					<field name="guest_count" />
-							<field name="abhyasis" />
-							<field name="children" />
-							<field name="roomid" />
+					<field name="abhyasis" />
+					<field name="children" />
+					<field name="roomid" />
 				</tree>
+			</field>
+		</record>
+		<record model='ir.ui.view' id='visitor_datewise_search'>
+			<field name="name">visitor.datewise.search</field>
+			<field name="model">visitor.datewise</field>
+			<field name="arch" type="xml">
+				<search string="Datewise" >
+					<field name="date" />
+					<field name="stay" />
+					<field name="status" />
+					<field name="registrationid" />
+
+                                        <filter name="filter_cancelled" domain="[('status', '!=', 'cancelled')]" string="Not Cancelled"/>
+
+                                        <group expand="1" string="Group By">
+                                            <filter name="groupby_date" context="{'group_by': 'date:day'}" string="Date" />
+                                        </group>
+				</search>
 			</field>
 		</record>
 		<!-- Action for the datewise class-->
 		<record model='ir.actions.act_window' id='visitor_datewise_act'>
 			<field name="name">datewise</field>
 			<field name="res_model">visitor.datewise</field>
-			<field name="view_type">tree</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_type">form</field>
+                        <field name="view_mode">tree</field>
+                        <field name="context">{"search_default_groupby_date" : True, "search_default_filter_cancelled": True}</field>
 			<field name="help" type="html">
 			<p>
 			</p>
@@ -37,10 +56,10 @@
 
 		<!-- Tree view for the Visitor Abhyasi class-->
 		<record model='ir.ui.view' id='visitor_abhyasi_tree'>
-			<field name="name">visitor.abhyasi.tree</field>
+			<field name="name">visitor.abhyasi.editable.list</field>
 			<field name="model">visitor.abhyasi</field>
 			<field name="arch" type="xml">
-				<tree string="Abhyasis" >
+				<tree string="Abhyasis" editable="bottom">
 					<field name="abhyasi_id" />
 					<field name="full_name" />
 					<field name="gender" />
