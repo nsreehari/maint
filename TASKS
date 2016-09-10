@@ -18,12 +18,36 @@ http://odoo-new-api-guide-line.readthedocs.io/en/latest/decorator.html#api-model
 
 Sanjay:
 
-3. Room Occupancy List:  View for Room and Date List
+3. Today Room Occupancy List:  View for Room and Date List (Only checked in)
+
 4. View for Date and Occupants List
 5. View for Date and Planned Occupants List
 6. View for Date and Estimated guests List
 8. Search by Date in Registration
 
 
-9. Search by Batchid in Registrations
-7. Search by Abhyasi number in Registration
+Kitchen Data -- filters this Week, Next Week
+
+
+
+DONE 9. Search by Batchid in Registrations
+DONE 7. Search by Abhyasi number in Registration
+
+b. Search Phonenumber
+c. Search Emailid
+
+d. Search Date of FromDate
+
+e. Filter -- FromDate
+f. Filter -- ToDate
+
+g. Filter Not Cancelled
+
+
+Registration Form
+--------------------
+Room Type Needed -- 
+
+Do I have permisssion?
+
+

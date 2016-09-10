@@ -70,10 +70,10 @@ class visitor_abhyasi(models.Model):
                 r.age = datetime.now().year - r.birthyear
         
 
-        @api.depends('abhyasi_id', 'center', 'full_name')
+        @api.depends('abhyasi_id', 'center', 'full_name', 'contactnumber')
         def _compute_name(self):
             for r in self:
-                r.name = "%s %s %s" % (r.abhyasi_id , r.center, r.full_name)
+                r.name = "%s %s %s %s" % (r.abhyasi_id , r.center, r.full_name, r.contactnumber )
         
         name = fields.Char(compute="_compute_name", store=True)
         abhyasi_id =  fields.Char(string='Abhyasi ID', required=True)
@@ -421,6 +421,7 @@ class visitor_registration(models.Model):
         name = fields.Char(string='Registration Id', compute="_compute_name")
         batchid = fields.Char(string='Batch Id', readonly=True)
         phonenum = fields.Char(string='Phone Number', required=True)
+        email = fields.Char(string='Email Id')
         record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
         fromdate =  fields.Date(string='From Date', compute="_compute_dates", multi="_dates")
         todate =  fields.Date(string='To Date', compute="_compute_dates", multi="_dates")
