@@ -69,7 +69,13 @@ class visitor_abhyasi(models.Model):
             for r in self:
                 r.age = datetime.now().year - r.birthyear
         
+
+        @api.depends('abhyasi_id', 'center', 'full_name')
+        def _compute_name(self):
+            for r in self:
+                r.name = "%s %s %s" % (r.abhyasi_id , r.center, r.full_name)
         
+        name = fields.Char(compute="_compute_name", store=True)
         abhyasi_id =  fields.Char(string='Abhyasi ID', required=True)
         full_name =  fields.Char(string='Full Name', required=True)
         preceptor =  fields.Selection(yesnosel, string='Is Preceptor?', required=True)
@@ -82,7 +88,7 @@ class visitor_abhyasi(models.Model):
         age = fields.Char(compute="_compute_age", string = 'Age')
 
         _sql_constraints = [
-                ('abhyasi_id_uniq', 'unique (abhyasi_id)', "abhyasi_id already exists !")
+                ('abhyasi_id_uniq', 'unique (name)', "abhyasi_id already exists !")
         ]
 
 
@@ -225,6 +231,12 @@ class visitor_registration(models.Model):
             for r in self:
                 r.name = "%s %s" % (r.batchid, r.record_entry )
 
+        @api.depends('arrival_date', 'departure_date')
+        def _compute_dates(self):
+            for r in self:
+                r.todate = r.departure_date
+                r.fromdate = r.arrival_date
+
 
 
         # Update states based on the values of arrival, check-in, check-out, cancellation, etc.
@@ -236,12 +248,16 @@ class visitor_registration(models.Model):
                     r.states = 'cancelled'
                 elif r.checkout_date:
                     r.states = 'checkedout'
+                    r.todate = r.checkout_date
                 elif r.checkin_date:
                     r.states = 'checkedin'
+                    r.fromdate = r.checkin_date
                 elif isinstance(r.id, models.NewId):
                     r.states = 'new'
                 else:
                     r.states = 'registered'
+
+
 
 
 
@@ -255,8 +271,8 @@ class visitor_registration(models.Model):
             res = super(visitor_registration, self).create(vals)
 
             for r in res:
-              fromdate = fields.Datetime.from_string(r.arrival_date)
-              todate = fields.Datetime.from_string(r.departure_date)
+              fromdate = fields.Datetime.from_string(r.fromdate)
+              todate = fields.Datetime.from_string(r.todate)
 
               xdate = fromdate
               while xdate <= todate:
@@ -277,13 +293,8 @@ class visitor_registration(models.Model):
 
             for r in self:
 
-                fromdate = fields.Datetime.from_string(r.arrival_date)
-                todate = fields.Datetime.from_string(r.departure_date)
-
-                if r.checkin_date:
-                    fromdate = fields.Datetime.from_string(r.checkin_date)
-                if r.checkout_date:
-                    todate = fields.Datetime.from_string(r.checkout_date)
+                fromdate = fields.Datetime.from_string(r.fromdate)
+                todate = fields.Datetime.from_string(r.todate)
 
                 r.datewise.unlink()
 
@@ -411,6 +422,8 @@ class visitor_registration(models.Model):
         batchid = fields.Char(string='Batch Id', readonly=True)
         phonenum = fields.Char(string='Phone Number', required=True)
         record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
+        fromdate =  fields.Date(string='From Date', compute="_compute_dates", multi="_dates")
+        todate =  fields.Date(string='To Date', compute="_compute_dates", multi="_dates")
         arrival_date =  fields.Date(string='Arrival Date', required=True)
         arrival_time = fields.Float(string='Arrival Time', required=True, default=-1)
         departure_date =  fields.Date(string='Departure Date',required=True,default=None)

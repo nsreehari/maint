@@ -271,6 +271,27 @@
 				</tree>
 			</field>
 		</record>
+		<record model='ir.ui.view' id='visitor_registration_search'>
+			<field name="name">visitor.registration.search</field>
+			<field name="model">visitor.registration</field>
+			<field name="arch" type="xml">
+				<search string="Registrations" >
+					<field name="visiting_abhyasis" string="Abhyasi Detail " />
+					<field name="batchid" string="Batch Id" />
+
+                                        <filter name="filter_cancelled" domain="[('states', '!=', 'cancelled')]" string="Not Cancelled"/>
+                                        <filter name="filter_today" string="Arriving Today" domain="[('fromdate','&lt;=',time.strftime('%Y-%m-%d 23:59:59')),('fromdate','&gt;=',time.strftime('%Y-%m-%d 00:00:00'))]"/>
+                                        <filter name="filter_today" string="Departing Today" domain="[('todate','&lt;=',time.strftime('%Y-%m-%d 23:59:59')),('todate','&gt;=',time.strftime('%Y-%m-%d 00:00:00'))]"/>
+
+                                        <group expand="1" string="Group By">
+                                            <filter name="groupby_fromdate" context="{'group_by': 'fromdate:day'}" string="Date" />
+                                            <filter name="groupby_todate" context="{'group_by': 'todate:day'}" string="Date" />
+                                            <filter name="groupby_roomid" context="{'group_by': 'roomid'}" string="Room" />
+                                            <filter name="groupby_states" context="{'group_by': 'states'}" string="State" />
+                                        </group>
+				</search>
+			</field>
+		</record>
 		<record model='ir.ui.view' id='visitor_registration_formcheckin'>
 			<field name="name">visitor.registration.formcheckin</field>
 			<field name="model">visitor.registration</field>
