@@ -1,0 +1,72 @@
+
+<openerp> 
+  <data noupdate="1">
+
+
+      <record id="visitor_seq_id" model="ir.sequence">
+          <field name="name">Reference</field>
+          <field name="code">visitor.batch</field>
+          <field name="padding">5</field>
+      </record>
+
+
+      <record id="ir_cron_scheduler_visitor_registration1" model="ir.cron">
+          <field name="name">Registration Expiration scheduler</field>
+          <field name="user_id" ref="base.user_root"/>
+          <field name="interval_number">1</field>
+          <field name="interval_type">days</field>
+          <field name="numbercall">-1</field>
+          <field eval="False" name="doall"/>
+          <field eval="'visitor.registration'" name="model"/>
+          <field eval="'run_scheduler'" name="function"/>
+      </record>
+
+
+
+
+    
+      <record id="roomtag_ac" model="visitor.room.tags" >
+          <field name="name">A/C</field>
+      </record>
+
+      <record id="roomtag_nonac" model="visitor.room.tags" >
+          <field name="name">Non A/C</field>
+      </record>
+
+      <record id="roomtag_accessible" model="visitor.room.tags" >
+          <field name="name">Accessible</field>
+      </record>
+
+      <record id="roomtag_elderly" model="visitor.room.tags" >
+          <field name="name">Elderly</field>
+      </record>
+
+      <record id="roomtag_family" model="visitor.room.tags" >
+          <field name="name">Family</field>
+      </record>
+
+      <record id="roomtag_attachedbath" model="visitor.room.tags" >
+          <field name="name">Attached Bath</field>
+      </record>
+
+
+
+
+      <record id="roomtype_dorm" model="visitor.room.type" >
+          <field name="name">Dormitory</field>
+      </record>
+
+      <record id="roomtype_dormladies" model="visitor.room.type" >
+          <field name="name">Sisters Dormitory</field>
+      </record>
+
+      <record id="roomtype_dormgents" model="visitor.room.type" >
+          <field name="name">Brothers Dormitory</field>
+      </record>
+
+
+
+
+
+  </data>
+</openerp>
