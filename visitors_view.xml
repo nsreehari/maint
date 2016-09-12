@@ -12,7 +12,7 @@
 				<tree string="datewises" create="false" delete="false"  >
 					<field name="date" />
 					<field name="stay" />
-					<field name="states" />
+					<field name="state" />
 					<field name="registrationid" />
 					<field name="children_count" />
 					<field name="guest_count" />
@@ -57,16 +57,16 @@
 					<field name="ashram" />
 					<field name="date" />
 					<field name="stay" />
-					<field name="states" />
+					<field name="state" />
 					<field name="registrationid" />
 
-                                        <filter name="filter_cancelled" domain="[('states', '!=', 'cancelled')]" string="Not Cancelled"/>
+                                        <filter name="filter_cancelled" domain="[('state', '!=', 'cancelled')]" string="Not Cancelled"/>
                                         <filter name="filter_today" string="Today" domain="[('date','&lt;=',time.strftime('%Y-%m-%d 23:59:59')),('date','&gt;=',time.strftime('%Y-%m-%d 00:00:00'))]"/>
 
                                         <group expand="1" string="Group By">
                                             <filter name="groupby_date" context="{'group_by': 'date:day'}" string="Date" />
                                             <filter name="groupby_roomid" context="{'group_by': 'roomid'}" string="Room" />
-                                            <filter name="groupby_states" context="{'group_by': 'states'}" string="State" />
+                                            <filter name="groupby_state" context="{'group_by': 'state'}" string="State" />
                                         </group>
 				</search>
 			</field>
@@ -91,7 +91,7 @@
 				<tree string="datewises" create="false" delete="false"  >
 					<field name="date" />
 					<field name="stay" />
-					<field name="states" />
+					<field name="state" />
 					<field name="registrationid" />
 					<field name="children_count" />
 					<field name="guest_count" />
@@ -122,7 +122,7 @@
 					<field name="breakfast" />
 					<field name="lunch" />
 					<field name="dinner" />
-					<field name="states" />
+					<field name="state" />
 				</tree>
 			</field>
 		</record>
@@ -257,18 +257,16 @@
 				<tree string="Roles">
 					<field name="ashram" />
 					<field name="batchid"  readonly="1" />
-					<field name="record_entry" />
+					<field name="record_entry"  string="Registration Date"/>
+					<field name="state" />
 					<field name="phonenum" />
 					<field name="email" />
 					<field name="arrival_date" />
 					<field name="arrival_time"  widget="float_time" />
 					<field name="departure_date" />
 					<field name="departure_time"  widget="float_time" />
-							<field name="guest_count" />
-							<field name="children_count" />
-							<field name="abhyasis" />
-							<field name="children" />
-					<field name="active" />
+					<field name="abhyasi_count" />
+					<field name="children_count" string="Children Count" />
 				</tree>
 			</field>
 		</record>
@@ -276,7 +274,7 @@
 			<field name="name">visitor.registration.calendar</field>
 			<field name="model">visitor.registration</field>
 			<field name="arch" type="xml">
-				<calendar string="Arrival Calendar" date_start="fromdatetime" color="states" >
+				<calendar string="Arrival Calendar" date_start="fromdatetime" color="state" >
 					<field name="guest_count" />
 					<field name="abhyasis" />
 					<field name="children" />
@@ -294,7 +292,7 @@
 					<field name="phonenum" />
 					<field name="email" />
 
-                                        <filter name="filter_cancelled" domain="[('states', '!=', 'cancelled')]" string="Not Cancelled"/>
+                                        <filter name="filter_cancelled" domain="[('state', '!=', 'cancelled')]" string="Not Cancelled"/>
                                         <filter name="filter_today" string="Arriving Today" domain="[('fromdate','&lt;=',time.strftime('%Y-%m-%d 23:59:59')),('fromdate','&gt;=',time.strftime('%Y-%m-%d 00:00:00'))]"/>
                                         <filter name="filter_today" string="Departing Today" domain="[('todate','&lt;=',time.strftime('%Y-%m-%d 23:59:59')),('todate','&gt;=',time.strftime('%Y-%m-%d 00:00:00'))]"/>
 
@@ -302,7 +300,7 @@
                                             <filter name="groupby_fromdate" context="{'group_by': 'fromdate:day'}" string="Date" />
                                             <filter name="groupby_todate" context="{'group_by': 'todate:day'}" string="Date" />
                                             <filter name="groupby_roomid" context="{'group_by': 'roomid'}" string="Room" />
-                                            <filter name="groupby_states" context="{'group_by': 'states'}" string="State" />
+                                            <filter name="groupby_state" context="{'group_by': 'state'}" string="State" />
                                         </group>
 				</search>
 			</field>
@@ -313,40 +311,47 @@
 			<field name="arch" type="xml">
                             <form string="Check-In">
                                 <sheet>
-                                    <div> <button name="write" type="object" class="oe_highlight" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
-                                    <group>
-				    <field name="batchid"  readonly="1" />
-				    <field name="ashram"  readonly="1" />
-                                    </group>
-				    <group col="2" string="Check-In">
-                                        <group>
-                                            <label for="checkin_date" string="Actual Arrival Date"  >
-                                            </label>
+                                  <group string="Check-In Form">
+                                         <field name="ashram" invisible="1"/>
+                                         <field name="batchid" string="Batch" class="oe_inline"/>
+				         <field name="record_entry" string="Registration Date" />
+                                         <label for="abhyasi_count" string="Visitor Count" />
+                                         <div>
+                                             <i class="fa fa-user"> : </i>
+                                             <field name="abhyasi_count" class="oe_inline" /> 
+                                             <b style="color:white;">  ... </b>
+                                             <i class="fa fa-child"> : </i>
+					     <field name="children_count" class="oe_inline"/> 
+                                         </div>
+                                 </group>
+                                 <group col="2">
+                                  <group >
+                                            <label for="checkin_date" string="Check-In"  > </label>
                                             <div> 
-						    <field name="checkin_date" class="oe_inline" required="1"/>
-                                                    <label for="checkin_time" string="Time"  />
-						    <field name="checkin_time" widget="float_time" class="oe_inline" required="1"/>
+                                                <field name="checkin_date" class="oe_inline" required="1"/> <b> at </b> 
+                                                <field name="checkin_time" widget="float_time" class="oe_inline"  required="1"/> 
                                             </div>
-                                        </group>
-                                        <group>
-                                            <label for="departure_date" string="Planned Deparure Date/Time"  >
-                                            </label>
+                                            <label for="departure_date" string="Planned Departure"  > </label>
                                             <div >
-						    <field name="departure_date" class="oe_inline" required="1"/>
-						    <field name="departure_time" widget="float_time" class="oe_inline" required="1"/>
+						    <field name="departure_date" class="oe_inline" required="1"/> <b> at </b> 
+						    <field name="departure_time" widget="float_time" class="oe_inline" required="1"/> 
                                             </div>
 
-                                        </group>
-                                        <h1>
-                                            <label for="roomid" string="Room Allotted"  />
-					    <field name="roomid" required="1"
+					    <field name="roomid" required="1"  string="Room Allotted" 
                                                                 domain="[('ashram','=',ashram)]" />
-                                        </h1>
-                                    </group>
-					<label for="visiting_abhyasis"/>
-					<field name="visiting_abhyasis" />
-					<label for="visiting_children"/>
-					<field name="visiting_children" />
+                                  </group>
+                                  <group >
+                                  </group>
+                                 </group>
+
+
+                                    <hr/>
+                                    <div> 
+                                        <button name="write" type="object" class="oe_highlight" string="Confirm Check-In"/>
+                                        <button name="cancel" string="Discard Changes" special="cancel" /> 
+                                    </div>
+                                    <hr/>
+                                         <p>Note: To add/update visitor detail, please do in the registration form</p>
                                 </sheet>
 			    </form>
 			</field>
@@ -357,16 +362,35 @@
 			<field name="arch" type="xml">
                             <form string="Check-Out">
                                 <sheet>
-                                    <div> <button name="write" type="object" class="oe_highlight" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
-				    <group col="2" string="Check-Out">
-					<field name="batchid"  readonly="1" />
-					<field name="checkout_date" required="1"/>
-					<field name="checkout_time"  widget="float_time" required="1"/>
+				    <group string="Check-Out">
+					    <field name="batchid"  readonly="1" />
+                                            <label for="fromdate" string="Check-In"  > </label>
+                                            <div> 
+                                                <field name="fromdate" class="oe_inline" required="1"/> <b> at </b> 
+                                                <field name="fromtime" widget="float_time" class="oe_inline" /> 
+                                            </div>
+                                            <label for="abhyasi_count" string="Visitor Count" />
+                                            <div>
+                                                <i class="fa fa-user"> : </i>
+                                                <field name="abhyasi_count" class="oe_inline" /> 
+                                                <b style="color:white;">  ... </b>
+                                                <i class="fa fa-child"> : </i>
+				                <field name="children_count" class="oe_inline"/> 
+                                            </div>
                                     </group>
-					<label for="visiting_abhyasis"/>
-					<field name="visiting_abhyasis" readonly="1" />
-					<label for="visiting_children"/>
-					<field name="visiting_children" readonly="1" />
+                                    <hr/>
+                                    <group>
+                                            <label for="checkout_date" string="Check-Out"  > </label>
+                                            <div> 
+                                                <field name="checkout_date" class="oe_inline" required="1"/> <b> at </b> 
+                                                <field name="checkout_time" widget="float_time" class="oe_inline"  required="1"/> 
+                                            </div>
+                                    </group>
+                                    <hr/>
+                                    <div> 
+                                        <button name="write" type="object" class="oe_highlight" string="Confirm Check-Out"/>
+                                        <button name="cancel" string="Discard Changes" special="cancel" /> 
+                                    </div>
                                 </sheet>
 			    </form>
 			</field>
@@ -375,17 +399,28 @@
 			<field name="name">visitor.registration.formcancel</field>
 			<field name="model">visitor.registration</field>
 			<field name="arch" type="xml">
-                            <form string="Cancellation">
+                            <form>
                                 <sheet>
-                                    <div> <button name="write" type="object" class="oe_highlight" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
-				    <group col="2" string="Cancellation">
-					<field name="batchid"  readonly="1" />
-					<field name="cancellation_date" required="1"/>
+                                    <group string="Cancellation Form">
+                                         <field name="batchid" string="Batch" class="oe_inline"/>
+				         <field name="record_entry" string="Registration Date" />
+                                         <label for="abhyasi_count" string="Visitor Count" />
+                                         <div>
+                                             <i class="fa fa-user"> : </i>
+                                             <field name="abhyasi_count" class="oe_inline" /> 
+                                             <b style="color:white;">  ... </b>
+                                             <i class="fa fa-child"> : </i>
+					     <field name="children_count" class="oe_inline"/> 
+                                         </div>
+                                     </group>
+                                     <hr/>
+                                     <group>
+					<field name="cancellation_date" string="Enter Date of Cancellation" required="1"/>
                                     </group>
-					<label for="visiting_abhyasis"/>
-					<field name="visiting_abhyasis" readonly="1" />
-					<label for="visiting_children"/>
-					<field name="visiting_children" readonly="1" />
+                                    <div> 
+                                        <button name="write" type="object" class="oe_highlight" string="Confirm Cancellation"/>
+                                        <button name="cancel" string="Do Not Cancel" special="cancel" /> 
+                                    </div>
                                 </sheet>
 			    </form>
 			</field>
@@ -398,87 +433,121 @@
 				<form string="Registration">
 					<!--The header tag is built to add buttons within. This puts them at the top -->
 					<header>
-                                            <button name="button_checkin" string="Check-In" type="object" attrs="{'invisible': [('states','!=','registered')]}" class="oe_highlight" />
-                                            <button name="button_cancel" string="Cancel Registration" type="object" attrs="{'invisible': [('states','!=','registered')]}" />
+                                            <button states="registered" 
+                                                name="button_cancel" string="Cancel Registration" type="object" />
+
+                                            <button name="button_uncheckin" string="Undo Check-In" type="object" 
+                                                states="checkedin" confirm="Are you sure you want to undo this check-in?"  />
+
+                                            <button name="button_uncheckout" string="Undo Check-Out" type="object" 
+                                                states="checkedout" confirm="Are you sure you want to undo this check-out?"  />
 
 
-                                            <button name="button_checkout" string="Check-Out" type="object" attrs="{'invisible': [('states','!=','checkedin')]}" class="oe_highlight" />
-                                            <button name="button_uncheckin" string="Undo Check-In" type="object" attrs="{'invisible': [('states','!=','checkedin')]}" confirm="Are you sure you want to undo this check-in?"  />
-
-                                            <button name="button_uncheckout" string="Undo Check-Out" type="object" attrs="{'invisible': [('states','!=','checkedout')]}"   confirm="Are you sure you want to undo this check-out?"  />
-
-
-					    <field name="states" widget="statusbar" statusbar_visible="registered,checkedin,checkedout"/>
+					    <field name="state" widget="statusbar" statusbar_visible="registered,checkedin,checkedout"/>
 					</header>
-					<sheet>
-                                            <group col="2" string="Batch Registration">
-                                                <group>
-					            <field name="ashram" />
-					            <field name="phonenum" />
-					            <field name="email" />
+                                        <sheet>
+                                            <div class="oe_right">
+                                                <b> Batch </b> <field name="batchid" class="oe_inline"/>
+						<field name="record_entry" string="Registration Date" />
+                                            </div>
+                                            <div attrs="{'invisible': [('state','not in',['cancelled'])]}" >
+                                                <h1> 
+                                                    Cancelled on 
+					            <field name="cancellation_date" readonly="1"/>
+                                                </h1>
+					    </div>
+                                            <div states="checkedin">
+                                                    <button name="button_checkout" string="Check-Out" type="object" class="oe_highlight" />
+					    </div>
+                                            <div states="checkedout" >
+                                                <h1>
+                                                 Checked-Out 
+                                                </h1>
+					    </div>
+                                            <div states="expired" >
+                                                <h1>
+                                                 Expired
+                                                </h1>
+					    </div>
+                                            <div states="registered" >
+                                                    <button name="button_checkin" string="Check-In" type="object" class="oe_highlight" />
+					    </div>
+                                            <group col="2">
+                                                <group string="Batch Registration">
+                                                    <field name="ashram" attrs="{'readonly': [('state','!=','new')]}"/>
 
                                                     <label for="arrival_date" string="Arriving on"  
-                                                         attrs="{'invisible': [('states','in',['expired', 'checkedin', 'checkedout'])]}" >
+                                                         states="new,registered" >
                                                     </label>
                                                     <div 
-                                                         attrs="{'invisible': [('states','in',['checkedin', 'checkedout'])]}" >
-							    <field name="arrival_date" class="oe_inline"/>
-                                                            <label for="arrival_time" string="at" />
-							    <field name="arrival_time" widget="float_time" class="oe_inline" />
+                                                         states="new,registered" >
+                                                         <field name="arrival_date" class="oe_inline"/> <b> at </b>
+                                                         <field name="arrival_time" widget="float_time" class="oe_inline" /> hrs 
                                                     </div>
-                                                    <label for="checkin_date" string="Checked-In"  
-                                                         attrs="{'invisible': [('states','in',['registered', 'cancelled', 'new'])]}" >
+                                                    <label for="arrival_date" string="Arriving on"  
+                                                         states="expired,cancelled" >
                                                     </label>
                                                     <div 
-                                                         attrs="{'invisible': [('states','in',['registered', 'cancelled', 'new'])]}" >
-							    <field name="checkin_date" class="oe_inline" readonly="1"/>
-							    <field name="checkin_time" widget="float_time" class="oe_inline"  readonly="1"/>
+                                                         states="expired,cancelled" >
+                                                         <field name="arrival_date" readonly="1" class="oe_inline"/> <b> at </b>
+                                                         <field name="arrival_time" readonly="1" widget="float_time" class="oe_inline" /> hrs 
+                                                    </div>
+                                                    <label for="checkin_date" string="Checked-In on"  
+                                                         states="checkedin,checkout" >
+                                                    </label>
+                                                    <div 
+                                                         states="checkedin,checkout" >
+							    <field name="checkin_date" class="oe_inline" readonly="1"/> <b> at </b>
+
+							    <field name="checkin_time" widget="float_time" class="oe_inline"  readonly="1"/> hrs 
+                                                    </div>
+                                                    <label for="departure_date" string="Leaving on " 
+                                                         states="new,registered,checkedin" >
+                                                    </label>
+                                                    <div 
+                                                         states="new,registered,checkedin" >
+							    <field name="departure_date" class="oe_inline"/> <b> at </b>
+
+							    <field name="departure_time" widget="float_time" class="oe_inline" /> hrs 
+                                                    </div>
+                                                    <label for="departure_date" string="Leaving on " 
+                                                         states="expired,cancelled" >
+                                                    </label>
+                                                    <div 
+                                                         states="expired,cancelled" >
+							    <field name="departure_date" readonly="1" class="oe_inline"/> <b> at </b>
+
+							    <field name="departure_time" readonly="1" widget="float_time" class="oe_inline" /> hrs 
+                                                    </div>
+                                                    <label for="checkout_date" string="Checked-Out on" 
+                                                         states="checkout" >
+                                                    </label>
+                                                    <div 
+                                                         states="checkout" >
+							    <field name="checkout_date" class="oe_inline" readonly="1"/> <b> at </b>
+
+							    <field name="checkout_time" widget="float_time" class="oe_inline"  readonly="1"/> hrs 
+                                                    </div>
+                                                    <label for="abhyasi_count" string="Visitor Count" />
+                                                    <div>
+                                                        <i class="fa fa-user"> : </i>
+                                                        <field name="abhyasi_count" class="oe_inline" /> 
+                                                        <b style="color:white;">  ... </b>
+                                                        <i class="fa fa-child"> : </i>
+						        <field name="children_count" class="oe_inline"/> 
                                                     </div>
                                                   </group>
-                                                  <group>
-                                                    <label for="departure_date" string="Planned Departure" 
-                                                         attrs="{'invisible': [('states','in',['checkedout'])]}" >
-                                                    </label>
-                                                    <div 
-                                                         attrs="{'invisible': [('states','in',['checkedout'])]}" >
-							    <field name="departure_date" class="oe_inline"/>
-							    <field name="departure_time" widget="float_time" class="oe_inline" />
-                                                    </div>
-                                                    <label for="checkout_date" string="Actual Departure Date/Time" 
-                                                         attrs="{'invisible': [('states','in',['new', 'cancelled', 'registered', 'checkedin'])]}" >
-                                                    </label>
-                                                    <div 
-                                                         attrs="{'invisible': [('states','in',['new', 'cancelled', 'registered', 'checkedin'])]}" >
-							    <field name="checkout_date" class="oe_inline" readonly="1"/>
-							    <field name="checkout_time" widget="float_time" class="oe_inline"  readonly="1"/>
-                                                    </div>
+                                                  <group string="Primary Contact">
+					            <field name="phonenum"  attrs="{'readonly': [('state','not in',['new', 'registered', 'checkedin'])]}"/>
+					            <field name="email"  attrs="{'readonly': [('state','not in',['new', 'registered', 'checkedin'])]}"/>
                                                   </group>
                                                 </group>
-						<group col="2" string="Room Allotted"
-                                                         attrs="{'invisible': [('states','in',['registered', 'cancelled', 'new'])]}" >
-							<group>
-                                                            <field name="roomid" string="Room Allotted" readonly="1"/>
-							</group>
-						</group>
-						<group col="2" string="Cancelled"
-                                                         attrs="{'invisible': [('states','in',['registered', 'checkedin', 'checkedout', 'new'])]}" >
-							<group>
-					                    <field name="cancellation_date" readonly="1"/>
-							</group>
-						</group>
-					<label for="datewise" string="Stay Dates"/>
-					<field name="datewise" widget="many2many_tags" />
-						<label for="visiting_abhyasis"/>
-						<field name="visiting_abhyasis" widget="x2many" />
+						<h1 states="checkedin,checkedout">
+                                                    <group>  <field name="roomid" readonly="1" string="Room Allotted" /></group>
+						</h1>
+						<field name="visiting_abhyasis" attrs="{'readonly': [('state','not in',['new', 'registered'])]}"/>
 						<label for="visiting_children"/>
-						<field name="visiting_children" />
-							<field name="batchid" readonly="1" />
-							<field name="record_entry" />
-							<field name="active" />
-							<field name="guest_count" />
-							<field name="children_count" />
-							<field name="abhyasis" />
-							<field name="children" />
+						<field name="visiting_children" attrs="{'readonly': [('state','not in',['new', 'registered'])]}"/>
 					</sheet>
 				</form>
 			</field>

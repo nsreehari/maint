@@ -10,6 +10,7 @@ DONE 16. Kitchen report
 17. optimise calculation of datewise records -- especially the records that are getting deleted
 
 18. view for expired and inactive registration batches
+19. Ensure 'departure date' cannot be less than today
 
 Some Links:
 https://www.odoo.com/documentation/9.0/howtos/backend.html#workflows

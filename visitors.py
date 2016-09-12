@@ -15,10 +15,10 @@ gendersel = [('male','Male'), ('female','Female')]
 statussel = [
         ('new', 'Draft'),
         ('registered', 'Registered'),
-        ('checkedin', 'Checked in'),
-        ('checkedout', 'Checked out'),
         ('cancelled', 'Cancelled'),
         ('expired', 'Expired'),
+        ('checkedin', 'Checked in'),
+        ('checkedout', 'Checked out'),
 ]
 
 class ashram(models.Model):
@@ -149,7 +149,7 @@ class visitor_datewise(models.Model):
     _name = 'visitor.datewise'
     _description = 'Visitor Date-wise Occupancy List'
 
-    _order = "date asc, states "
+    _order = "date asc, state "
 
 
 
@@ -208,7 +208,7 @@ class visitor_datewise(models.Model):
     lunch = fields.Integer(string='Lunch', store=True, compute="_compute_kitchen" , multi="kitchen"   )
     dinner = fields.Integer(string='Dinner', store=True, compute="_compute_kitchen" , multi="kitchen"   )
 
-    states = fields.Selection(statussel, related='registrationid.states', store=True )
+    state = fields.Selection(statussel, related='registrationid.state', store=True )
     registrationid = fields.Many2one(comodel_name='visitor.registration', required=True, ondelete='cascade', readonly=True)
 
     abhyasi_count = fields.Integer(related='registrationid.abhyasi_count', readonly=True)
@@ -265,21 +265,21 @@ class visitor_registration(models.Model):
 
 
 
-        # Update states based on the values of arrival, check-in, check-out, cancellation, etc.
-        @api.depends('checkin_date', 'checkout_date', 'cancellation_date', 'arrival_date')
+        # Update state based on the values of arrival, check-in, check-out, cancellation, etc.
+        @api.depends('checkin_date', 'checkout_date', 'cancellation_date', 'arrival_date', 'departure_date')
         def _compute_state(self):
             for r in self:
 
                 if r.cancellation_date:
-                    r.states = 'cancelled'
+                    r.state = 'cancelled'
                 elif r.checkout_date:
-                    r.states = 'checkedout'
+                    r.state = 'checkedout'
                 elif r.checkin_date:
-                    r.states = 'checkedin'
+                    r.state = 'checkedin'
                 elif isinstance(r.id, models.NewId):
-                    r.states = 'new'
+                    r.state = 'new'
                 else:
-                    r.states = 'registered'
+                    r.state = 'registered'
 
                 r.active = True
 
@@ -444,7 +444,12 @@ class visitor_registration(models.Model):
                     r.active = False
 
                 if edate + timedelta(days=EXPIREDAYS) < datetime_today:
-                    r.states = "expired"
+                    if r.state in ['registered']:
+                        r.state = "expired"
+                    #if r.state in ['checkedin']:
+                    #    r.checkout_date = r.departure_date
+                    #    r.checkout_time = r.departure_time
+
 
 
         @api.model
@@ -457,7 +462,7 @@ class visitor_registration(models.Model):
 
         active = fields.Boolean(string="Active", default=True)
 
-        states = fields.Selection(statussel, compute='_compute_state', store=True)
+        state = fields.Selection(statussel, compute='_compute_state', store=True)
 
         guest_count = fields.Integer(string='Guest Count', compute='_compute_counts', store=True, multi='_counts')
         abhyasi_count = fields.Integer(string='Abhyasi Count', compute='_compute_counts', store=True, multi='_counts')
@@ -477,9 +482,9 @@ class visitor_registration(models.Model):
         fromdatetime =  fields.Datetime(string='From DateTime', compute="_compute_dates", multi="_dates")
         todatetime =  fields.Datetime(string='To DateTime', compute="_compute_dates", multi="_dates")
         arrival_date =  fields.Date(string='Arrival Date', required=True)
-        arrival_time = fields.Float(string='Arrival Time', required=True, default=-1)
+        arrival_time = fields.Float(string='Arrival Time', required=True, default=7.5)
         departure_date =  fields.Date(string='Departure Date',required=True,default=None)
-        departure_time = fields.Float(string='Departure Time', required=True, default=-1)
+        departure_time = fields.Float(string='Departure Time', required=True, default=16)
         visiting_abhyasis = fields.Many2many(comodel_name='visitor.abhyasi',string='Visiting Abhyasi Details') 
         visiting_children = fields.Many2many(comodel_name='visitor.nonabhyasi',string='Children and Other Guests') 
 
