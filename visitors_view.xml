@@ -366,7 +366,7 @@
 					    <field name="batchid"  readonly="1" />
                                             <label for="fromdate" string="Check-In"  > </label>
                                             <div> 
-                                                <field name="fromdate" class="oe_inline" required="1"/> <b> at </b> 
+                                                <field name="fromdate" class="oe_inline"/> <b> at </b> 
                                                 <field name="fromtime" widget="float_time" class="oe_inline" /> 
                                             </div>
                                             <label for="abhyasi_count" string="Visitor Count" />
@@ -477,57 +477,48 @@
                                                     <field name="ashram" attrs="{'readonly': [('state','!=','new')]}"/>
 
                                                     <label for="arrival_date" string="Arriving on"  
-                                                         states="new,registered" >
+                                                         attrs="{'readonly': [('state','in',['expired', 'cancelled'])],
+                                                                 'invisible': [('state','in',['checkedin', 'checkedout'])]}">
                                                     </label>
                                                     <div 
-                                                         states="new,registered" >
+                                                         attrs="{'readonly': [('state','in',['expired', 'cancelled'])],
+                                                                 'invisible': [('state','in',['checkedin', 'checkedout'])]}">
                                                          <field name="arrival_date" class="oe_inline"/> <b> at </b>
                                                          <field name="arrival_time" widget="float_time" class="oe_inline" /> hrs 
                                                     </div>
-                                                    <label for="arrival_date" string="Arriving on"  
-                                                         states="expired,cancelled" >
-                                                    </label>
-                                                    <div 
-                                                         states="expired,cancelled" >
-                                                         <field name="arrival_date" readonly="1" class="oe_inline"/> <b> at </b>
-                                                         <field name="arrival_time" readonly="1" widget="float_time" class="oe_inline" /> hrs 
-                                                    </div>
+
                                                     <label for="checkin_date" string="Checked-In on"  
-                                                         states="checkedin,checkout" >
+                                                         states="checkedin,checkedout" >
                                                     </label>
                                                     <div 
-                                                         states="checkedin,checkout" >
+                                                         states="checkedin,checkedout" >
 							    <field name="checkin_date" class="oe_inline" readonly="1"/> <b> at </b>
 
 							    <field name="checkin_time" widget="float_time" class="oe_inline"  readonly="1"/> hrs 
                                                     </div>
+
                                                     <label for="departure_date" string="Leaving on " 
-                                                         states="new,registered,checkedin" >
+                                                         attrs="{'readonly': [('state','in',['expired', 'cancelled'])],
+                                                                 'invisible': [('state','in',['checkedout'])]}">
                                                     </label>
                                                     <div 
-                                                         states="new,registered,checkedin" >
+                                                         attrs="{'readonly': [('state','in',['expired', 'cancelled'])],
+                                                                 'invisible': [('state','in',['checkedout'])]}">
 							    <field name="departure_date" class="oe_inline"/> <b> at </b>
 
 							    <field name="departure_time" widget="float_time" class="oe_inline" /> hrs 
                                                     </div>
-                                                    <label for="departure_date" string="Leaving on " 
-                                                         states="expired,cancelled" >
-                                                    </label>
-                                                    <div 
-                                                         states="expired,cancelled" >
-							    <field name="departure_date" readonly="1" class="oe_inline"/> <b> at </b>
 
-							    <field name="departure_time" readonly="1" widget="float_time" class="oe_inline" /> hrs 
-                                                    </div>
                                                     <label for="checkout_date" string="Checked-Out on" 
-                                                         states="checkout" >
+                                                         states="checkedout" >
                                                     </label>
                                                     <div 
-                                                         states="checkout" >
+                                                         states="checkedout" >
 							    <field name="checkout_date" class="oe_inline" readonly="1"/> <b> at </b>
 
 							    <field name="checkout_time" widget="float_time" class="oe_inline"  readonly="1"/> hrs 
                                                     </div>
+
                                                     <label for="abhyasi_count" string="Visitor Count" />
                                                     <div>
                                                         <i class="fa fa-user"> : </i>
@@ -538,16 +529,27 @@
                                                     </div>
                                                   </group>
                                                   <group string="Primary Contact">
-					            <field name="phonenum"  attrs="{'readonly': [('state','not in',['new', 'registered', 'checkedin'])]}"/>
-					            <field name="email"  attrs="{'readonly': [('state','not in',['new', 'registered', 'checkedin'])]}"/>
+					            <field name="phonenum"  attrs="{'readonly': [('state','in',['expired', 'checkedout', 'cancelled'])]}"/>
+					            <field name="email"  attrs="{'readonly': [('state','in',['expired', 'checkedout', 'cancelled'])]}"/>
                                                   </group>
                                                 </group>
 						<h1 states="checkedin,checkedout">
                                                     <group>  <field name="roomid" readonly="1" string="Room Allotted" /></group>
 						</h1>
-						<field name="visiting_abhyasis" attrs="{'readonly': [('state','not in',['new', 'registered'])]}"/>
+						<field name="visiting_abhyasis" attrs="{'readonly': [('state','in',['cancelled', 'checkedin', 'checkedout', 'expired' ])]}">
+							<tree string="Abhyasis" >
+								<field name="abhyasi_id" />
+								<field name="full_name" />
+								<field name="gender" />
+								<field name="age" />
+								<field name="center" />
+								<field name="country" />
+								<field name="preceptor" />
+								<field name="contactnumber" />
+							</tree>
+                                                </field>
 						<label for="visiting_children"/>
-						<field name="visiting_children" attrs="{'readonly': [('state','not in',['new', 'registered'])]}"/>
+						<field name="visiting_children" attrs="{'readonly': [('state','in',['cancelled', 'checkedin', 'checkedout', 'expired'])]}"/>
 					</sheet>
 				</form>
 			</field>

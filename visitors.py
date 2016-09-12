@@ -13,7 +13,7 @@ _logger = logging.getLogger(__name__)
 yesnosel = [('Yes', 'Yes'), ('No', 'No')]
 gendersel = [('male','Male'), ('female','Female')]
 statussel = [
-        ('new', 'Draft'),
+        ('new', 'New'),
         ('registered', 'Registered'),
         ('cancelled', 'Cancelled'),
         ('expired', 'Expired'),
