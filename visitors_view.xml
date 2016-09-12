@@ -14,7 +14,6 @@
 					<field name="stay" />
 					<field name="states" />
 					<field name="registrationid" />
-					<field name="abhyasi_count" />
 					<field name="children_count" />
 					<field name="guest_count" />
 					<field name="abhyasis" />
@@ -55,6 +54,7 @@
 			<field name="model">visitor.datewise</field>
 			<field name="arch" type="xml">
 				<search string="Datewise" >
+					<field name="ashram" />
 					<field name="date" />
 					<field name="stay" />
 					<field name="states" />
@@ -93,7 +93,6 @@
 					<field name="stay" />
 					<field name="states" />
 					<field name="registrationid" />
-					<field name="abhyasi_count" />
 					<field name="children_count" />
 					<field name="guest_count" />
 					<field name="abhyasis" />
@@ -256,6 +255,7 @@
 			<field name="model">visitor.registration</field>
 			<field name="arch" type="xml">
 				<tree string="Roles">
+					<field name="ashram" />
 					<field name="batchid"  readonly="1" />
 					<field name="record_entry" />
 					<field name="phonenum" />
@@ -265,11 +265,25 @@
 					<field name="departure_date" />
 					<field name="departure_time"  widget="float_time" />
 							<field name="guest_count" />
-							<field name="abhyasi_count" />
 							<field name="children_count" />
 							<field name="abhyasis" />
 							<field name="children" />
+					<field name="active" />
 				</tree>
+			</field>
+		</record>
+		<record model='ir.ui.view' id='visitor_registration_calendar'>
+			<field name="name">visitor.registration.calendar</field>
+			<field name="model">visitor.registration</field>
+			<field name="arch" type="xml">
+				<calendar string="Registrations" date_start="fromdatetime" date_end="todatetime" color="roomid">
+					<field name="fromdatetime" />
+					<field name="todatetime" />
+					<field name="roomid" />
+					<field name="guest_count" />
+					<field name="abhyasis" />
+					<field name="children" />
+				</calendar>
 			</field>
 		</record>
 		<record model='ir.ui.view' id='visitor_registration_search'>
@@ -279,6 +293,9 @@
 				<search string="Registrations" >
 					<field name="visiting_abhyasis" string="Abhyasi Detail " />
 					<field name="batchid" string="Batch Id" />
+					<field name="ashram" />
+					<field name="phonenum" />
+					<field name="email" />
 
                                         <filter name="filter_cancelled" domain="[('states', '!=', 'cancelled')]" string="Not Cancelled"/>
                                         <filter name="filter_today" string="Arriving Today" domain="[('fromdate','&lt;=',time.strftime('%Y-%m-%d 23:59:59')),('fromdate','&gt;=',time.strftime('%Y-%m-%d 00:00:00'))]"/>
@@ -302,6 +319,7 @@
                                     <div> <button name="write" type="object" class="oe_highlight" string="Save"/> <button name="cancel" string="Discard" special="cancel" /> </div>
                                     <group>
 				    <field name="batchid"  readonly="1" />
+				    <field name="ashram"  readonly="1" />
                                     </group>
 				    <group col="2" string="Check-In">
                                         <group>
@@ -324,7 +342,8 @@
                                         </group>
                                         <h1>
                                             <label for="roomid" string="Room Allotted"  />
-					    <field name="roomid" required="1"/>
+					    <field name="roomid" required="1"
+                                                                domain="[('ashram','=',ashram)]" />
                                         </h1>
                                     </group>
 					<label for="visiting_abhyasis"/>
@@ -392,17 +411,17 @@
                                             <button name="button_uncheckout" string="Undo Check-Out" type="object" attrs="{'invisible': [('states','!=','checkedout')]}"   confirm="Are you sure you want to undo this check-out?"  />
 
 
-					    <field name="states" widget="statusbar" statusbar_visible="new,registered,checkedin,checkedout"/>
+					    <field name="states" widget="statusbar" statusbar_visible="registered,checkedin,checkedout"/>
 					</header>
 					<sheet>
 
 						<group>
+					<field name="ashram" />
 							<field name="batchid" readonly="1" />
 							<field name="record_entry" />
 					                <field name="phonenum" />
 					                <field name="email" />
 							<field name="guest_count" />
-							<field name="abhyasi_count" />
 							<field name="children_count" />
 							<field name="abhyasis" />
 							<field name="children" />
@@ -448,7 +467,7 @@
 						<group col="2" string="Room Allotted"
                                                          attrs="{'invisible': [('states','in',['registered', 'cancelled', 'new'])]}" >
 							<group>
-					                    <field name="roomid" string="Room Allotted" readonly="1"/>
+                                                            <field name="roomid" string="Room Allotted" readonly="1"/>
 							</group>
 						</group>
 						<group col="2" string="Cancelled"
@@ -472,7 +491,7 @@
 			<field name="name">Visitor Registration</field>
 			<field name="res_model">visitor.registration</field>
 			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,calendar,form</field>
 			<field name="help" type="html">
 			<p class="oe_view_nocontent_create">
 				Click to create a new registration for a visitor
@@ -489,11 +508,13 @@
 			<field name="name">visitor.rooms.tree</field>
 			<field name="model">visitor.rooms</field>
 			<field name="arch" type="xml">
-				<tree string="Room Details">
+				<tree string="Room Details" editable="bottom">
+					<field name="ashram" />
 					<field name="name" />
 					<field name="roomtype" />
-					<field name="capacity" />
-					<field name="ac" />
+					<field name="capacity" class="oe_left" />
+					<field name="tag_ids" widget="many2many_tags" />
+					<field name="notes"/>
 					<field name="is_active" />
 				</tree>
 			</field>
@@ -536,14 +557,12 @@
 								<field name="capacity" />
 							</group>
 							<group>
-								<field name="ac" />
+					                        <field name="ashram" />
 								<field name="is_active" />
+						                <field name="tag_ids" widget="many2many_tags" />
+						                <field name="notes"/>
 							</group>
 						</group>
-						<label for="tag_ids" class="oe_edit_only"/>
-						<field name="tag_ids" widget="many2many_tags" />
-						<label for="notes"/>
-						<field name="notes"/>
 					</sheet>
 				</form>
 			</field>

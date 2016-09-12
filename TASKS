@@ -1,13 +1,13 @@
 DONE 1. auto compute -- batchid appropriately
 2. Enhance Fonts appropriately
 DONE 10. Get Date/Time side-by-side
-11. Auto-Calculate Expired entries
+DONE 11. Auto-Calculate Expired entries
 12. Format all date/time formats properly
 13. handle duplicate records if a person is registered for the same dates from different registrations ids
 14. ease the flow of adding abhyasis to the registration form
 15. Bulk registration support
 DONE 16. Kitchen report
-
+17. optimise calculation of datewise records -- especially the records that are getting deleted
 
 Some Links:
 https://www.odoo.com/documentation/9.0/howtos/backend.html#workflows

@@ -6,6 +6,8 @@ from openerp import models, fields, api, exceptions
 from datetime import datetime, timedelta
 from copy import copy
 
+import logging
+_logger = logging.getLogger(__name__)
 
 # Some Selection List.
 yesnosel = [('Yes', 'Yes'), ('No', 'No')]
@@ -16,7 +18,18 @@ statussel = [
         ('checkedin', 'Checked in'),
         ('checkedout', 'Checked out'),
         ('cancelled', 'Cancelled'),
+        ('expired', 'Expired'),
 ]
+
+class ashram(models.Model):
+    _name = 'visitor.ashram'
+
+    name = fields.Char(string='Ashram', required=True)
+
+    _sql_constraints = [
+        ('ashram_uniq', 'unique (name)', "Ashram already exists !")
+    ]
+
 
 # Class for the visitor room tag. Eg: AC, Accessibility Etc..
 class visitor_room_tags(models.Model):
@@ -25,7 +38,7 @@ class visitor_room_tags(models.Model):
         name = fields.Char('Name', required=True)
         color = fields.Integer('Color Index')
         _sql_constraints = [
-                        ('name_uniq', 'unique (name)', "Tag name already exists !")
+               ('name_uniq', 'unique (name)', "Tag name already exists !")
         ]
 
 
@@ -136,9 +149,7 @@ class visitor_datewise(models.Model):
     _name = 'visitor.datewise'
     _description = 'Visitor Date-wise Occupancy List'
 
-    _order = "date asc, states, abhyasis"
-
-    display_name = fields.Char(compute='_compute_display_name')
+    _order = "date asc, states "
 
 
 
@@ -187,6 +198,8 @@ class visitor_datewise(models.Model):
 
 
 
+    display_name = fields.Char(compute='_compute_display_name')
+
     date = fields.Date(string='Date', readonly=True)
     stay = fields.Selection([('arrival','Arrival'), ('fullday','Full Day'), ('departure','Departure')], readonly=True)
 
@@ -195,15 +208,15 @@ class visitor_datewise(models.Model):
     lunch = fields.Integer(string='Lunch', store=True, compute="_compute_kitchen" , multi="kitchen"   )
     dinner = fields.Integer(string='Dinner', store=True, compute="_compute_kitchen" , multi="kitchen"   )
 
-
-    states = fields.Selection(statussel, related='registrationid.states', store=True)
+    states = fields.Selection(statussel, related='registrationid.states', store=True )
     registrationid = fields.Many2one(comodel_name='visitor.registration', required=True, ondelete='cascade', readonly=True)
 
-    abhyasi_count = fields.Integer(related='registrationid.abhyasi_count', store=True, readonly=True)
-    guest_count = fields.Integer(related='registrationid.guest_count', store=True, readonly=True)
-    children_count = fields.Integer(related='registrationid.children_count', store=True, readonly=True)
-    abhyasis = fields.Char(related='registrationid.abhyasis', store=True, readonly=True)
-    children = fields.Char(related='registrationid.children', store=True, readonly=True)
+    abhyasi_count = fields.Integer(related='registrationid.abhyasi_count', readonly=True)
+    guest_count = fields.Integer(related='registrationid.guest_count', readonly=True)
+    children_count = fields.Integer(related='registrationid.children_count', readonly=True)
+    abhyasis = fields.Char(related='registrationid.abhyasis', readonly=True)
+    children = fields.Char(related='registrationid.children', readonly=True)
+    ashram = fields.Char(related='registrationid.ashram.name', store=True, readonly=True)
     roomid = fields.Char(related='registrationid.roomid.name', store=True, readonly=True)
 
 
@@ -231,11 +244,24 @@ class visitor_registration(models.Model):
             for r in self:
                 r.name = "%s %s" % (r.batchid, r.record_entry )
 
-        @api.depends('arrival_date', 'departure_date')
+        @api.depends('arrival_date', 'departure_date', 'checkout_date', 'checkin_date', 'arrival_time', 'departure_time', 'checkout_time', 'checkin_time')
         def _compute_dates(self):
             for r in self:
                 r.todate = r.departure_date
                 r.fromdate = r.arrival_date
+                r.fromtime = r.arrival_time
+                r.totime = r.departure_time
+                if r.checkout_date:
+                    r.todate = r.checkout_date
+                    totime = r.checkout_time
+                if r.checkin_date:
+                    r.fromdate = r.checkin_date
+                    fromtime = r.checkin_time
+
+
+                r.fromdatetime = fields.Datetime.to_string( fields.Datetime.from_string(r.fromdate) + timedelta(hours=r.fromtime) )
+                r.todatetime = fields.Datetime.to_string( fields.Datetime.from_string(r.todate) + timedelta(hours=r.totime) )
+
 
 
 
@@ -248,17 +274,14 @@ class visitor_registration(models.Model):
                     r.states = 'cancelled'
                 elif r.checkout_date:
                     r.states = 'checkedout'
-                    r.todate = r.checkout_date
                 elif r.checkin_date:
                     r.states = 'checkedin'
-                    r.fromdate = r.checkin_date
                 elif isinstance(r.id, models.NewId):
                     r.states = 'new'
                 else:
                     r.states = 'registered'
 
-
-
+                r.active = True
 
 
     
@@ -408,13 +431,37 @@ class visitor_registration(models.Model):
             self.checkout_date = None
             self.checkout_time = None
 
+        @api.model
+        def scheduler_manage_expiration(self):
+            datetime_today = datetime.now()
+            ACTIVEDAYS = 7
+            EXPIREDAYS = 1
 
-        
+            for r in self.search([('active', '=', True)]):
+                edate = fields.Datetime.from_string(r.todate) 
+
+                if edate + timedelta(days=ACTIVEDAYS) < datetime_today:
+                    r.active = False
+
+                if edate + timedelta(days=EXPIREDAYS) < datetime_today:
+                    r.states = "expired"
+
+
+        @api.model
+        def run_scheduler(self):
+            _logger.info('scheduler ran')
+            self.scheduler_manage_expiration()
+            return True
+
+
+
+        active = fields.Boolean(string="Active", default=True)
+
         states = fields.Selection(statussel, compute='_compute_state', store=True)
 
         guest_count = fields.Integer(string='Guest Count', compute='_compute_counts', store=True, multi='_counts')
         abhyasi_count = fields.Integer(string='Abhyasi Count', compute='_compute_counts', store=True, multi='_counts')
-        children_count = fields.Integer(string='Children Count', compute='_compute_counts', store=True, multi='_counts')
+        children_count = fields.Integer(string='Children in Group', compute='_compute_counts', store=True, multi='_counts')
         abhyasis = fields.Char(string='Abhyasis', compute='_compute_counts', store=True, multi='_counts')
         children = fields.Char(string='Children', compute='_compute_counts', store=True, multi='_counts')
 
@@ -425,6 +472,10 @@ class visitor_registration(models.Model):
         record_entry =  fields.Char(string='Record Entry Date', default=datetime.now().strftime("%Y-%m-%d"), required=True, readonly=True)
         fromdate =  fields.Date(string='From Date', compute="_compute_dates", multi="_dates")
         todate =  fields.Date(string='To Date', compute="_compute_dates", multi="_dates")
+        fromtime =  fields.Float(string='From Time', compute="_compute_dates", multi="_dates")
+        totime =  fields.Float(string='To Time', compute="_compute_dates", multi="_dates")
+        fromdatetime =  fields.Datetime(string='From DateTime', compute="_compute_dates", multi="_dates")
+        todatetime =  fields.Datetime(string='To DateTime', compute="_compute_dates", multi="_dates")
         arrival_date =  fields.Date(string='Arrival Date', required=True)
         arrival_time = fields.Float(string='Arrival Time', required=True, default=-1)
         departure_date =  fields.Date(string='Departure Date',required=True,default=None)
@@ -439,6 +490,7 @@ class visitor_registration(models.Model):
         checkout_time = fields.Float(string='Checkout Time', default=None)
         cancellation_date =  fields.Date('Cancellation Date', default=None)
         datewise = fields.One2many('visitor.datewise', 'registrationid', string='Date-wise Line Items') 
+        ashram =  fields.Many2one(comodel_name='visitor.ashram', required=True)
         
         _sql_constraints = [('batchid_uniq', 'unique (batchid)', "ID already exists !")]
         
@@ -449,14 +501,16 @@ class visitor_registration(models.Model):
 class visitor_rooms(models.Model):
         _name = 'visitor.rooms'
         _description = 'Visitor Rooms Description'
+
+        ashram =  fields.Many2one(comodel_name='visitor.ashram', required=True)
         name = fields.Char(string='Room Id', required=True)
         capacity = fields.Integer(string="Room Capacity", required=True)
         roomtype =  fields.Many2one(comodel_name='visitor.room.type',required=True )
-        ac =  fields.Selection(yesnosel,string='Air-Conditioned?', required=True)
         tag_ids = fields.Many2many(comodel_name='visitor.room.tags', string ='Tags', copy=False)
         datewise_ids = fields.One2many('visitor.datewise', 'roomid', string='Date-wise Line Items') 
-        is_active =  fields.Selection(yesnosel, string='Room in Operation?', required=True)
-        notes =  fields.Text('Room Description')
+        ynsel = [('Yes', 'Active'), ('No', 'Not Functioning')]
+        is_active =  fields.Selection(ynsel, string='Room in Operation?', required=True, default="Yes")
+        notes =  fields.Char(string='Additional Notes')
         _sql_constraints = [
                 ('roomid_uniq', 'unique (name)', "Room ID already exists !")
         ]
