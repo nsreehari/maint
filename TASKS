@@ -9,11 +9,14 @@ DONE 11. Auto-Calculate Expired entries
 DONE 16. Kitchen report
 17. optimise calculation of datewise records -- especially the records that are getting deleted
 
+18. view for expired and inactive registration batches
+
 Some Links:
 https://www.odoo.com/documentation/9.0/howtos/backend.html#workflows
-
+https://www.odoo.com/documentation/8.0/reference/orm.html
 http://odoo-new-api-guide-line.readthedocs.io/en/latest/decorator.html#api-model
-
+http://odoo-new-api-guide-line.readthedocs.io/en/latest/environment.html#environment
+https://www.odoo.com/documentation/8.0/reference/views.html#kanban
 
 
 Sanjay:
