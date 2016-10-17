@@ -154,5 +154,61 @@
             <field name="groups" eval="[(4, ref('group_maint_manager'))]"/>
         </record>
 
+
+        <record id="maint_user_construction_visibility" model="ir.rule">
+            <field name="name">User can only see his/her ashram's construction activity</field>
+            <field name="model_id" ref="model_maint_construction_activity"/>
+            <field name="groups" eval="[(4, ref('group_maint_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('vehicle_id.driver_id','=',user.partner_id.id)]</field>
+        </record>
+        <record id="maint_user_construction_visibility_manager" model="ir.rule">
+            <field name="name">Manager has all rights on all ashrams construction activity</field>
+            <field name="model_id" ref="model_maint_construction_activity"/>
+            <field name="groups" eval="[(4, ref('group_maint_manager'))]"/>
+        </record>
+
+
+
+        <record id="maint_user_yottareport_visibility" model="ir.rule">
+            <field name="name">User can only see his/her ashram's yotta reports</field>
+            <field name="model_id" ref="model_maint_yottareport"/>
+            <field name="groups" eval="[(4, ref('group_maint_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('vehicle_id.driver_id','=',user.partner_id.id)]</field>
+        </record>
+        <record id="maint_user_yottareport_visibility_manager" model="ir.rule">
+            <field name="name">Manager has all rights on all ashrams yotta reports </field>
+            <field name="model_id" ref="model_maint_yottareport"/>
+            <field name="groups" eval="[(4, ref('group_maint_manager'))]"/>
+        </record>
+
+
+
+        <record id="maint_user_amcmomreport_visibility" model="ir.rule">
+            <field name="name">User can only see his/her ashram's amcmom reports</field>
+            <field name="model_id" ref="model_maint_amcmomreport"/>
+            <field name="groups" eval="[(4, ref('group_maint_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('vehicle_id.driver_id','=',user.partner_id.id)]</field>
+        </record>
+        <record id="maint_user_amcmomreport_visibility_manager" model="ir.rule">
+            <field name="name">Manager has all rights on all ashrams amcmom reports </field>
+            <field name="model_id" ref="model_maint_amcmomreport"/>
+            <field name="groups" eval="[(4, ref('group_maint_manager'))]"/>
+        </record>
+
+
+
+
     </data>
 </openerp>

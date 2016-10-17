@@ -1015,7 +1015,7 @@ class maint_document(osv.Model):
     upload_by = openerp.fields.Char(string='Uploaded By', required=True)
 
 
-class maint_yottareports(osv.Model):
+class maint_yottareport(osv.Model):
     _name = "maint.yottareport"
     _inherit = 'maint.document'
 
@@ -1024,7 +1024,7 @@ class maint_yottareports(osv.Model):
     created_by = openerp.fields.Char(string='Created By', required=True)
 
 
-class maint_amcmomreports(osv.Model):
+class maint_amcmomreport(osv.Model):
     _name = "maint.amcmomreport"
     _inherit = 'maint.document'
 
