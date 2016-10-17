@@ -92,6 +92,54 @@
             </field>
         </record>
 
+
+        <record model='ir.ui.view' id='maint_yottareport_tree'>
+            <field name="name">maint.yottareport.tree</field>
+            <field name="model">maint.yottareport</field>
+            <field name="arch" type="xml">
+                <tree string="Yotta Reports">
+                    <field name="name" />
+                    <field name="report_date" />
+                    <field name="vehicle_id" />
+                    <field name="created_by" />
+                    <field name="upload_date" />
+                    <field name="upload_by" />
+                    <field name="attachment" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='maint_yottareport_form'>
+            <field name="name">maint.yottareport.form</field>
+            <field name="model">maint.yottareport</field>
+            <field name="arch" type="xml">
+                <form string="Yotta Reports">
+                    <group>
+                        <field name="name"/>
+                    <field name="report_date" />
+                    <field name="vehicle_id" />
+                    <field name="created_by" />
+                    <field name="upload_date" />
+                    <field name="upload_by" />
+                    <field name="attachment" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_yottareport_act'>
+            <field name="name">Yotta Reports</field>
+            <field name="res_model">maint.yottareport</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new yotta report.
+              </p>
+            </field>
+        </record>
+
+
         <record model='ir.ui.view' id='maint_vehicle_model_brand_tree'>
             <field name="name">maint.vehicle.model.brand.tree</field>
             <field name="model">maint.vehicle.model.brand</field>
@@ -350,6 +398,17 @@
                                 <field name="acquisition_date"  attrs="{'invisible':1}" />
                                 <field name="car_value"  attrs="{'invisible':1}" />
                         </group>
+
+                                <field name="yotta_ids" >
+<tree string="Medical Attachment">
+    <field name="name"/>
+    <field name="type" invisible="1"/>
+    <field name="store_fname" invisible="1"/>
+    <field name="datas" filename="datas_fname"/>
+    <field name="datas_fname" invisible="1" modifiers="{'invisible': true}"/>
+</tree>
+</field>
+
                         <group col="2">
                             <group string="Additional Information">
                                 <field name="vin_sn" />
@@ -513,6 +572,7 @@
 
         <menuitem name="Ashrams" parent="menu_root" id="maint_vehicles" sequence="2" groups="group_maint_user"/>
         <menuitem action="maint_vehicle_act" parent="maint_vehicles" id="maint_vehicle_menu" groups="group_maint_user"/>
+        <menuitem action="maint_yottareport_act" parent="maint_vehicles" id="maint_yottareport_menu" groups="group_maint_user"/>
 
 
 

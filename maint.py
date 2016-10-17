@@ -316,6 +316,8 @@ class maint_vehicle(osv.Model):
     _description = 'Information of an Ashram'
     _order= 'name asc'
     _columns = {
+        'attachment_ids': fields.one2many('ir.attachment', 'res_id', domain=lambda self: [('res_model', '=', self._name)], auto_join=True, string='Attachments'),
+        'yotta_ids': fields.one2many('ir.attachment', 'res_id', string='Yotta Reports'),
         'name': fields.function(_vehicle_name_get_fnc, type="char", string='Name', store=True),
         'company_id': fields.many2one('res.company', 'Company'),
         'license_plate': fields.char('Ashram Name', required=True, help='enter Ashram Name'),
@@ -993,3 +995,20 @@ class lands_detail(osv.Model):
     _sql_constraints = [
             ('name_uniq', 'unique (name)', "Facility Type already exists !"),
     ]
+
+
+class maint_document(osv.Model):
+    _name = "maint.document"
+
+    name = openerp.fields.Char(string='Report Name', required=True)
+    report_date = openerp.fields.Date(string='Report Date', required=True)
+    attachment = openerp.fields.Binary("Document", attachment=True)
+    vehicle_id = openerp.fields.Many2one('maint.vehicle', string='Ashram', required=True)
+    created_by = openerp.fields.Char(string='Created By', required=True)
+    upload_date = openerp.fields.Datetime(string='Uploaded Date', readonly=True, required=True, default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    upload_by = openerp.fields.Char(string='Uploaded By', required=True)
+
+
+class maint_yottareports(osv.Model):
+    _name = "maint.yottareport"
+    _inherit = 'maint.document'
