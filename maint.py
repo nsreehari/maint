@@ -299,6 +299,8 @@ class maint_vehicle(osv.Model):
         Facilities = self.pool['maint.facilities']
         LogContract = self.pool['maint.vehicle.log.contract']
         Cost = self.pool['maint.vehicle.cost']
+        Yotta = self.pool['maint.yottareport']
+        Amcmom = self.pool['maint.amcmomreport']
         return {
             vehicle_id: {
                 'odometer_count': Odometer.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
@@ -307,7 +309,9 @@ class maint_vehicle(osv.Model):
                 'lands_count': LandRecords.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'facilities_count': Facilities.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'contract_count': LogContract.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
-                'cost_count': Cost.search_count(cr, uid, [('vehicle_id', '=', vehicle_id), ('parent_id', '=', False)], context=context)
+                'cost_count': Cost.search_count(cr, uid, [('vehicle_id', '=', vehicle_id), ('parent_id', '=', False)], context=context),
+                'yotta_count': Yotta.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
+                'amcmom_count': Amcmom.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
             }
             for vehicle_id in ids
         }
@@ -316,8 +320,6 @@ class maint_vehicle(osv.Model):
     _description = 'Information of an Ashram'
     _order= 'name asc'
     _columns = {
-        'attachment_ids': fields.one2many('ir.attachment', 'res_id', domain=lambda self: [('res_model', '=', self._name)], auto_join=True, string='Attachments'),
-        'yotta_ids': fields.one2many('ir.attachment', 'res_id', string='Yotta Reports'),
         'name': fields.function(_vehicle_name_get_fnc, type="char", string='Name', store=True),
         'company_id': fields.many2one('res.company', 'Company'),
         'license_plate': fields.char('Ashram Name', required=True, help='enter Ashram Name'),
@@ -366,7 +368,13 @@ class maint_vehicle(osv.Model):
         'car_value': fields.float('Car Value', help='Value of the bought vehicle'),
 
 
+        'yotta_count': fields.function(_count_all, type='integer', string='Yotta Reports', multi=True),
 
+        'yotta_ids': fields.one2many('maint.yottareport', 'vehicle_id', string='Yotta Reports'),
+
+        'amcmom_count': fields.function(_count_all, type='integer', string='AMC MoM Reports', multi=True),
+
+        'amcmom_ids': fields.one2many('maint.amcmomreport', 'vehicle_id', string='AMC MoM Reports'),
 
 
         }
@@ -1000,11 +1008,8 @@ class lands_detail(osv.Model):
 class maint_document(osv.Model):
     _name = "maint.document"
 
-    name = openerp.fields.Char(string='Report Name', required=True)
-    report_date = openerp.fields.Date(string='Report Date', required=True)
+    name = openerp.fields.Char(string='Name', required=True)
     attachment = openerp.fields.Binary("Document", attachment=True)
-    vehicle_id = openerp.fields.Many2one('maint.vehicle', string='Ashram', required=True)
-    created_by = openerp.fields.Char(string='Created By', required=True)
     upload_date = openerp.fields.Datetime(string='Uploaded Date', readonly=True, required=True, default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     upload_by = openerp.fields.Char(string='Uploaded By', required=True)
 
@@ -1012,3 +1017,16 @@ class maint_document(osv.Model):
 class maint_yottareports(osv.Model):
     _name = "maint.yottareport"
     _inherit = 'maint.document'
+
+    vehicle_id = openerp.fields.Many2one('maint.vehicle', string='Ashram', required=True)
+    report_date = openerp.fields.Date(string='Report Date', required=True)
+    created_by = openerp.fields.Char(string='Created By', required=True)
+
+
+class maint_amcmomreports(osv.Model):
+    _name = "maint.amcmomreport"
+    _inherit = 'maint.document'
+
+    vehicle_id = openerp.fields.Many2one('maint.vehicle', string='Ashram', required=True)
+    report_date = openerp.fields.Date(string='Report Date', required=True)
+    created_by = openerp.fields.Char(string='Created By', required=True)

@@ -92,19 +92,18 @@
             </field>
         </record>
 
-
         <record model='ir.ui.view' id='maint_yottareport_tree'>
             <field name="name">maint.yottareport.tree</field>
             <field name="model">maint.yottareport</field>
             <field name="arch" type="xml">
                 <tree string="Yotta Reports">
-                    <field name="name" />
+                    <field name="name"  string="Report Name"/>
                     <field name="report_date" />
-                    <field name="vehicle_id" />
+                    <field name="attachment" />
                     <field name="created_by" />
                     <field name="upload_date" />
                     <field name="upload_by" />
-                    <field name="attachment" />
+                    <field name="vehicle_id" />
                 </tree>
             </field>
         </record>
@@ -114,14 +113,18 @@
             <field name="model">maint.yottareport</field>
             <field name="arch" type="xml">
                 <form string="Yotta Reports">
+                    <group col="2">
                     <group>
-                        <field name="name"/>
-                    <field name="report_date" />
                     <field name="vehicle_id" />
+                    <field name="name" string="Report Name"/>
+                    <field name="report_date" />
                     <field name="created_by" />
                     <field name="upload_date" />
                     <field name="upload_by" />
                     <field name="attachment" />
+                    </group>
+                    <group>
+                    </group>
                     </group>
                 </form>
             </field>
@@ -135,6 +138,58 @@
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
                 Click to add a new yotta report.
+              </p>
+            </field>
+        </record>
+
+
+
+        <record model='ir.ui.view' id='maint_amcmomreport_tree'>
+            <field name="name">maint.amcmomreport.tree</field>
+            <field name="model">maint.amcmomreport</field>
+            <field name="arch" type="xml">
+                <tree string="AMC MoM Reports">
+                    <field name="name"  string="Report Name"/>
+                    <field name="report_date" />
+                    <field name="attachment" />
+                    <field name="created_by" />
+                    <field name="upload_date" />
+                    <field name="upload_by" />
+                    <field name="vehicle_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='maint_amcmomreport_form'>
+            <field name="name">maint.amcmomreport.form</field>
+            <field name="model">maint.amcmomreport</field>
+            <field name="arch" type="xml">
+                <form string="AMC MoM Reports">
+                    <group col="2">
+                    <group>
+                    <field name="vehicle_id" />
+                    <field name="name" string="Report Name"/>
+                    <field name="report_date" />
+                    <field name="created_by" />
+                    <field name="upload_date" />
+                    <field name="upload_by" />
+                    <field name="attachment" />
+                    </group>
+                    <group>
+                    </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_amcmomreport_act'>
+            <field name="name">AMC MoM Reports</field>
+            <field name="res_model">maint.amcmomreport</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new AMC MoM report.
               </p>
             </field>
         </record>
@@ -344,6 +399,25 @@
                                 help="show the facilities/buildings for this ashram" >
                                 <field name="facilities_count" widget="statinfo" string="Facilities"/>
                             </button>
+                            <button name="return_action_to_open"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-flask"
+                                context="{'xml_id':'maint_yottareport_act'}"
+                                help="show the yotta reports for this ashram" >
+                                <field name="yotta_count" widget="statinfo" string="Yotta Reports"/>
+                            </button>
+                            <button name="return_action_to_open"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-flask"
+                                context="{'xml_id':'maint_amcmomreport_act'}"
+                                help="show the AMC MoM reports for this ashram" >
+                                <field name="amcmom_count" widget="statinfo" string="AMC MoM Reports"/>
+                            </button>
+
+
+
 
 <!--
                             <button name="return_action_to_open"
@@ -399,15 +473,6 @@
                                 <field name="car_value"  attrs="{'invisible':1}" />
                         </group>
 
-                                <field name="yotta_ids" >
-<tree string="Medical Attachment">
-    <field name="name"/>
-    <field name="type" invisible="1"/>
-    <field name="store_fname" invisible="1"/>
-    <field name="datas" filename="datas_fname"/>
-    <field name="datas_fname" invisible="1" modifiers="{'invisible': true}"/>
-</tree>
-</field>
 
                         <group col="2">
                             <group string="Additional Information">
@@ -573,6 +638,7 @@
         <menuitem name="Ashrams" parent="menu_root" id="maint_vehicles" sequence="2" groups="group_maint_user"/>
         <menuitem action="maint_vehicle_act" parent="maint_vehicles" id="maint_vehicle_menu" groups="group_maint_user"/>
         <menuitem action="maint_yottareport_act" parent="maint_vehicles" id="maint_yottareport_menu" groups="group_maint_user"/>
+        <menuitem action="maint_amcmomreport_act" parent="maint_vehicles" id="maint_amcmomreport_menu" groups="group_maint_user"/>
 
 
 
