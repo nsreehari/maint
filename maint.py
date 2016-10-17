@@ -301,6 +301,7 @@ class maint_vehicle(osv.Model):
         Cost = self.pool['maint.vehicle.cost']
         Yotta = self.pool['maint.yottareport']
         Amcmom = self.pool['maint.amcmomreport']
+        ConstRepairs = self.pool['maint.construction.activity']
         return {
             vehicle_id: {
                 'odometer_count': Odometer.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
@@ -308,6 +309,7 @@ class maint_vehicle(osv.Model):
                 'service_count': LogService.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'lands_count': LandRecords.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'facilities_count': Facilities.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
+                'construction_count': ConstRepairs.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'contract_count': LogContract.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'cost_count': Cost.search_count(cr, uid, [('vehicle_id', '=', vehicle_id), ('parent_id', '=', False)], context=context),
                 'yotta_count': Yotta.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
@@ -370,12 +372,11 @@ class maint_vehicle(osv.Model):
 
         'yotta_count': fields.function(_count_all, type='integer', string='Yotta Reports', multi=True),
 
-        'yotta_ids': fields.one2many('maint.yottareport', 'vehicle_id', string='Yotta Reports'),
 
         'amcmom_count': fields.function(_count_all, type='integer', string='AMC MoM Reports', multi=True),
 
-        'amcmom_ids': fields.one2many('maint.amcmomreport', 'vehicle_id', string='AMC MoM Reports'),
 
+        'construction_count': fields.function(_count_all, type='integer', string='Construction/Repairs', multi=True),
 
         }
 
@@ -1030,3 +1031,52 @@ class maint_amcmomreports(osv.Model):
     vehicle_id = openerp.fields.Many2one('maint.vehicle', string='Ashram', required=True)
     report_date = openerp.fields.Date(string='Report Date', required=True)
     created_by = openerp.fields.Char(string='Created By', required=True)
+
+
+
+class construction_types(osv.Model):
+    _name = "maint.construction.types"
+    _columns = {
+            'name': fields.char(string='Construction/Repair Type', required=True),
+    }
+
+    _sql_constraints = [
+            ('name_uniq', 'unique (name)', "Construction/Repair Type already exists !"),
+    ]
+
+
+class construction_status(osv.Model):
+    _name = "maint.construction.status"
+    _columns = {
+            'name': fields.char(string='Construction/Repair Status', required=True),
+    }
+
+    _sql_constraints = [
+            ('name_uniq', 'unique (name)', "Construction/Repair Status already exists !"),
+    ]
+
+class construction_activity(osv.Model):
+    _name = "maint.construction.activity"
+
+    vehicle_id = openerp.fields.Many2one(related='facility_id.vehicle_id', string='Ashram', store=True)
+    facility_id = openerp.fields.Many2one('maint.facilities', string='Facility Code', required=True)
+
+
+    type_id = openerp.fields.Many2one('maint.construction.types', string='Nature of Work', required=True)
+    status_id = openerp.fields.Many2one('maint.construction.status', string='Status', required=True)
+
+
+    description = openerp.fields.Char(string='Brief Description', required=True)
+    request_date = openerp.fields.Date(string='Requested Date', required=True)
+    schedule_start_date = openerp.fields.Date(string='Scheduled Start Date')
+    schedule_end_date = openerp.fields.Date(string='Scheduled End Date')
+    actual_start_date = openerp.fields.Date(string='Actual Start Date')
+    actual_end_date = openerp.fields.Date(string='Actual End Date')
+    request_budget = openerp.fields.Integer(string='Requested Budget')
+    approved_budget = openerp.fields.Integer(string='Approved Budget')
+    actual_spent = openerp.fields.Integer(string='Actual Expenditure')
+
+
+    poc_name = openerp.fields.Char(string='POC Name', required=True)
+    poc_email = openerp.fields.Char(string='POC Email')
+    poc_phone = openerp.fields.Char(string='POC Phone Number')

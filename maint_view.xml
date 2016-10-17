@@ -338,6 +338,132 @@
             </field>
         </record>
 
+        <record model='ir.ui.view' id='maint_construction_types_tree'>
+            <field name="name">maint.construction.types.tree</field>
+            <field name="model">maint.construction.types</field>
+            <field name="arch" type="xml">
+                <tree string="Construction/Repair Types" editable="bottom">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_construction_types_act'>
+            <field name="name">Construction/Repair Types</field>
+            <field name="res_model">maint.construction.types</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                  Click to create a new construction/repair type
+              </p><p>
+              </p>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='maint_construction_status_tree'>
+            <field name="name">maint.construction.status.tree</field>
+            <field name="model">maint.construction.status</field>
+            <field name="arch" type="xml">
+                <tree string="Construction/Repair Status" editable="bottom">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_construction_status_act'>
+            <field name="name">Construction/Repair Status</field>
+            <field name="res_model">maint.construction.status</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                  Click to create a new construction/repair status
+              </p><p>
+              </p>
+            </field>
+        </record>
+
+
+
+        <record model='ir.ui.view' id='maint_construction_activity_tree'>
+            <field name="name">maint.construction.activity.tree</field>
+            <field name="model">maint.construction.activity</field>
+            <field name="arch" type="xml">
+                <tree string="Major Construction/Repair Activity" >
+                    <field name="vehicle_id" />
+                    <field name="facility_id" />
+                    <field name="type_id" />
+                    <field name="description" />
+                    <field name="request_date" />
+                    <field name="schedule_start_date" />
+                    <field name="actual_start_date" />
+                    <field name="schedule_end_date" />
+                    <field name="actual_end_date" />
+                    <field name="poc_name" />
+                    <field name="poc_email" />
+                    <field name="poc_phone" />
+                    <field name="request_budget" />
+                    <field name="approved_budget" />
+                    <field name="actual_spent" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='maint_construction_activity_form'>
+            <field name="name">maint.construction.activity.form</field>
+            <field name="model">maint.construction.activity</field>
+            <field name="arch" type="xml">
+                <form string="Major Construction/Repair Activity" >
+                 <group col="2">
+                  <group>
+                    <field name="status_id" />
+                  </group>
+                  <group>
+                  </group>
+                  <group string="Request Detail">
+                    <field name="vehicle_id" readonly="1"/>
+                    <field name="facility_id" />
+                    <field name="type_id" />
+                    <field name="description" />
+                    <field name="request_date" />
+                  </group>
+                  <group string="Activity Dates">
+                    <field name="schedule_start_date" />
+                    <field name="actual_start_date" />
+                    <field name="schedule_end_date" />
+                    <field name="actual_end_date" />
+                  </group>
+                  <group string="Point of Contact">
+                    <field name="poc_name" />
+                    <field name="poc_email" />
+                    <field name="poc_phone" />
+                  </group>
+                  <group string="Budget Detail">
+                    <field name="request_budget" />
+                    <field name="approved_budget" />
+                    <field name="actual_spent" />
+                  </group>
+                 </group>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_construction_activity_act'>
+            <field name="name">Construction/Repair Activity</field>
+            <field name="res_model">maint.construction.activity</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                  Click to add a new construction/repair activity
+              </p><p>
+              </p>
+            </field>
+        </record>
+
+
+
 
 
 
@@ -348,6 +474,9 @@
         <menuitem action="maint_vehicle_state_act" parent="maint_configuration" id="maint_vehicle_state_menu" groups="group_maint_manager"/>
         <menuitem action="maint_committee_roles_act" parent="maint_configuration" id="maint_committee_roles_menu" groups="group_maint_manager"/>
         <menuitem action="maint_facility_types_act" parent="maint_configuration" id="maint_facility_types_menu" groups="group_maint_manager"/>
+
+        <menuitem action="maint_construction_types_act" parent="maint_configuration" id="maint_construction_types_menu" groups="group_maint_manager"/>
+        <menuitem action="maint_construction_status_act" parent="maint_configuration" id="maint_construction_status_menu" groups="group_maint_manager"/>
 
         <record model='ir.ui.view' id='maint_vehicle_form'>
             <field name="name">maint.vehicle.form</field>
@@ -398,6 +527,14 @@
                                 context="{'xml_id':'maint_facilities_act'}"
                                 help="show the facilities/buildings for this ashram" >
                                 <field name="facilities_count" widget="statinfo" string="Facilities"/>
+                            </button>
+                            <button name="return_action_to_open"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-flask"
+                                context="{'xml_id':'maint_construction_activity_act'}"
+                                help="show the major construction/repairs for this ashram" >
+                                <field name="construction_count" widget="statinfo" string="Major Construction/Repairs"/>
                             </button>
                             <button name="return_action_to_open"
                                 type="object"
@@ -639,6 +776,7 @@
         <menuitem action="maint_vehicle_act" parent="maint_vehicles" id="maint_vehicle_menu" groups="group_maint_user"/>
         <menuitem action="maint_yottareport_act" parent="maint_vehicles" id="maint_yottareport_menu" groups="group_maint_user"/>
         <menuitem action="maint_amcmomreport_act" parent="maint_vehicles" id="maint_amcmomreport_menu" groups="group_maint_user"/>
+        <menuitem action="maint_construction_activity_act" parent="maint_vehicles" id="maint_construction_activity_menu" groups="group_maint_user"/>
 
 
 

@@ -513,6 +513,31 @@
 
 
 
+      <record id="construction_type_electrical" model="maint.construction.types">
+      	<field name="name">Electrical</field>
+      </record>
+
+      <record id="construction_type_mechanical" model="maint.construction.types">
+      	<field name="name">Mechanical</field>
+      </record>
+
+      <record id="construction_type_plumbing" model="maint.construction.types">
+      	<field name="name">Plumbing</field>
+      </record>
+
+
+      <record id="construction_status_r1" model="maint.construction.status">
+      	<field name="name">Requested Approval</field>
+      </record>
+
+      <record id="construction_status_r2" model="maint.construction.status">
+      	<field name="name">Work Commenced</field>
+      </record>
+
+      <record id="construction_status_r3" model="maint.construction.status">
+      	<field name="name">Work Finished</field>
+      </record>
+
 
       <!--
       <record id="model_corsa" model="maint.vehicle.model">
