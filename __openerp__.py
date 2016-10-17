@@ -7,7 +7,7 @@
     'sequence': 165,
     'category': 'Managing vehicles and contracts',
     'website' : 'https://www.odoo.com/page/maint',
-    'summary' : 'Facilities, land, maintenance, leasing, insurances, costs, Visitors',
+    'summary' : 'Facilities, land, maintenance, leasing, insurances, costs',
     'description' : """
 Facilities, land, maintenenace, leasing, insurances, cost
 =========================================================
@@ -36,11 +36,9 @@ Main Features
         'maint_cars.xml',
         'maint_data.xml',
         'maint_board_view.xml',
-		'visitors_view.xml',
-		'visitors_data.xml',
     ],
 
-    'demo': [],
+    'demo': ['maint_demo.xml'],
 
     'installable' : True,
     'application' : True,
