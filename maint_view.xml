@@ -143,6 +143,56 @@
         </record>
 
 
+        <record model='ir.ui.view' id='maint_fixedassetregister_tree'>
+            <field name="name">maint.fixedassetregister.tree</field>
+            <field name="model">maint.fixedassetregister</field>
+            <field name="arch" type="xml">
+                <tree string="Fixed Asset Registers">
+                    <field name="name"  string="Report Name"/>
+                    <field name="report_date" />
+                    <field name="attachment" />
+                    <field name="created_by" />
+                    <field name="upload_date" />
+                    <field name="upload_by" />
+                    <field name="vehicle_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='maint_fixedassetregister_form'>
+            <field name="name">maint.fixedassetregister.form</field>
+            <field name="model">maint.fixedassetregister</field>
+            <field name="arch" type="xml">
+                <form string="Fixed Asset Registers">
+                    <group col="2">
+                    <group>
+                    <field name="vehicle_id" />
+                    <field name="name" string="Report Name"/>
+                    <field name="report_date" />
+                    <field name="created_by" />
+                    <field name="upload_date" />
+                    <field name="upload_by" />
+                    <field name="attachment" />
+                    </group>
+                    <group>
+                    </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='maint_fixedassetregister_act'>
+            <field name="name">Fixed Asset Registers</field>
+            <field name="res_model">maint.fixedassetregister</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new Fixed Asset Register
+              </p>
+            </field>
+        </record>
+
 
         <record model='ir.ui.view' id='maint_amcmomreport_tree'>
             <field name="name">maint.amcmomreport.tree</field>
@@ -553,6 +603,14 @@
                                 <field name="amcmom_count" widget="statinfo" string="AMC MoM Reports"/>
                             </button>
 
+                            <button name="return_action_to_open"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-flask"
+                                context="{'xml_id':'maint_fixedassetregister_act'}"
+                                help="show the AMC MoM reports for this ashram" >
+                                <field name="fixedassetregister_count" widget="statinfo" string="Fixed Asset Registers"/>
+                            </button>
 
 
 
@@ -776,6 +834,7 @@
         <menuitem action="maint_vehicle_act" parent="maint_vehicles" id="maint_vehicle_menu" groups="group_maint_user"/>
         <menuitem action="maint_yottareport_act" parent="maint_vehicles" id="maint_yottareport_menu" groups="group_maint_user"/>
         <menuitem action="maint_amcmomreport_act" parent="maint_vehicles" id="maint_amcmomreport_menu" groups="group_maint_user"/>
+        <menuitem action="maint_fixedassetregister_act" parent="maint_vehicles" id="maint_fixedassetregister_menu" groups="group_maint_user"/>
         <menuitem action="maint_construction_activity_act" parent="maint_vehicles" id="maint_construction_activity_menu" groups="group_maint_user"/>
 
 

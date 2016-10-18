@@ -301,6 +301,7 @@ class maint_vehicle(osv.Model):
         Cost = self.pool['maint.vehicle.cost']
         Yotta = self.pool['maint.yottareport']
         Amcmom = self.pool['maint.amcmomreport']
+        FixedAssetRegister = self.pool['maint.fixedassetregister']
         ConstRepairs = self.pool['maint.construction.activity']
         return {
             vehicle_id: {
@@ -314,6 +315,7 @@ class maint_vehicle(osv.Model):
                 'cost_count': Cost.search_count(cr, uid, [('vehicle_id', '=', vehicle_id), ('parent_id', '=', False)], context=context),
                 'yotta_count': Yotta.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
                 'amcmom_count': Amcmom.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
+                'fixedassetregister_count': FixedAssetRegister.search_count(cr, uid, [('vehicle_id', '=', vehicle_id)], context=context),
             }
             for vehicle_id in ids
         }
@@ -374,6 +376,7 @@ class maint_vehicle(osv.Model):
 
 
         'amcmom_count': fields.function(_count_all, type='integer', string='AMC MoM Reports', multi=True),
+        'fixedassetregister_count': fields.function(_count_all, type='integer', string='Fixed Asset Registers', multi=True),
 
 
         'construction_count': fields.function(_count_all, type='integer', string='Construction/Repairs', multi=True),
@@ -1030,6 +1033,14 @@ class maint_amcmomreport(osv.Model):
 
     vehicle_id = openerp.fields.Many2one('maint.vehicle', string='Ashram', required=True)
     report_date = openerp.fields.Date(string='Report Date', required=True)
+    created_by = openerp.fields.Char(string='Created By', required=True)
+
+class maint_fixedassetregister(osv.Model):
+    _name = "maint.fixedassetregister"
+    _inherit = 'maint.document'
+
+    vehicle_id = openerp.fields.Many2one('maint.vehicle', string='Ashram', required=True)
+    report_date = openerp.fields.Date(string='Document Date', required=True)
     created_by = openerp.fields.Char(string='Created By', required=True)
 
 
