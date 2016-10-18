@@ -148,7 +148,7 @@
             <field name="model">maint.fixedassetregister</field>
             <field name="arch" type="xml">
                 <tree string="Fixed Asset Registers">
-                    <field name="name"  string="Report Name"/>
+                    <field name="name"  string="Document Name"/>
                     <field name="report_date" />
                     <field name="attachment" />
                     <field name="created_by" />
@@ -167,7 +167,7 @@
                     <group col="2">
                     <group>
                     <field name="vehicle_id" />
-                    <field name="name" string="Report Name"/>
+                    <field name="name" string="Document Name"/>
                     <field name="report_date" />
                     <field name="created_by" />
                     <field name="upload_date" />
