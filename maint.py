@@ -1014,6 +1014,7 @@ class maint_document(osv.Model):
 
     name = openerp.fields.Char(string='Name', required=True)
     attachment = openerp.fields.Binary("Document", attachment=True)
+    attachment_fname = openerp.fields.Char("Document FName")
     upload_date = openerp.fields.Datetime(string='Uploaded Date', readonly=True, required=True, default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     upload_by = openerp.fields.Char(string='Uploaded By', required=True)
 

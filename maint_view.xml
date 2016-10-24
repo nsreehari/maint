@@ -99,7 +99,8 @@
                 <tree string="Yotta Reports">
                     <field name="name"  string="Report Name"/>
                     <field name="report_date" />
-                    <field name="attachment" />
+                    <field name="attachment" filename="attachment_fname" />
+                    <field name="attachment_fname" invisible="1" />
                     <field name="created_by" />
                     <field name="upload_date" />
                     <field name="upload_by" />
@@ -121,7 +122,8 @@
                     <field name="created_by" />
                     <field name="upload_date" />
                     <field name="upload_by" />
-                    <field name="attachment" />
+                    <field name="attachment" filename="attachment_fname" />
+                    <field name="attachment_fname" invisible="1" />
                     </group>
                     <group>
                     </group>
@@ -150,7 +152,8 @@
                 <tree string="Fixed Asset Registers">
                     <field name="name"  string="Document Name"/>
                     <field name="report_date" />
-                    <field name="attachment" />
+                    <field name="attachment" filename="attachment_fname" />
+                    <field name="attachment_fname" invisible="1" />
                     <field name="created_by" />
                     <field name="upload_date" />
                     <field name="upload_by" />
@@ -172,7 +175,8 @@
                     <field name="created_by" />
                     <field name="upload_date" />
                     <field name="upload_by" />
-                    <field name="attachment" />
+                    <field name="attachment" filename="attachment_fname" />
+                    <field name="attachment_fname" invisible="1" />
                     </group>
                     <group>
                     </group>
@@ -201,7 +205,8 @@
                 <tree string="AMC MoM Reports">
                     <field name="name"  string="Report Name"/>
                     <field name="report_date" />
-                    <field name="attachment" />
+                    <field name="attachment" filename="attachment_fname" />
+                    <field name="attachment_fname" invisible="1" />
                     <field name="created_by" />
                     <field name="upload_date" />
                     <field name="upload_by" />
@@ -223,7 +228,8 @@
                     <field name="created_by" />
                     <field name="upload_date" />
                     <field name="upload_by" />
-                    <field name="attachment" />
+                    <field name="attachment" filename="attachment_fname" />
+                    <field name="attachment_fname" invisible="1" />
                     </group>
                     <group>
                     </group>
